@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>你嘅閒錢增值體檢報告 · Alex</title>
+<meta name="description" content="《閒錢增值體檢》個人化報告 —— 由 AMG 持牌獨立理財顧問 Alex 整。先算數,後傾產品。" />
+<meta name="robots" content="noindex,nofollow" />
+<link rel="canonical" href="https://alexchinwai.github.io/ifa-site/report.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="你嘅閒錢增值體檢報告 · Alex" />
+<meta property="og:description" content="個人化體檢報告 — AMG 持牌獨立理財顧問 Alex" />
+<meta property="og:image" content="og-image.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+HK:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+  /* ── Report-specific tweaks ─────────────────────────────────── */
+  .report-cover {
+    background: linear-gradient(180deg, var(--paper-2) 0%, var(--paper) 100%);
+    border-bottom: 1px solid var(--hairline);
+    padding: 72px 0 56px;
+  }
+  .report-cover .meta-row {
+    display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+    color: var(--muted); font-size: 13px; margin-bottom: 18px;
+  }
+  .report-cover .meta-row .dot-sep { width: 4px; height: 4px; border-radius: 999px; background: var(--hairline-strong); }
+  .report-section { padding: 56px 0; border-bottom: 1px solid var(--hairline); }
+  .report-section:last-of-type { border-bottom: none; }
+  .report-section .h2 { margin-bottom: 12px; }
+  .report-section .section-num {
+    font-family: var(--font-mono); color: var(--accent);
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 6px; display: inline-block;
+  }
+  .snapshot-table { width: 100%; border-collapse: collapse; margin-top: 18px; }
+  .snapshot-table td { padding: 12px 0; border-bottom: 1px solid var(--hairline); font-size: 15px; }
+  .snapshot-table td:first-child { color: var(--muted); width: 60%; }
+  .snapshot-table td:last-child { text-align: right; font-family: var(--font-mono); font-weight: 600; color: var(--ink); }
+  .check-q {
+    background: var(--paper-2); border: 1px solid var(--hairline);
+    border-radius: var(--r-lg); padding: 22px 24px; margin-top: 18px;
+  }
+  .check-q h4 {
+    margin: 0 0 10px; font-family: var(--font-display); font-weight: 700;
+    color: var(--ink); font-size: 18px;
+  }
+  .check-q .why {
+    background: rgba(47,122,79,0.08); border-left: 3px solid var(--green);
+    padding: 12px 16px; margin-top: 14px; border-radius: 0 8px 8px 0;
+    font-size: 14px; color: var(--ink-2);
+  }
+  .check-q .why strong { color: var(--green); }
+  .age-bracket {
+    border: 2px solid var(--accent); border-radius: var(--r-lg);
+    padding: 24px; margin-top: 18px;
+    background: linear-gradient(180deg, rgba(217,74,38,0.04) 0%, transparent 100%);
+  }
+  .age-bracket h4 {
+    margin: 0 0 8px; font-family: var(--font-display); font-weight: 700;
+    color: var(--navy); font-size: 19px;
+  }
+  .age-bracket .age-tag {
+    display: inline-block; background: var(--accent); color: var(--paper-2);
+    padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.08em; margin-bottom: 12px;
+  }
+  .age-bracket ul { margin: 14px 0 0; padding: 0; list-style: none; }
+  .age-bracket li { padding: 8px 0 8px 22px; position: relative; font-size: 14px; line-height: 1.6; }
+  .age-bracket li::before {
+    content: ""; position: absolute; left: 0; top: 15px;
+    width: 6px; height: 6px; border-radius: 999px; background: var(--accent);
+  }
+  .pit-card {
+    border: 1px solid var(--hairline-strong); border-radius: var(--r-lg);
+    padding: 22px; margin-top: 18px; background: var(--paper-2);
+  }
+  .pit-card .pit-num {
+    font-family: var(--font-mono); color: var(--accent);
+    font-size: 13px; font-weight: 600; letter-spacing: 0.1em;
+  }
+  .pit-card h4 { margin: 6px 0 12px; font-size: 18px; color: var(--ink); }
+  .pit-card .takeaway { color: var(--ink); font-weight: 600; margin-top: 10px; }
+  .cta-block {
+    background: var(--navy); color: var(--paper-2);
+    border-radius: var(--r-xl); padding: 36px 32px; margin-top: 24px;
+  }
+  .cta-block h3 { color: var(--paper-2); margin: 0 0 10px; }
+  .cta-block ul { margin: 16px 0; padding: 0; list-style: none; }
+  .cta-block li {
+    padding: 10px 0 10px 28px; position: relative; color: rgba(245,239,228,0.85);
+    font-size: 15px; line-height: 1.6;
+  }
+  .cta-block li::before {
+    content: "✓"; position: absolute; left: 0; top: 10px;
+    color: var(--accent); font-weight: 700;
+  }
+  .cta-block .cta-actions {
+    display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px;
+  }
+  .cta-block .btn { font-size: 15px; }
+  .print-hint {
+    text-align: center; color: var(--muted); font-size: 13px;
+    padding: 24px 0; border-top: 1px solid var(--hairline);
+  }
+  @media print {
+    .nav, .footer, .print-hint, .nav-drawer { display: none !important; }
+    body { background: white; }
+    .report-section { page-break-inside: avoid; }
+    .cta-block { background: var(--paper-2) !important; color: var(--ink) !important; border: 2px solid var(--navy); }
+    .cta-block h3, .cta-block li { color: var(--ink) !important; }
+    .cta-block li { color: var(--ink-2) !important; }
+  }
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1023364010264458');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1023364010264458&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5RDLPDJ47"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Z5RDLPDJ47');
+</script>
+</head>
+<body>
+
+<!-- ───────── Nav ───────── -->
+<header class="nav" role="banner">
+  <div class="container nav-inner">
+    <a href="index.html" class="wordmark" aria-label="Alex — 獨立理財顧問">
+      <span class="glyph">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M5 26 L16 6 L27 26" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M10 19 L22 19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="16" cy="6" r="1.6" fill="currentColor"/>
+        </svg>
+      </span>
+      <span class="flex-col">
+        <span class="name">Alex</span>
+        <span class="sub">獨立理財顧問</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="主導航">
+      <a class="nav-link" href="index.html">閒錢體檢</a>
+      <a class="nav-link" href="about.html">關於 Alex</a>
+      <a class="nav-link" href="cases.html">客戶情境</a>
+      <a class="nav-link" href="legal.html">免責及私隱</a>
+      <button onclick="window.print()" class="btn btn-ghost btn-sm" style="margin-left:12px">列印 / 存 PDF</button>
+    </nav>
+    <button id="nav-trigger" class="nav-mobile-trigger btn btn-ghost btn-sm" aria-label="打開選單" aria-expanded="false" aria-controls="nav-drawer">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div id="nav-drawer" class="nav-drawer">
+    <a href="index.html">閒錢體檢</a>
+    <a href="about.html">關於 Alex</a>
+    <a href="cases.html">客戶情境</a>
+    <a href="legal.html">免責及私隱</a>
+    <button onclick="window.print()" class="btn btn-ghost btn-block" style="margin-top:18px">列印 / 存 PDF</button>
+  </div>
+</header>
+
+<main role="main">
+<div class="page">
+
+  <!-- ───────── Cover ───────── -->
+  <section class="report-cover">
+    <div class="container" style="max-width:760px">
+      <div class="meta-row">
+        <span>《閒錢增值體檢》</span>
+        <span class="dot-sep"></span>
+        <span id="report-date">—</span>
+        <span class="dot-sep"></span>
+        <span>個人化報告</span>
+      </div>
+      <h1 class="h-display" style="font-size:clamp(34px,5vw,52px);line-height:1.15;margin:0 0 18px">
+        你嘅閒錢增值體檢報告
+      </h1>
+      <p class="lede" style="margin:0 0 20px;color:var(--ink-2)">
+        為 <strong id="m-name" style="color:var(--navy)">你</strong> 而整 · <span id="report-date-2">—</span>
+      </p>
+      <div style="border-left:3px solid var(--accent);padding:14px 18px;background:var(--paper-2);border-radius:0 8px 8px 0">
+        <p style="margin:0;font-size:15px;color:var(--ink-2);line-height:1.65">
+          多謝你做咗閒錢體檢。呢份報告唔長,五分鐘睇得完。佢唔會 sell 你任何嘢 —— 入面冇一隻產品名、冇一間公司名。佢只做一件事:<strong style="color:var(--ink)">幫你將一件平時睇唔到嘅事,計返出嚟、睇得清楚。</strong>
+        </p>
+        <p style="margin:12px 0 0;font-size:14px;color:var(--muted)">
+          睇完之後,你會更清楚自己嗰筆閒錢而家嘅處境,同埋下一步可以諗啲乜。要唔要搵人傾,係睇完先決定 —— 唔急。
+        </p>
+        <p style="margin:14px 0 0;font-size:13px;color:var(--muted)">
+          — <strong style="color:var(--ink)">Alex</strong>,AMG 持牌獨立理財顧問(持牌號碼 <span class="placeholder-fill">[填]</span>)
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── §1 Snapshot ───────── -->
+  <section class="report-section">
+    <div class="container" style="max-width:760px">
+      <span class="section-num">01 · 體檢快照</span>
+      <h2 class="h2">你嘅閒錢快照</h2>
+      <p style="color:var(--muted);margin:0 0 8px">你輸入嘅資料:</p>
+
+      <table class="snapshot-table" aria-label="輸入資料">
+        <tr><td>手上閒錢金額</td><td>HK$ <span id="m-amount">—</span></td></tr>
+        <tr><td>打算幾耐唔需要動用</td><td><span id="m-years">—</span> 年</td></tr>
+        <tr><td>你嘅年齡</td><td><span id="m-age">—</span> 歲</td></tr>
+        <tr id="row-monthly" hidden><td>每月仲可以儲</td><td>HK$ <span id="m-monthly">—</span></td></tr>
+      </table>
+
+      <h3 class="h3" style="margin-top:36px">體檢結果:通脹靜靜雞蝕緊嘅購買力</h3>
+      <p style="margin:14px 0;color:var(--ink-2);line-height:1.7">
+        如果你嗰筆 <strong>HK$ <span class="m-amount-inline">—</span></strong> 就咁擺喺低息戶口,<strong><span class="m-years-inline">—</span> 年後</strong>個數字大致一樣 ——
+      </p>
+      <p style="margin:14px 0;color:var(--ink-2);line-height:1.7">
+        但以<strong>今日嘅購買力</strong>計,佢實際只值返大約 <strong style="color:var(--navy);font-family:var(--font-mono)">HK$ <span id="m-bank-real">—</span></strong>。
+      </p>
+
+      <!-- Big loss callout -->
+      <div class="result-callout" id="loss-callout">
+        <div class="flex justify-between items-start gap-12 wrap">
+          <div>
+            <div class="eyebrow" style="color:var(--accent)">體檢結果 · 大數字</div>
+            <div class="h3 mt-8" style="color:var(--navy-500);font-weight:500">你筆錢擺低息戶口 <span class="m-years-inline">—</span> 年,<br><span style="color:var(--ink);font-weight:700">購買力靜靜雞蝕緊 ——</span></div>
+          </div>
+          <span class="tag tag-accent"><span class="dot"></span>說明性計算</span>
+        </div>
+        <div class="result-big num">− HK$ <span id="m-pp-loss">—</span></div>
+        <div class="small mt-8 num">即係 <strong style="color:var(--ink)"><span id="m-loss-pct">—</span>%</strong> 嘅實際購買力 · <span class="m-years-inline">—</span> 年後筆錢實際只值返 <strong style="color:var(--ink)">HK$ <span class="m-bank-real-inline">—</span></strong>(今日價)</div>
+      </div>
+
+      <!-- Chart -->
+      <div class="card-inset mt-20" style="padding:18px" id="chart-host">
+        <div class="eyebrow">圖表 · 今日購買力</div>
+        <div class="h3" style="margin-top:4px;margin-bottom:14px"><span class="m-years-inline">—</span> 年後,你筆錢嘅實際購買力</div>
+        <div id="chart-content">—</div>
+      </div>
+
+      <p style="margin-top:24px;color:var(--ink-2);line-height:1.7">
+        <strong>呢個數唔係嚇你。</strong> 佢只係將一件每日都發生、但你睇唔到嘅事 —— 通脹侵蝕 —— 用一個你睇得明嘅數字表達出嚟。
+      </p>
+      <p style="color:var(--ink-2);line-height:1.7">
+        你冇蝕錢。你個戶口結餘冇跌。但你嗰筆錢「買到幾多嘢」嘅能力,係慢慢縮緊。呢個就係「閒錢擺住唔郁」嘅真實成本。
+      </p>
+
+      <div class="disclaimer mt-20" role="note">
+        以上數字基於你輸入嘅金額、年期同說明性假設參數(通脹、低息戶口利率)計算,屬說明性質,不代表將來實際情況。
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── §2 Three questions ───────── -->
+  <section class="report-section">
+    <div class="container" style="max-width:760px">
+      <span class="section-num">02 · 自我檢視</span>
+      <h2 class="h2">三條自我檢視問題</h2>
+      <p style="color:var(--muted);max-width:600px;line-height:1.7">
+        比起「應該買乜產品」,以下三條問題重要得多。答得到呢三條,你已經行先過大部分人。建議你拎張紙、逐條寫低你嘅答案。
+      </p>
+
+      <div class="check-q">
+        <h4>問題一 — 呢筆錢,係為咗解決你邊個具體目標?</h4>
+        <p style="margin:0 0 10px;color:var(--ink-2);line-height:1.7">唔係「想佢增值」咁籠統。要具體:</p>
+        <ul style="margin:0;padding:0 0 0 20px;list-style:disc;color:var(--ink-2);line-height:1.8">
+          <li><strong>退休現金流</strong> —— 想佢將來變成每月袋落袋嘅錢?</li>
+          <li><strong>子女教育</strong> —— 有一個明確嘅時間點同金額?</li>
+          <li><strong>純粹資產增值</strong> —— 想佢至少追返通脹、唔好慢慢蝕?</li>
+        </ul>
+        <div class="why">
+          <strong>💡 點解重要</strong>:目標唔同,「擺幾耐」、「接受幾大波動」、「要幾高流動性」嘅答案就完全唔同。冇諗清楚目標就部署,等於未知去邊就上車。
+        </div>
+      </div>
+
+      <div class="check-q">
+        <h4>問題二 — 你而家擺錢嗰個位,鎖定期同流動性,啱唔啱你?</h4>
+        <p style="margin:0 0 10px;color:var(--ink-2);line-height:1.7">睇返你手上每一筆錢,問:</p>
+        <ul style="margin:0;padding:0 0 0 20px;list-style:disc;color:var(--ink-2);line-height:1.8">
+          <li>我幾時可能會用到呢筆錢?</li>
+          <li>佢而家擺嗰個位,鎖死到幾時?中途攞返出嚟要蝕幾多?</li>
+          <li>「我可以動用嘅時間」同「佢鎖死我嘅時間」,夾唔夾?</li>
+        </ul>
+        <div class="why">
+          <strong>💡 點解重要</strong>:好多人嘅問題唔係揀錯方向,係<strong>時間錯配</strong> —— 短期會用到嘅錢鎖咗落長期工具、或者長期唔等錢用嘅錢擺晒喺零增長嘅地方。
+        </div>
+      </div>
+
+      <div class="check-q">
+        <h4>問題三 — 5 至 10 年後,base case 同 worst case 分別係點?</h4>
+        <p style="margin:0 0 10px;color:var(--ink-2);line-height:1.7">任何方案,你都應該問到兩個情境:</p>
+        <ul style="margin:0;padding:0 0 0 20px;list-style:disc;color:var(--ink-2);line-height:1.8">
+          <li><strong>Base case</strong> —— 一切如預期,大概係點?</li>
+          <li><strong>Worst case</strong> —— 最差情況,你會面對啲乜?可唔可以承受?</li>
+        </ul>
+        <div class="why">
+          <strong>💡 點解重要</strong>:只睇「最靚嗰個數字」嚟做決定,係最常見嘅坑。<strong>睇得清楚 worst case 先肯落注</strong>,你嘅決定先穩陣。一個唔肯同你講 worst case 嘅人,佢本身就係答案。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── §3 Age bracket (only matching one shown) ───────── -->
+  <section class="report-section">
+    <div class="container" style="max-width:760px">
+      <span class="section-num">03 · 你嘅階段</span>
+      <h2 class="h2">按你嘅年齡:配置缺口提示</h2>
+      <p style="color:var(--muted);max-width:600px;line-height:1.7">
+        每個階段嘅閒錢有唔同嘅常見 gap。呢段針對<strong style="color:var(--ink)">你輸入嘅年齡(<span class="m-age-inline">—</span> 歲)</strong>而寫。
+      </p>
+
+      <!-- 25–35 -->
+      <div class="age-bracket" id="bracket-young" hidden>
+        <span class="age-tag" style="background:var(--navy)">25–35 歲 · 起步期</span>
+        <h4>時間係你最大嘅資產</h4>
+        <ul>
+          <li><strong>常見 gap</strong>:有收入、有閒錢,但全部擺活期 / 短期定期;覺得「夠錢先算」。</li>
+          <li><strong>要注意</strong>:你最大嘅優勢係時間 —— 越早開始,複利空間越大;呢個優勢冇得補返。</li>
+          <li><strong>可以諗嘅方向</strong>:建立一個有紀律嘅長期增值習慣;分清「應急錢」(要高流動性)同「長期錢」(可承受波動換增長)。</li>
+        </ul>
+      </div>
+
+      <!-- 35–50 -->
+      <div class="age-bracket" id="bracket-mid" hidden>
+        <span class="age-tag">35–50 歲 · 累積期</span>
+        <h4>收入高峰,但最易「散」</h4>
+        <ul>
+          <li><strong>常見 gap</strong>:收入到咗高峰,但錢散喺好多舊決定度 —— 幾份舊保單、零散股票、幾個戶口 —— 自己都未必記得齊。</li>
+          <li><strong>要注意</strong>:呢個階段唔係「再買多啲」,係<strong>先盤點、後整合</strong>。散 = 你根本計唔到自己盤數。</li>
+          <li><strong>可以諗嘅方向</strong>:將所有資產攤開算一次;同時平衡「保障家庭」同「資產增值」兩條線。</li>
+        </ul>
+      </div>
+
+      <!-- 50–65 -->
+      <div class="age-bracket" id="bracket-old" hidden>
+        <span class="age-tag" style="background:var(--green)">50–65 歲 · 轉換期</span>
+        <h4>由「累積」行向「現金流」</h4>
+        <ul>
+          <li><strong>常見 gap</strong>:臨近退休,但部分資產鎖死喺中長期工具,流動性同退休時間表夾唔到。</li>
+          <li><strong>要注意</strong>:呢個階段嘅重點由「追增長」轉向<strong>穩定 + 可預期嘅現金流</strong>,同管理 worst case。</li>
+          <li><strong>可以諗嘅方向</strong>:檢視每筆錢嘅鎖定期同退休時間表夾唔夾;將部分資產逐步轉向有現金流嘅安排。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── §4 Three pits ───────── -->
+  <section class="report-section">
+    <div class="container" style="max-width:760px">
+      <span class="section-num">04 · 常見坑</span>
+      <h2 class="h2">我見得最多嘅三個坑</h2>
+      <p style="color:var(--muted);max-width:600px;line-height:1.7">
+        呢三個,係我同人傾嘅時候見得最多、又最少人為意嘅:
+      </p>
+
+      <div class="pit-card">
+        <div class="pit-num">坑 01</div>
+        <h4>鎖太長</h4>
+        <p style="margin:0;color:var(--ink-2);line-height:1.7">
+          為咗一個靚啲嘅數字,將一筆其實中短期就會用到嘅錢,擺咗落鎖死十年八年嘅工具。到要用嘅時候,中途攞返出嚟要蝕一截。
+        </p>
+        <p class="takeaway">「靚數字」嘅代價,好多時就係流動性。</p>
+      </div>
+
+      <div class="pit-card">
+        <div class="pit-num">坑 02</div>
+        <h4>被通脹靜靜雞蝕</h4>
+        <p style="margin:0;color:var(--ink-2);line-height:1.7">
+          你嘅體檢結果(§1)講緊嘅就係呢個。閒錢擺喺零增長 / 極低息嘅地方,個數字冇跌,所以感覺「冇風險」 —— 但購買力每年實際蝕緊。
+        </p>
+        <p class="takeaway">「乜都唔做」唔係冇風險,只係風險你睇唔到。</p>
+      </div>
+
+      <div class="pit-card">
+        <div class="pit-num">坑 03</div>
+        <h4>產品睇唔明就買</h4>
+        <p style="margin:0;color:var(--ink-2);line-height:1.7">
+          當年覺得「好抵」、聽人講「好好」就買咗,但從來冇人同你將「保證部分」同「非保證部分」分開講清楚。幾年後先發現同當初諗嘅唔同。
+        </p>
+        <p class="takeaway">睇唔明嘅嘢,唔好買;肯同你分開講清楚嘅人,先值得信。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── §5 Next step CTA ───────── -->
+  <section class="report-section">
+    <div class="container" style="max-width:760px">
+      <span class="section-num">05 · 下一步</span>
+      <h2 class="h2"><span class="m-name-inline">你</span>,睇到呢度,你已經行咗大部分人唔會行嘅一步</h2>
+      <p style="color:var(--ink-2);max-width:620px;line-height:1.7">
+        <strong style="color:var(--ink)">將自己嘅情況算清楚、睇清楚</strong> —— 就係呢一步。
+      </p>
+
+      <div class="cta-block">
+        <h3>如果你心入面開始有「咁我下一步應該點」嘅問題</h3>
+        <p style="margin:0;color:rgba(245,239,228,0.85);line-height:1.7">
+          可以同我傾一個 <strong style="color:var(--paper-2)">15 分鐘 discovery call</strong>:
+        </p>
+        <ul>
+          <li>唔係 sales call,係 <strong style="color:var(--paper-2)">diagnose call</strong> —— 你講你嘅情況,我即場同你講三件你可以做 / 唔好做嘅事</li>
+          <li><strong style="color:var(--paper-2)">免費、無約束</strong> —— 傾完唔啱,完全冇問題</li>
+          <li>由我 <strong style="color:var(--paper-2)">Alex 本人</strong>傾,唔會交俾第三方</li>
+        </ul>
+
+        <div class="cta-actions">
+          <a href="https://calendly.com/alexchinwai/15mincall" class="btn btn-primary" data-placeholder="Calendly 連結">
+            揀個方便時間
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+          </a>
+          <a href="https://wa.me/85291268714" class="btn" style="background:transparent;color:var(--paper-2);border:1px solid rgba(245,239,228,0.3)" data-placeholder="wa.me 連結">
+            想用文字傾住先
+          </a>
+        </div>
+      </div>
+
+      <p style="margin-top:28px;color:var(--ink-2);line-height:1.7;font-style:italic">
+        閒錢增值最大嘅敵人,從來唔係買錯產品,係「遲啲先算」。你今日已經行咗第一步。
+      </p>
+      <p style="margin:20px 0 0;color:var(--muted);font-size:14px">
+        — <strong style="color:var(--ink)">Alex</strong><br>
+        AMG 持牌獨立理財顧問 · 持牌號碼 <span class="placeholder-fill">[填]</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ───────── Disclaimer ───────── -->
+  <section class="report-section" style="background:var(--paper-2)">
+    <div class="container" style="max-width:760px">
+      <span class="section-num">免責聲明</span>
+      <p style="color:var(--ink-2);font-size:13.5px;line-height:1.75;margin-top:10px">
+        本報告及《閒錢增值體檢》計算機僅供一般參考及教育用途,<strong>不構成任何投資、保險或財務建議,亦不構成任何金融產品之要約、招攬或推介</strong>。
+      </p>
+      <p style="color:var(--ink-2);font-size:13.5px;line-height:1.75">
+        報告內所有數字,基於使用者輸入嘅金額、年期、年齡及說明性假設參數(通脹率、利率)計算,屬<strong>說明性質</strong>;假設參數不代表將來實際表現。任何提及之「配置」、「增值」均屬概念性說明,並非任何特定產品或策略,<strong>不暗示任何保證回報</strong>。投資涉及風險,本金可能虧損。
+      </p>
+      <p style="color:var(--ink-2);font-size:13.5px;line-height:1.75">
+        任何個人化嘅資產配置、產品選擇、稅務或退休計劃建議,均應於諮詢持牌、了解你完整情況嘅顧問之後先做決定。
+      </p>
+      <p style="color:var(--ink-2);font-size:13.5px;line-height:1.75">
+        你提供嘅個人資料只用於跟進本服務,我哋按香港《個人資料(私隱)條例》處理,你可隨時要求停止接收。
+      </p>
+      <p style="color:var(--muted);font-size:13px;line-height:1.75;margin-top:18px">
+        Alex 為 AMG Financial Group 持牌獨立理財顧問(持牌號碼 <span class="placeholder-fill">[填]</span>)。© 2026。
+      </p>
+    </div>
+  </section>
+
+  <p class="print-hint">列印或存 PDF:右上「列印 / 存 PDF」 · 連結唔會過期,你想睇返直接 bookmark 呢條 URL。</p>
+
+</div>
+</main>
+
+<!-- ───────── Footer ───────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="flex justify-between wrap gap-24">
+      <div style="max-width:380px">
+        <a href="index.html" class="wordmark" aria-label="Alex — 獨立理財顧問">
+          <span class="glyph">
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path d="M5 26 L16 6 L27 26" stroke="var(--paper-2)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 19 L22 19" stroke="var(--paper-2)" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="16" cy="6" r="1.6" fill="var(--paper-2)"/>
+            </svg>
+          </span>
+          <span class="flex-col"><span class="name">Alex</span><span class="sub">獨立理財顧問</span></span>
+        </a>
+        <p class="small" style="color:rgba(245,239,228,0.7);margin-top:14px">獨立理財顧問,香港。<br>一個人由頭跟到尾,計清楚先傾。</p>
+      </div>
+      <div class="flex gap-32 wrap">
+        <div class="flex-col gap-8">
+          <div class="micro" style="color:rgba(245,239,228,0.45);text-transform:uppercase;letter-spacing:0.14em">網頁</div>
+          <a href="index.html">閒錢體檢</a>
+          <a href="about.html">關於 Alex</a>
+          <a href="cases.html">客戶情境</a>
+          <a href="legal.html">免責及私隱</a>
+        </div>
+        <div class="flex-col gap-8">
+          <div class="micro" style="color:rgba(245,239,228,0.45);text-transform:uppercase;letter-spacing:0.14em">聯絡</div>
+          <a href="https://wa.me/85291268714">WhatsApp</a>
+          <a href="https://calendly.com/alexchinwai/15mincall">Book 15 分鐘</a>
+          <a href="#email">Email <span class="placeholder-fill" style="background:rgba(217,74,38,0.25);color:#FFD6C6">[填]</span></a>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <p class="micro" style="color:rgba(245,239,228,0.55);line-height:1.7">
+      本網頁、計算機及報告僅供一般參考及教育用途,<strong style="color:rgba(245,239,228,0.85)">不構成任何投資、保險或財務建議</strong>,亦不構成任何產品之要約或招攬。計算結果基於使用者輸入及假設參數,假設回報並不代表將來表現;<strong style="color:rgba(245,239,228,0.85)">投資涉及風險,本金可能虧損</strong>。個人化建議請諮詢持牌財務顧問。<br>
+      Alex 為 AMG Financial Group 持牌獨立理財顧問,持牌號碼:<span class="placeholder-fill">[填]</span>。© 2026。<br>
+      私隱:你提供嘅個人資料只用於跟進本服務,我哋按《個人資料(私隱)條例》處理,你可隨時要求停止接收。
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ─────────────────────────────────────────────────────────────
+   report.html — fills merge fields from URL params, computes
+   purchasing-power loss, renders chart. Mirrors app.js math but
+   self-contained so this page can be opened with just a query
+   string (no localStorage dependency).
+
+   Query params (all optional, sensible defaults):
+     n   = 稱呼 (URL-encoded)
+     a   = 閒錢金額 (HKD)
+     y   = 年期
+     age = 年齡
+     m   = 每月儲蓄 (optional)
+   ───────────────────────────────────────────────────────────── */
+(function () {
+  'use strict';
+
+  /* must mirror app.js CONFIG — keep in sync */
+  var CONFIG = { inflation: 2.0, bankRate: 0.5, conservativeRate: 4.5 };
+
+  function commas(n) {
+    return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+  function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+  var p = new URLSearchParams(window.location.search);
+  var name = (p.get('n') || '').trim();
+  var amount = clamp(parseInt(p.get('a') || '500000', 10) || 500000, 50000, 5000000);
+  var years = clamp(parseInt(p.get('y') || '10', 10) || 10, 3, 25);
+  var age = clamp(parseInt(p.get('age') || '42', 10) || 42, 25, 65);
+  var monthly = clamp(parseInt(p.get('m') || '0', 10) || 0, 0, 100000);
+
+  function computeCheck() {
+    var inf = CONFIG.inflation / 100, bank = CONFIG.bankRate / 100, cons = CONFIG.conservativeRate / 100;
+    var months = years * 12;
+    function fvAnnuity(rate) {
+      var r = rate / 12;
+      if (r === 0) return monthly * months;
+      return monthly * ((Math.pow(1 + r, months) - 1) / r);
+    }
+    var lumpBankReal = amount * Math.pow(1 + bank, years) / Math.pow(1 + inf, years);
+    var lumpConsReal = amount * Math.pow(1 + cons, years) / Math.pow(1 + inf, years);
+    var monthBankReal = monthly > 0 ? fvAnnuity(bank) / Math.pow(1 + inf, years) : 0;
+    var monthConsReal = monthly > 0 ? fvAnnuity(cons) / Math.pow(1 + inf, years) : 0;
+    var bankEndReal = lumpBankReal + monthBankReal;
+    var consEndReal = lumpConsReal + monthConsReal;
+    var ppLoss = Math.max(0, amount - lumpBankReal);
+    var ppLossPct = (ppLoss / amount) * 100;
+    var series = [];
+    for (var y = 0; y <= years; y++) {
+      series.push({
+        year: y,
+        bankReal: amount * Math.pow((1 + bank) / (1 + inf), y),
+        consReal: amount * Math.pow((1 + cons) / (1 + inf), y)
+      });
+    }
+    return { ppLoss: ppLoss, ppLossPct: ppLossPct, bankEndReal: bankEndReal, consEndReal: consEndReal, monthBankReal: monthBankReal, monthConsReal: monthConsReal, series: series };
+  }
+
+  function chartHTML(r) {
+    var series = r.series, last = series[series.length - 1];
+    var bankPct = ((last.bankReal - amount) / amount) * 100;
+    var consPct = ((last.consReal - amount) / amount) * 100;
+
+    var W = 380, H = 160, padL = 30, padR = 116, padT = 14, padB = 26;
+    var innerW = W - padL - padR, innerH = H - padT - padB;
+    var allY = [amount];
+    series.forEach(function (s) { allY.push(s.bankReal, s.consReal); });
+    var maxY = Math.max.apply(null, allY) * 1.02;
+    var minY = Math.min.apply(null, allY) * 0.96;
+    function xS(i) { return padL + (i / (series.length - 1)) * innerW; }
+    function yS(v) { return padT + innerH - ((v - minY) / (maxY - minY)) * innerH; }
+    function line(key) {
+      return series.map(function (s, i) { return (i === 0 ? 'M' : 'L') + ' ' + xS(i).toFixed(1) + ' ' + yS(s[key]).toFixed(1); }).join(' ');
+    }
+    var lossArea = series.map(function (s, i) { return (i === 0 ? 'M' : 'L') + ' ' + xS(i).toFixed(1) + ' ' + yS(s.bankReal).toFixed(1); }).join(' ')
+      + ' L ' + xS(series.length - 1).toFixed(1) + ' ' + yS(amount).toFixed(1)
+      + ' L ' + xS(0).toFixed(1) + ' ' + yS(amount).toFixed(1) + ' Z';
+    var ticks = [0, Math.floor(years / 2), years];
+    var ticksSVG = ticks.map(function (t) {
+      var x = xS(t);
+      return '<text x="' + x.toFixed(1) + '" y="' + (H - 8) + '" font-size="11" fill="var(--muted)" text-anchor="middle" font-family="var(--font-mono)">' + (t === 0 ? '今日' : '+' + t + '年') + '</text>';
+    }).join('');
+    var lastX = xS(series.length - 1);
+    var labelX = lastX + 12;
+    var bankY = yS(last.bankReal), consY = yS(last.consReal);
+    if (Math.abs(bankY - consY) < 18) {
+      if (bankY > consY) { bankY = consY + 18; } else { bankY = consY - 18; }
+    }
+    var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" style="height:auto;display:block" role="img" aria-label="' + years + ' 年購買力對比圖">'
+      + '<line x1="' + padL + '" y1="' + yS(amount).toFixed(1) + '" x2="' + lastX.toFixed(1) + '" y2="' + yS(amount).toFixed(1) + '" stroke="var(--hairline-strong)" stroke-width="1" stroke-dasharray="2 3"/>'
+      + '<text x="' + (padL - 4) + '" y="' + (yS(amount) + 3) + '" font-size="10" fill="var(--muted)" text-anchor="end" font-family="var(--font-mono)">今日</text>'
+      + '<path d="' + lossArea + '" fill="rgba(217,74,38,0.10)"/>'
+      + '<path d="' + line('consReal') + '" fill="none" stroke="var(--muted)" stroke-width="2.5" stroke-dasharray="6 5" stroke-linecap="round" stroke-linejoin="round"/>'
+      + '<path d="' + line('bankReal') + '" fill="none" stroke="var(--navy)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'
+      + '<circle cx="' + lastX.toFixed(1) + '" cy="' + yS(last.bankReal).toFixed(1) + '" r="4.5" fill="var(--navy)"/>'
+      + '<circle cx="' + lastX.toFixed(1) + '" cy="' + yS(last.consReal).toFixed(1) + '" r="4.5" fill="none" stroke="var(--muted)" stroke-width="2.5"/>'
+      + '<line x1="' + labelX + '" y1="' + bankY.toFixed(1) + '" x2="' + (labelX + 14) + '" y2="' + bankY.toFixed(1) + '" stroke="var(--navy)" stroke-width="3" stroke-linecap="round"/>'
+      + '<text x="' + (labelX + 20) + '" y="' + (bankY + 4).toFixed(1) + '" font-size="12" fill="var(--navy)" font-weight="700">擺低息戶口</text>'
+      + '<line x1="' + labelX + '" y1="' + consY.toFixed(1) + '" x2="' + (labelX + 14) + '" y2="' + consY.toFixed(1) + '" stroke="var(--muted)" stroke-width="2.5" stroke-dasharray="3 2"/>'
+      + '<text x="' + (labelX + 20) + '" y="' + (consY + 4).toFixed(1) + '" font-size="12" fill="var(--muted)" font-weight="600">說明性配置</text>'
+      + ticksSVG
+      + '</svg>';
+
+    return ''
+      + '<div class="chart-stats">'
+      +   '<div class="chart-stat chart-stat-bank">'
+      +     '<div class="chart-stat-label"><span class="chart-swatch chart-swatch-bank"></span>擺低息戶口</div>'
+      +     '<div class="chart-stat-flow"><span class="num">' + (amount / 10000).toFixed(1) + '萬</span><span class="chart-arrow">→</span><span class="num chart-stat-end">' + (last.bankReal / 10000).toFixed(1) + '萬</span><span class="chart-stat-delta">' + (bankPct >= 0 ? '+' : '') + bankPct.toFixed(1) + '%</span></div>'
+      +   '</div>'
+      +   '<div class="chart-stat chart-stat-cons">'
+      +     '<div class="chart-stat-label"><span class="chart-swatch chart-swatch-cons"></span>說明性配置 <span class="chart-tag">非保證</span></div>'
+      +     '<div class="chart-stat-flow"><span class="num">' + (amount / 10000).toFixed(1) + '萬</span><span class="chart-arrow">→</span><span class="num chart-stat-end">' + (last.consReal / 10000).toFixed(1) + '萬</span><span class="chart-stat-delta">' + (consPct >= 0 ? '+' : '') + consPct.toFixed(1) + '%</span></div>'
+      +   '</div>'
+      + '</div>'
+      + '<div class="chart-svg-wrap">' + svg + '</div>';
+  }
+
+  function fillText(id, text) {
+    var els = document.querySelectorAll(id);
+    [].forEach.call(els, function (e) { e.textContent = text; });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var r = computeCheck();
+    var displayName = name || '你';
+
+    document.getElementById('m-name').textContent = displayName;
+    fillText('.m-name-inline', displayName);
+    document.title = displayName + ' 嘅閒錢增值體檢報告 · Alex';
+
+    var d = new Date();
+    var dateStr = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    document.getElementById('report-date').textContent = dateStr;
+    document.getElementById('report-date-2').textContent = dateStr;
+
+    document.getElementById('m-amount').textContent = commas(amount);
+    fillText('.m-amount-inline', commas(amount));
+    document.getElementById('m-years').textContent = years;
+    fillText('.m-years-inline', years);
+    document.getElementById('m-age').textContent = age;
+    fillText('.m-age-inline', age);
+
+    if (monthly > 0) {
+      document.getElementById('row-monthly').hidden = false;
+      document.getElementById('m-monthly').textContent = commas(monthly);
+    }
+
+    document.getElementById('m-bank-real').textContent = commas(r.bankEndReal);
+    fillText('.m-bank-real-inline', commas(r.bankEndReal));
+    document.getElementById('m-pp-loss').textContent = commas(r.ppLoss);
+    document.getElementById('m-loss-pct').textContent = r.ppLossPct.toFixed(1);
+
+    document.getElementById('chart-content').innerHTML = chartHTML(r);
+
+    /* age bracket — show exactly one */
+    var bracketId = age < 35 ? 'bracket-young' : (age < 50 ? 'bracket-mid' : 'bracket-old');
+    var b = document.getElementById(bracketId);
+    if (b) b.hidden = false;
+  });
+
+  /* mobile nav (lightweight, mirrors app.js logic) */
+  document.addEventListener('DOMContentLoaded', function () {
+    var trigger = document.getElementById('nav-trigger'), drawer = document.getElementById('nav-drawer');
+    if (!trigger || !drawer) return;
+    trigger.addEventListener('click', function () {
+      var open = drawer.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      trigger.setAttribute('aria-label', open ? '關閉選單' : '打開選單');
+    });
+  });
+})();
+</script>
+</body>
+</html>
