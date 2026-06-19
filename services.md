@@ -20,7 +20,7 @@
 - 階段 C · Deployer:35–55 歲,流動資產 $500K+
 
 ## 收費模式
-- 15 分鐘 discovery call + 初步分析:**免費**(diagnose,唔係 sell call)
+- 15 分鐘 discovery call + 初步分析:**免費**(diagnose,並非銷售 call)
 - 主要收入嚟自保險 / 基金產品佣金,合作前清楚 disclose
 - 唔收前期顧問費
 
@@ -32,4 +32,4 @@
 香港持牌中介,受保險業監管局(IA)、積金局(MPFA)、證監會(SFC)相關規例規管。內容僅供參考、非個別建議;保費融資涉槓桿風險,不保證回報。
 
 ## 聯絡
-WhatsApp / Calendly / email:[填]
+WhatsApp / Calendly / WhatsApp:https://wa.me/85291268714

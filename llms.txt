@@ -1,6 +1,6 @@
 # Alex — AMG 獨立理財顧問 (IFA)
 
-> 香港持牌獨立理財顧問。劇本殺 designer 轉 IFA,用故事化拆解 + AI portfolio 分析,幫認真做長期理財嘅專業人士做資產部署、保障、退休嘅透明決定。原則:唔 sell 你唔需要嘅嘢。
+> 香港持牌獨立理財顧問。劇本殺 designer 轉 IFA,用故事化拆解 + AI portfolio 分析,幫認真做長期理財嘅專業人士做資產部署、保障、退休嘅透明決定。原則:不推銷你不需要的。
 
 ## 服務
 - [服務範圍](https://alexchinwai.github.io/ifa-site/#services): 基金投資、保障規劃、退休部署、MPF 整合、保費融資諮詢、AI portfolio 分析
@@ -22,7 +22,7 @@
 - [關於 Alex](https://alexchinwai.github.io/ifa-site/about/): AMG 持牌 IFA,持保險(1/2/3/5)+ 強積金中介人資格,受 IA / MPFA / SFC 規例規管
 
 ## 聯絡
-- 免費 15 分鐘 discovery call(diagnose,唔係 sell)。WhatsApp / Calendly / email:[填]
+- 免費 15 分鐘 discovery call(diagnose,並非銷售)。WhatsApp / Calendly / WhatsApp:https://wa.me/85291268714
 
 ## 注意
 所有內容僅供一般參考,並不構成保險、投資或財務建議,亦非產品要約或招攬;所有數字屬說明用途。保費融資涉及槓桿,有利率波動及流動性風險,並不保證回報。
