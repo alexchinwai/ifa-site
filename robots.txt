@@ -1,0 +1,33 @@
+# robots.txt — Alex · AMG 獨立理財顧問 (IFA)
+# 公開行銷資產。決定:全部 allow(含 AI training + citation 爬蟲)。
+
+User-agent: *
+Allow: /
+
+# --- 搜尋 / AI 引用爬蟲(令你被 ChatGPT / Perplexity / Claude / Google AI Overviews 引用)---
+User-agent: Googlebot
+Allow: /
+User-agent: Bingbot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: Claude-User
+Allow: /
+
+# --- Training 爬蟲(亦 allow:幫個名稔入 base model)---
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://alexchinwai.github.io/ifa-site/sitemap.xml

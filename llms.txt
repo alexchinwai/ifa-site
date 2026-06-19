@@ -1,0 +1,28 @@
+# Alex — AMG 獨立理財顧問 (IFA)
+
+> 香港持牌獨立理財顧問。劇本殺 designer 轉 IFA,用故事化拆解 + AI portfolio 分析,幫認真做長期理財嘅專業人士做資產部署、保障、退休嘅透明決定。原則:唔 sell 你唔需要嘅嘢。
+
+## 服務
+- [服務範圍](https://alexchinwai.github.io/ifa-site/#services): 基金投資、保障規劃、退休部署、MPF 整合、保費融資諮詢、AI portfolio 分析
+- [我幫到邊個 · 3 階段](https://alexchinwai.github.io/ifa-site/#stages): Accumulator(起步累積)/ Builder(整合建構)/ Deployer(資產部署)
+
+## 教育文章 Insights
+- [理財文章](https://alexchinwai.github.io/ifa-site/insights/): 由真實問題出發、先直接答再展開嘅拆解
+- [月入 $3 萬,退休要儲幾多先夠?](https://alexchinwai.github.io/ifa-site/insights/retirement/3man-retire-need/): 可自計公式 + MPF 覆蓋率 + 複利成本
+- [保費融資 vs 一筆過付保費,點揀?](https://alexchinwai.github.io/ifa-site/compare/premium-financing-vs-lumpsum/): 槓桿放大回報亦放大風險
+
+## 理財詞典 Glossary
+- [理財詞典](https://alexchinwai.github.io/ifa-site/glossary/): 香港常見理財詞嘅中立、教育性定義
+- [保費融資 Premium Financing](https://alexchinwai.github.io/ifa-site/glossary/premium-financing/): 用貸款付保費,涉槓桿、利率、流動性風險
+
+## 工具 Tools
+- [理財工具](https://alexchinwai.github.io/ifa-site/tools/): 保費融資計算機、複利/儲蓄目標計算機、資產配置自我體檢(即將推出;數字屬說明用途)
+
+## 關於 / 資歷
+- [關於 Alex](https://alexchinwai.github.io/ifa-site/about/): AMG 持牌 IFA,持保險(1/2/3/5)+ 強積金中介人資格,受 IA / MPFA / SFC 規例規管
+
+## 聯絡
+- 免費 15 分鐘 discovery call(diagnose,唔係 sell)。WhatsApp / Calendly / email:[填]
+
+## 注意
+所有內容僅供一般參考,並不構成保險、投資或財務建議,亦非產品要約或招攬;所有數字屬說明用途。保費融資涉及槓桿,有利率波動及流動性風險,並不保證回報。

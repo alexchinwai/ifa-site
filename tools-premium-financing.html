@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="zh-Hant-HK" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>保費融資計算機｜Alex — 獨立理財顧問 (IFA) · 香港</title>
+  <meta name="description" content="輸入總保費、融資成數、貸款利率與保單假設回報,看清槓桿如何同時放大回報與風險。高度簡化的教育性說明模型,所有數字僅供說明,不構成建議。由香港獨立理財顧問整理。" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Alex — 獨立理財顧問 (IFA)" />
+  <link rel="canonical" href="https://alexchinwai.github.io/ifa-site/tools-premium-financing.html" />
+  <link rel="alternate" hreflang="zh-Hant-HK" href="https://alexchinwai.github.io/ifa-site/tools-premium-financing.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="保費融資計算機｜Alex — 獨立理財顧問 (IFA)" />
+  <meta property="og:description" content="親自輸入,看清槓桿如何同時放大回報與風險。高度簡化的說明模型,所有數字僅供說明。" />
+  <meta property="og:url" content="https://alexchinwai.github.io/ifa-site/tools-premium-financing.html" />
+  <meta property="og:locale" content="zh_HK" />
+  <meta property="og:site_name" content="Alex — 獨立理財顧問 (IFA)" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+HK:wght@400;500;600;700&family=Noto+Sans+HK:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="elegant.css">
+  <!-- 量度:Umami(cookieless,免 consent banner)。上線時取消下行註解並填入 website-id 與 src:
+  <script defer data-website-id="UMAMI_WEBSITE_ID" src="https://cloud.umami.is/script.js"></script>
+  -->
+
+  <style>
+    .calc{max-width:760px;margin-inline:auto;}
+    .calc__row{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);}
+    .calc__row label{font-size:15px;color:var(--navy);font-family:var(--serif);}
+    .calc__row .hint{display:block;font-family:var(--sans);font-size:12px;color:var(--body-soft);margin-top:3px;font-weight:400;}
+    .calc__row input[type=number]{width:160px;padding:10px 12px;border:1px solid var(--line-2);border-radius:2px;font:inherit;text-align:right;color:var(--navy);background:#fff;}
+    .calc__row select{padding:10px 12px;border:1px solid var(--line-2);border-radius:2px;font:inherit;color:var(--navy);background:#fff;}
+    .calc__out{background:var(--cream);border:1px solid var(--line-2);border-left:3px solid var(--navy);border-radius:2px;padding:26px 30px;margin-top:30px;}
+    .calc__out .lbl{font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+    .calc__out .big{font-family:var(--serif);font-size:clamp(28px,4vw,38px);color:var(--navy);font-weight:600;line-height:1.1;}
+    .calc__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;margin-top:20px;}
+    .calc__grid .v{font-family:var(--serif);font-size:21px;color:var(--navy);font-weight:600;}
+    .calc__grid .k{font-family:var(--sans);font-size:12px;color:var(--body-soft);margin-top:2px;}
+    .calc__warn{background:#f7ece8;border:1px solid #e3c9bf;color:var(--risk);padding:14px 18px;border-radius:2px;margin-top:18px;font-size:14px;line-height:1.6;display:none;}
+    .calc__warn.show{display:block;}
+    .calc__bars{display:flex;gap:6px;align-items:flex-end;height:120px;margin-top:22px;}
+    .calc__bars .b{flex:1;background:var(--navy);border-radius:2px 2px 0 0;min-height:4px;}
+    .calc__bars .b.alt{background:var(--gold);}
+    .q{padding:18px 0;border-bottom:1px solid var(--line);}
+    .q p{font-family:var(--serif);color:var(--navy);font-size:17px;margin-bottom:10px;}
+    .q label{display:inline-flex;gap:7px;align-items:center;margin-right:20px;font-size:15px;color:var(--body);}
+    .result-cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+  </style>
+
+  <!-- ===== Structured data: single @graph ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://alexchinwai.github.io/ifa-site/#website",
+        "url": "https://alexchinwai.github.io/ifa-site/",
+        "name": "Alex — 獨立理財顧問 (IFA)",
+        "inLanguage": "zh-Hant-HK",
+        "publisher": { "@id": "https://alexchinwai.github.io/ifa-site/#org" }
+      },
+      {
+        "@type": ["Organization", "FinancialService"],
+        "@id": "https://alexchinwai.github.io/ifa-site/#org",
+        "name": "Alex — 獨立理財顧問 (IFA)",
+        "url": "https://alexchinwai.github.io/ifa-site/",
+        "areaServed": { "@type": "Place", "name": "Hong Kong" },
+        "serviceType": ["基金投資", "保障規劃", "退休部署", "強積金整合", "保費融資諮詢", "投資組合檢視"],
+        "founder": { "@id": "https://alexchinwai.github.io/ifa-site/#alex" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://alexchinwai.github.io/ifa-site/#alex",
+        "name": "Alex",
+        "jobTitle": "獨立理財顧問 (IFA)",
+        "worksFor": { "@id": "https://alexchinwai.github.io/ifa-site/#org" },
+        "knowsAbout": ["基金投資", "保障規劃", "退休規劃", "強積金", "保費融資", "投資組合檢視"],
+        "url": "https://alexchinwai.github.io/ifa-site/about/"
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://alexchinwai.github.io/ifa-site/tools/premium-financing/#app",
+        "name": "保費融資計算機",
+        "url": "https://alexchinwai.github.io/ifa-site/tools/premium-financing/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "inLanguage": "zh-Hant-HK",
+        "isPartOf": { "@id": "https://alexchinwai.github.io/ifa-site/#website" },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "HKD" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://alexchinwai.github.io/ifa-site/tools/premium-financing/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "這個計算機的數字準確嗎?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "不準確,也不應視為準確。本計算機是高度簡化的說明模型,假設利息逐年支付、貸款本金到期一次償還、保單以固定年回報增長。真實保單的現金價值並非線性,實際結果差異可能很大。所有數字僅供說明用途。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "息差為正,是否代表一定賺錢?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "不是。息差(保單假設回報減貸款利率)為正,只是在固定假設下的說明結果;假設回報並非保證,利率亦會浮動。一旦貸款成本上升或保單回報不如假設,槓桿會同時放大虧損,最壞情況可能需要追加抵押或虧損離場。"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://alexchinwai.github.io/ifa-site/tools/premium-financing/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://alexchinwai.github.io/ifa-site/" },
+          { "@type": "ListItem", "position": 2, "name": "工具", "item": "https://alexchinwai.github.io/ifa-site/tools/" },
+          { "@type": "ListItem", "position": 3, "name": "保費融資計算機" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <header class="nav"><div class="container nav__row">
+    <a class="brand" href="index.html">Alex <span class="sep">·</span> 獨立理財顧問</a>
+    <button class="nav__toggle" aria-controls="nav-links" aria-expanded="false" aria-label="開啟選單"><span></span><span></span><span></span></button>
+    <nav class="nav__links" id="nav-links">
+      <a href="insights-index.html">洞見</a>
+      <a href="glossary-index.html">理財詞典</a>
+      <a href="compare.html">比較</a>
+      <a href="tools-index.html">工具</a>
+      <a href="about.html">關於我</a>
+      <a class="nav__cta" href="index.html#contact" data-umami-event="book-click">預約諮詢</a>
+    </nav>
+  </div></header>
+
+  <main class="container container--narrow">
+
+    <!-- ===== Breadcrumb ===== -->
+    <nav class="breadcrumb" aria-label="麵包屑">
+      <a href="index.html">首頁</a><span class="sep">›</span>
+      <a href="tools-index.html">工具</a><span class="sep">›</span>
+      <span>保費融資計算機</span>
+    </nav>
+
+    <!-- ===== Page head ===== -->
+    <header class="page-head reveal">
+      <p class="eyebrow">Tools · 保費融資計算機</p>
+      <h1>保費融資計算機</h1>
+      <p class="standfirst">輸入保費、融資成數、貸款利率與保單假設回報,看清槓桿如何同時放大回報與風險(高度簡化、僅供說明)。</p>
+    </header>
+
+    <hr class="rule-ink" />
+
+    <!-- ===== Calculator ===== -->
+    <section class="calc reveal">
+
+      <div class="calc__row">
+        <label for="in-premium">總保費(港元)
+          <span class="hint">你計劃投保的整張保單保費</span>
+        </label>
+        <input type="number" id="in-premium" min="0" step="10000" value="1000000" inputmode="numeric" />
+      </div>
+
+      <div class="calc__row">
+        <label for="in-loan">融資成數 L(%)
+          <span class="hint">以銀行貸款支付保費的比例</span>
+        </label>
+        <input type="number" id="in-loan" min="0" max="100" step="1" value="70" inputmode="decimal" />
+      </div>
+
+      <div class="calc__row">
+        <label for="in-rate">貸款年利率 Lr(%)
+          <span class="hint">貸款的年化利息成本</span>
+        </label>
+        <input type="number" id="in-rate" min="0" step="0.1" value="4.5" inputmode="decimal" />
+      </div>
+
+      <div class="calc__row">
+        <label for="in-return">保單假設年回報 Pr(%)
+          <span class="hint">假設值,非保證</span>
+        </label>
+        <input type="number" id="in-return" min="0" step="0.1" value="5" inputmode="decimal" />
+      </div>
+
+      <div class="calc__row">
+        <label for="in-years">年期 Y(年)
+          <span class="hint">持有並計算的年數</span>
+        </label>
+        <input type="number" id="in-years" min="1" max="50" step="1" value="10" inputmode="numeric" />
+      </div>
+
+      <!-- ===== Warning ===== -->
+      <div class="calc__warn" id="calc-warn" role="alert"></div>
+
+      <!-- ===== Output ===== -->
+      <div class="calc__out" aria-live="polite">
+        <p class="lbl">說明性結果</p>
+        <p class="big" id="out-headline">—</p>
+
+        <div class="calc__grid">
+          <div>
+            <div class="v" id="out-own">—</div>
+            <div class="k">自有資金投入</div>
+          </div>
+          <div>
+            <div class="v" id="out-interest">—</div>
+            <div class="k">每年利息成本</div>
+          </div>
+          <div>
+            <div class="v" id="out-policy">—</div>
+            <div class="k">保單預期值(說明性)</div>
+          </div>
+          <div>
+            <div class="v" id="out-annual">—</div>
+            <div class="k">相對自有資金年化回報(說明性)</div>
+          </div>
+          <div>
+            <div class="v" id="out-breakeven">—</div>
+            <div class="k">回本年</div>
+          </div>
+          <div>
+            <div class="v" id="out-spread">—</div>
+            <div class="k">息差(說明性)</div>
+          </div>
+        </div>
+
+        <!-- ===== Net equity per year (bars) ===== -->
+        <div class="calc__bars" id="out-bars" aria-hidden="true"></div>
+      </div>
+
+      <!-- ===== Disclaimer ===== -->
+      <p class="microdisc">本計算機為高度簡化的說明模型 —— 假設利息逐年支付、貸款本金到期一次償還、保單以固定年回報增長;真實保單現金價值並非線性,實際結果差異可能很大。所有數字僅供說明,不構成建議,亦不代表任何回報或息差保證。保費融資涉及槓桿、利率波動與流動性風險,最壞情況可能需要追加抵押或虧損離場。</p>
+
+      <!-- ===== Result → Action ===== -->
+      <div class="result-cta">
+        <a class="btn btn--solid" href="index.html#contact" data-umami-event="book-click">預約 15 分鐘,一起看你的數字</a>
+        <span class="muted" style="font-size:14px;">或把這次的結果寄給自己:</span>
+      </div>
+
+      <form class="cform" action="https://api.web3forms.com/submit" method="POST" style="margin-top:18px;">
+        <input type="hidden" name="access_key" value="[填 WEB3FORMS_ACCESS_KEY]">
+        <input type="hidden" name="subject" value="保費融資計算機結果">
+        <input type="hidden" name="result" id="form-result" value="">
+        <label class="cform__l">電郵<input type="email" name="email" required></label>
+        <label class="cform__c"><input type="checkbox" required> 我同意根據私隱政策被聯絡。</label>
+        <button class="btn btn--solid" type="submit" data-umami-event="contact-submit">寄給我</button>
+      </form>
+
+    </section>
+
+    <!-- ===== Cross-link ===== -->
+    <div class="chip-row reveal" style="margin-top:40px;">
+      <a class="chip" href="article.html">退休要儲多少</a>
+      <a class="chip" href="compare.html">保費融資與一筆過比較</a>
+      <a class="chip" href="glossary-index.html">理財詞典</a>
+    </div>
+
+  </main>
+
+  <footer class="footer"><div class="container">
+    <div class="footer__row">
+      <div>
+        <div class="footer__name">Alex <span style="color:var(--gold);">·</span> 獨立理財顧問</div>
+        <div class="footer__meta">獨立理財顧問 (IFA) · 香港</div>
+      </div>
+      <div class="footer__contact"><a href="index.html#contact" data-umami-event="book-click">預約諮詢</a><br /><a href="#">電郵 [填]</a></div>
+    </div>
+    <p class="footer__legal">以上內容僅供一般參考,並不構成任何保險、投資或財務建議,亦不應視為產品要約或招攬。所有理財決定應在了解個人情況及產品條款後,諮詢持牌顧問。保費融資涉及槓桿,具利率波動及流動性風險,並不保證回報。&copy; 2026 Alex.</p>
+  </div></footer>
+
+  <script>
+  document.documentElement.classList.remove('no-js');
+  (function(){var t=document.querySelector('.nav__toggle'),l=document.getElementById('nav-links');if(t&&l)t.addEventListener('click',function(){var o=l.classList.toggle('is-open');t.setAttribute('aria-expanded',o?'true':'false');});})();
+  document.querySelectorAll('.faq-q').forEach(function(b){b.addEventListener('click',function(){b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')==='true'?'false':'true');});});
+  (function(){var els=document.querySelectorAll('.reveal');if(!('IntersectionObserver'in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(function(e){e.classList.add('is-in');});return;}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('is-in');io.unobserve(x.target);}});},{threshold:0.12,rootMargin:'0px 0px -8% 0px'});els.forEach(function(e){io.observe(e);});})();
+  (function(){var ls=document.querySelectorAll('.toc a');if(!ls.length)return;var m={};ls.forEach(function(a){var id=a.getAttribute('href').slice(1),s=document.getElementById(id);if(s)m[id]=a;});var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){ls.forEach(function(a){a.classList.remove('is-active');});if(m[x.target.id])m[x.target.id].classList.add('is-active');}});},{rootMargin:'-20% 0px -70% 0px'});Object.keys(m).forEach(function(id){io.observe(document.getElementById(id));});})();
+  </script>
+
+  <!-- ===== Calculator logic ===== -->
+  <script>
+  (function(){
+    "use strict";
+
+    // ---- core formula (interest-only loan, principal repaid at end, fixed-rate policy growth — a simplification) ----
+    function compute(Premium, L, Lr, Pr, Y){
+      var loan = Premium * L / 100;
+      var own  = Premium - loan;
+      var annualInterest = loan * Lr / 100;
+      var policy = [], cumInterest = [], netEquity = [];
+      for (var t = 1; t <= Y; t++){
+        var pv = Premium * Math.pow(1 + Pr/100, t);
+        var ci = annualInterest * t;
+        policy.push(pv);
+        cumInterest.push(ci);
+        netEquity.push(pv - loan - ci);
+      }
+      var netEquity_Y = netEquity[Y-1];
+      var spread = Pr - Lr;
+      var annualizedOnOwn = (own > 0 && netEquity_Y > 0) ? (Math.pow(netEquity_Y / own, 1/Y) - 1) : null;
+      var breakEvenYear = null;
+      for (var b = 1; b <= Y; b++){ if (netEquity[b-1] >= own){ breakEvenYear = b; break; } }
+      return {
+        loan: loan, own: own, annualInterest: annualInterest,
+        policy: policy, cumInterest: cumInterest, netEquity: netEquity,
+        netEquity_Y: netEquity_Y, policy_Y: policy[Y-1],
+        spread: spread, annualizedOnOwn: annualizedOnOwn, breakEvenYear: breakEvenYear
+      };
+    }
+
+    // self-check: run the core formula on a known input; warn loudly if it deviates so a broken formula is caught.
+    (function selfCheck(){
+      var r = compute(1000000, 70, 4.5, 5, 10);
+      var ok = true;
+      function near(a,b,tol){ return Math.abs(a-b) <= tol; }
+      if (!near(r.own, 300000, 0.5)) ok = false;
+      if (!near(r.annualInterest, 31500, 0.5)) ok = false;
+      if (!near(r.policy_Y, 1628894.6, 1)) ok = false;
+      if (!near(r.netEquity_Y, 613894.6, 1)) ok = false;
+      // assert displayed spread === (Pr - Lr) within rounding
+      if (!near(r.spread, 5 - 4.5, 1e-9)) ok = false;
+      if (r.annualizedOnOwn === null || !near(r.annualizedOnOwn*100, 7.42, 0.05)) ok = false;
+      if (r.breakEvenYear !== 1) ok = false;
+      // with Pr===Lr the leverage does not create a large positive spread (spread===0)
+      var rEq = compute(1000000, 70, 5, 5, 10);
+      if (rEq.spread !== 0) ok = false;
+      console.assert(ok, "[premium-financing] self-check FAILED — core formula deviated from known-good values", r);
+      if (!ok) console.warn("[premium-financing] calculator output may be incorrect; do not trust the numbers.");
+    })();
+
+    // ---- helpers ----
+    function num(id){ var v = parseFloat(document.getElementById(id).value); return isFinite(v) ? v : 0; }
+    function money(n){
+      var sign = n < 0 ? "-" : "";
+      var x = Math.round(Math.abs(n));
+      return sign + "$" + x.toLocaleString("en-US");
+    }
+    function pct(n){ return (n*100).toFixed(2) + "%"; }
+
+    var elHeadline = document.getElementById("out-headline");
+    var elOwn      = document.getElementById("out-own");
+    var elInterest = document.getElementById("out-interest");
+    var elPolicy   = document.getElementById("out-policy");
+    var elAnnual   = document.getElementById("out-annual");
+    var elBreak    = document.getElementById("out-breakeven");
+    var elSpread   = document.getElementById("out-spread");
+    var elBars     = document.getElementById("out-bars");
+    var elWarn     = document.getElementById("calc-warn");
+    var elResult   = document.getElementById("form-result");
+
+    function render(){
+      var Premium = Math.max(0, num("in-premium"));
+      var L  = Math.min(100, Math.max(0, num("in-loan")));
+      var Lr = Math.max(0, num("in-rate"));
+      var Pr = Math.max(0, num("in-return"));
+      var Y  = Math.max(1, Math.min(50, Math.round(num("in-years")) || 1));
+
+      var r = compute(Premium, L, Lr, Pr, Y);
+
+      elHeadline.textContent = Y + " 年後扣貸款及利息淨值 約 " + money(r.netEquity_Y) + "(說明性)";
+      elOwn.textContent      = money(r.own);
+      elInterest.textContent = money(r.annualInterest);
+      elPolicy.textContent   = money(r.policy_Y) + "(說明性)";
+      elAnnual.textContent   = (r.annualizedOnOwn === null) ? "期內未回本" : (pct(r.annualizedOnOwn) + "(說明性)");
+      elBreak.textContent    = (r.breakEvenYear === null) ? "期內未回本" : (r.breakEvenYear + " 年");
+      elSpread.textContent   = (r.spread).toFixed(2) + " 個百分點(說明性)";
+
+      // warning: cost of borrowing >= assumed return → leverage amplifies losses
+      if (Lr >= Pr){
+        elWarn.textContent = "貸款成本 ≥ 保單假設回報:在此假設下,槓桿會放大你的虧損而非回報。";
+        elWarn.classList.add("show");
+      } else {
+        elWarn.classList.remove("show");
+        elWarn.textContent = "";
+      }
+
+      // bars: net equity per year, scaled to the largest absolute value (guard divide-by-zero)
+      var maxAbs = 1;
+      for (var i = 0; i < r.netEquity.length; i++){ maxAbs = Math.max(maxAbs, Math.abs(r.netEquity[i])); }
+      var bars = "";
+      for (var t = 0; t < r.netEquity.length; t++){
+        var h = Math.max(4, Math.round(Math.abs(r.netEquity[t]) / maxAbs * 116));
+        var alt = (r.netEquity[t] < 0) ? " alt" : "";
+        bars += '<span class="b' + alt + '" style="height:' + h + 'px" title="第 ' + (t+1) + ' 年 淨值 ' + money(r.netEquity[t]) + '"></span>';
+      }
+      elBars.innerHTML = bars;
+
+      // one-line text summary for the "email me" form
+      var summary = "保費融資(說明性):總保費 " + money(Premium) + " · 融資成數 " + L + "% · 貸款利率 " + Lr +
+        "% · 假設回報 " + Pr + "% · 年期 " + Y + " 年 → 自有資金 " + money(r.own) +
+        " · " + Y + " 年後淨值 " + money(r.netEquity_Y) +
+        " · 年化回報 " + (r.annualizedOnOwn === null ? "期內未回本" : pct(r.annualizedOnOwn)) +
+        " · 息差 " + r.spread.toFixed(2) + " 個百分點。數字僅供說明,不構成建議。";
+      elResult.value = summary;
+    }
+
+    // recompute live on every input change
+    ["in-premium","in-loan","in-rate","in-return","in-years"].forEach(function(id){
+      var el = document.getElementById(id);
+      el.addEventListener("input", render);
+      el.addEventListener("change", render);
+    });
+    render();
+  })();
+  </script>
+</body>
+</html>
