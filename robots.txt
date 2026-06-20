@@ -1,4 +1,4 @@
-# robots.txt — Alex · AMG 獨立理財顧問 (IFA)
+# robots.txt — Alex · 獨立理財顧問 (IFA)
 # 公開行銷資產。決定:全部 allow(含 AI training + citation 爬蟲)。
 
 User-agent: *

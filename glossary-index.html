@@ -172,15 +172,17 @@
     ]
   }
   </script>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 </head>
 <body>
+<a class="skip-link" href="#main">跳至內容</a>
 
   <header class="nav"><div class="container nav__row">
     <a class="brand" href="index.html">Alex <span class="sep">·</span> 獨立理財顧問</a>
     <button class="nav__toggle" aria-controls="nav-links" aria-expanded="false" aria-label="開啟選單"><span></span><span></span><span></span></button>
     <nav class="nav__links" id="nav-links">
       <a href="insights-index.html">洞見</a>
-      <a href="glossary-index.html">理財詞典</a>
+      <a href="glossary-index.html" aria-current="page">理財詞典</a>
       <a href="compare.html">比較</a>
       <a href="tools-index.html">工具</a>
       <a href="about.html">關於我</a>
@@ -188,7 +190,7 @@
     </nav>
   </div></header>
 
-  <main class="container container--narrow">
+  <main id="main" class="container container--narrow">
 
     <!-- ===== Breadcrumb ===== -->
     <nav class="breadcrumb" aria-label="麵包屑">

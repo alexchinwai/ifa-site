@@ -1,28 +1,28 @@
-# Alex — AMG 獨立理財顧問 (IFA)
+# Alex — 獨立理財顧問 (IFA)
 
-> 香港持牌獨立理財顧問。劇本殺 designer 轉 IFA,用故事化拆解 + AI portfolio 分析,幫認真做長期理財嘅專業人士做資產部署、保障、退休嘅透明決定。原則:不推銷你不需要的。
+> 香港持牌獨立理財顧問。為認真規劃長期理財的專業人士,提供資產部署、保障規劃與退休準備的獨立分析。原則:只建議你真正需要的,不推銷。
 
 ## 服務
-- [服務範圍](https://alexchinwai.github.io/ifa-site/#services): 基金投資、保障規劃、退休部署、MPF 整合、保費融資諮詢、AI portfolio 分析
-- [我幫到邊個 · 3 階段](https://alexchinwai.github.io/ifa-site/#stages): Accumulator(起步累積)/ Builder(整合建構)/ Deployer(資產部署)
+- [服務範圍](https://alexchinwai.github.io/ifa-site/#services): 基金投資、保障規劃、退休部署、強積金整合、保費融資諮詢、投資組合檢視
+- [服務對象 · 三個階段](https://alexchinwai.github.io/ifa-site/#stages): 累積期(起步累積)/ 建構期(整合建構)/ 部署期(資產部署)
 
 ## 教育文章 Insights
-- [理財文章](https://alexchinwai.github.io/ifa-site/insights/): 由真實問題出發、先直接答再展開嘅拆解
-- [月入 $3 萬,退休要儲幾多先夠?](https://alexchinwai.github.io/ifa-site/insights/retirement/3man-retire-need/): 可自計公式 + MPF 覆蓋率 + 複利成本
-- [保費融資 vs 一筆過付保費,點揀?](https://alexchinwai.github.io/ifa-site/compare/premium-financing-vs-lumpsum/): 槓桿放大回報亦放大風險
+- [理財文章](https://alexchinwai.github.io/ifa-site/insights-index.html): 由真實問題出發,先直接回答再展開的拆解
+- [月入三萬,退休需要儲蓄多少?](https://alexchinwai.github.io/ifa-site/article.html): 可自行試算的公式、強積金覆蓋率與複利的時間成本
+- [保費融資與一筆過付款,如何選擇?](https://alexchinwai.github.io/ifa-site/compare.html): 槓桿在放大回報的同時也放大風險
 
 ## 理財詞典 Glossary
-- [理財詞典](https://alexchinwai.github.io/ifa-site/glossary/): 香港常見理財詞嘅中立、教育性定義
-- [保費融資 Premium Financing](https://alexchinwai.github.io/ifa-site/glossary/premium-financing/): 用貸款付保費,涉槓桿、利率、流動性風險
+- [理財詞典](https://alexchinwai.github.io/ifa-site/glossary-index.html): 香港常見理財術語的中立、教育性定義
+- [保費融資 Premium Financing](https://alexchinwai.github.io/ifa-site/glossary-term.html): 以貸款支付保費,涉及槓桿、利率與流動性風險
 
 ## 工具 Tools
-- [理財工具](https://alexchinwai.github.io/ifa-site/tools/): 保費融資計算機、複利/儲蓄目標計算機、資產配置自我體檢(即將推出;數字屬說明用途)
+- [理財工具](https://alexchinwai.github.io/ifa-site/tools-index.html): 保費融資計算機、複利／儲蓄目標計算機、資產配置自我體檢(數字屬說明用途)
 
 ## 關於 / 資歷
-- [關於 Alex](https://alexchinwai.github.io/ifa-site/about/): AMG 持牌 IFA,持保險(1/2/3/5)+ 強積金中介人資格,受 IA / MPFA / SFC 規例規管
+- [關於 Alex](https://alexchinwai.github.io/ifa-site/about.html): 香港持牌獨立理財顧問,持有保險(1/2/3/5)及強積金中介人資格,受保險業監管局(IA)、積金局(MPFA)及證監會(SFC)相關規例規管
 
 ## 聯絡
-- 免費 15 分鐘 discovery call(diagnose,並非銷售)。WhatsApp / Calendly / WhatsApp:https://wa.me/85291268714
+- 免費 15 分鐘初步諮詢(屬診斷性質,並非銷售)。WhatsApp:https://wa.me/85291268714
 
 ## 注意
-所有內容僅供一般參考,並不構成保險、投資或財務建議,亦非產品要約或招攬;所有數字屬說明用途。保費融資涉及槓桿,有利率波動及流動性風險,並不保證回報。
+所有內容僅供一般參考,並不構成保險、投資或財務建議,亦非產品要約或招攬;所有數字屬說明用途。保費融資涉及槓桿,具利率波動及流動性風險,並不保證回報。
