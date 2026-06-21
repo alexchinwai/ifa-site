@@ -306,10 +306,77 @@ h1, h2, h3, h4 { text-wrap: balance; }
 .prose p, .standfirst, .lede, .hero__sub, .card__dek, .def-box__answer, .sec-head p { text-wrap: pretty; }
 .skip-link { position: absolute; left: -9999px; top: 0; z-index: 100; background: var(--navy); color: #fff; padding: 10px 18px; font-family: var(--sans); font-size: 14px; border-radius: 0 0 2px 0; }
 .skip-link:focus { left: 0; outline: 2px solid var(--gold); }
-.nav__links a[aria-current="page"] { color: var(--navy); border-bottom: 1px solid var(--navy); padding-bottom: 2px; }
+.nav__links > a[aria-current="page"], .nav__links > .nav-item > .nav-item__link[aria-current="page"] { color: var(--navy); border-bottom: 1px solid var(--navy); padding-bottom: 2px; }
 .chip--soon { opacity: .45; pointer-events: none; cursor: default; }
 
 /* coming-soon article cards (no dead links) */
 .card--soon { opacity: .6; pointer-events: none; }
 .card--soon .card__title { color: var(--body-soft); }
 .card__soon { align-self: flex-start; font-family: var(--sans); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-ink); border: 1px solid var(--line); border-radius: 999px; padding: 3px 11px; }
+
+
+/* ============ NAV HOVER/FOCUS DROPDOWN (wayfinding to tools + insights) ============
+   Shadowless: hairline (--line) + paper + navy 2px top-rule. Pure CSS — works with JS off.
+   Desktop(>=881px): keyboard :focus-within reveals (ANY pointer); :hover reveals (hover-capable).
+   Mobile(<=880px): submenu static nested in the drawer (all touch phones).
+   Touch >=881px (no hover): degrades gracefully — parent link goes to the section index page.
+   Close is INSTANT (visibility never transitioned -> no focusable-but-invisible window).
+   Motion gated at source (reduced-motion users get no transform). dek folded into each sub-link aria-label. */
+.nav-item { position: relative; display: inline-flex; align-items: center; }
+.nav-item__link::after {
+  content: ''; display: inline-block; width: 5px; height: 5px; margin-left: 7px;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg); opacity: .5;
+}
+.nav-item:hover .nav-item__link::after,
+.nav-item:focus-within .nav-item__link::after { opacity: 1; }
+
+/* focus-visible rings (base nav has none) */
+.nav-item__link:focus-visible,
+.submenu a:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; border-radius: 2px; }
+.submenu a:focus-visible { outline-offset: -2px; }
+
+/* panel: paper card, hairline + navy top-rule, square 2px, ZERO shadow */
+.submenu {
+  position: absolute; top: calc(100% + 10px); left: -8px;
+  min-width: 256px; margin: 0; padding: 6px; list-style: none;
+  background: var(--paper);
+  border: 1px solid var(--line); border-top: 2px solid var(--navy); border-radius: 2px;
+  opacity: 0; visibility: hidden; z-index: 60;
+}
+.submenu li { margin: 0; }
+.submenu > li > a { display: block; padding: 11px 13px; border-radius: 2px; text-decoration: none; }
+.submenu__title { display: block; font-family: var(--serif); font-size: 15px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+.submenu__dek { display: block; font-family: var(--sans); font-size: 12px; color: #5e5e5e; line-height: 1.5; margin-top: 3px; }
+.submenu > li > a:hover { background: var(--cream); }
+.submenu > li > a:hover .submenu__title { color: var(--navy-deep); }
+
+/* DESKTOP REVEAL (>=881px). Keyboard :focus-within = ANY pointer (a11y); :hover = hover-capable only. */
+@media (min-width: 881px) {
+  .nav-item:focus-within .submenu { opacity: 1; visibility: visible; }
+}
+@media (hover: hover) and (pointer: fine) and (min-width: 881px) {
+  .nav-item:hover .submenu { opacity: 1; visibility: visible; }
+  .nav-item:hover::after { content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 12px; }  /* hover-bridge across the 10px gap */
+}
+
+/* MOTION only when welcome: fade+slide IN on reveal. Close stays instant (visibility not transitioned). */
+@media (prefers-reduced-motion: no-preference) and (min-width: 881px) {
+  .submenu { transform: translateY(-5px); transition: opacity .16s var(--ease), transform .16s var(--ease); }
+  .nav-item:focus-within .submenu { transform: translateY(0); }
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) and (min-width: 881px) {
+  .nav-item:hover .submenu { transform: translateY(0); }
+}
+
+/* MOBILE drawer (<=880px): static nested list inside the column menu (covers all touch phones). */
+@media (max-width: 880px) {
+  .nav-item { display: block; width: 100%; }
+  .submenu { position: static; opacity: 1; visibility: visible; transform: none; transition: none;
+    min-width: 0; margin: 8px 0 4px; padding: 0 0 0 12px;
+    border: 0; border-left: 1px solid var(--line); border-radius: 0; }
+  .nav-item::after { content: none; }
+  .nav-item__link::after { display: none; }
+  .submenu__dek { display: none; }
+  .submenu > li > a { padding: 9px 10px; }
+}
