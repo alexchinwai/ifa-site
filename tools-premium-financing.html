@@ -243,18 +243,9 @@
 
       <!-- ===== Result → Action ===== -->
       <div class="result-cta">
-        <a class="btn btn--solid" href="index.html#contact" data-umami-event="book-click">預約 15 分鐘,一起看你的數字</a>
-        <span class="muted" style="font-size:14px;">或把這次的結果寄給自己:</span>
+        <a class="btn btn--solid" href="https://wa.me/85291268714?text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%2015%20%E5%88%86%E9%90%98%E8%AB%AE%E8%A9%A2" target="_blank" rel="noopener" data-umami-event="whatsapp-click">用 WhatsApp 預約,一起看你的數字</a>
       </div>
 
-      <form class="cform" action="https://api.web3forms.com/submit" method="POST" style="margin-top:18px;">
-        <input type="hidden" name="access_key" value="[填 WEB3FORMS_ACCESS_KEY]">
-        <input type="hidden" name="subject" value="保費融資計算機結果">
-        <input type="hidden" name="result" id="form-result" value="">
-        <label class="cform__l">電郵<input type="email" name="email" required></label>
-        <label class="cform__c"><input type="checkbox" required> 我同意根據私隱政策被聯絡。</label>
-        <button class="btn btn--solid" type="submit" data-umami-event="contact-submit">寄給我</button>
-      </form>
 
     </section>
 
@@ -355,7 +346,7 @@
     var elSpread   = document.getElementById("out-spread");
     var elBars     = document.getElementById("out-bars");
     var elWarn     = document.getElementById("calc-warn");
-    var elResult   = document.getElementById("form-result");
+    var elResult   = document.getElementById("form-result") || {};
 
     function render(){
       var Premium = Math.max(0, num("in-premium"));
@@ -412,6 +403,5 @@
     render();
   })();
   </script>
-<script>(function(){var W="https://wa.me/85291268714";document.querySelectorAll('form[action*="web3forms"]').forEach(function(f){var k=f.querySelector('[name="access_key"]');if(k&&/\[填/.test(k.value)){f.addEventListener("submit",function(e){e.preventDefault();window.open(W,"_blank","noopener");});var b=f.querySelector('button[type="submit"]');if(b)b.textContent="改用 WhatsApp 聯絡";}});})();</script>
 </body>
 </html>

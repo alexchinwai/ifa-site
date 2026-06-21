@@ -25,12 +25,8 @@
   <script defer data-website-id="UMAMI_WEBSITE_ID" src="https://cloud.umami.is/script.js"></script>
   -->
   <style>
-  .contact-grid{display:grid;grid-template-columns:1fr;gap:clamp(24px,5vw,40px);max-width:600px;margin-inline:auto;}
-  #cal-inline{min-height:180px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line-2);border-radius:2px;background:var(--cream);}
-  .cform__l{display:block;font-size:13px;color:var(--body-soft);margin-bottom:12px;}
-  .cform__l input,.cform__l textarea{display:block;width:100%;margin-top:6px;padding:11px 13px;border:1px solid var(--line-2);border-radius:2px;font:inherit;color:var(--navy);background:#fff;}
-  .cform__c{display:flex;gap:9px;align-items:flex-start;font-size:13px;color:var(--body);margin:6px 0 16px;}
-  .cform__c input{margin-top:3px;}
+  .contact-cta{max-width:520px;margin-inline:auto;text-align:center;}
+  .contact-cta .btn{width:100%;}
   </style>
 
   <script type="application/ld+json">
@@ -224,24 +220,9 @@
           <h2>預約 15 分鐘諮詢</h2>
           <p>一次低承諾的初步對談,而非銷售會議。即使最終不合作,你也會更了解自己的狀況。</p>
         </div>
-        <div class="contact-grid reveal">
-          <div class="contact-cal">
-            <div id="cal-inline" aria-label="預約諮詢日曆"></div>
-          </div>
-          <div class="contact-side">
-            <a class="btn btn--solid" style="width:100%;margin-bottom:14px;" href="https://wa.me/85291268714?text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%2015%20%E5%88%86%E9%90%98%E8%AB%AE%E8%A9%A2" target="_blank" rel="noopener" data-umami-event="whatsapp-click">用 WhatsApp 直接聯絡</a>
-            <p class="muted" style="font-size:13px;margin-bottom:20px;">最快的方式 —— 訊息直接傳給 Alex。</p>
-            <form class="cform" action="https://api.web3forms.com/submit" method="POST">
-              <input type="hidden" name="access_key" value="[填 WEB3FORMS_ACCESS_KEY]">
-              <input type="hidden" name="subject" value="網站諮詢查詢">
-              <label class="cform__l">稱呼<input type="text" name="name" required></label>
-              <label class="cform__l">電郵<input type="email" name="email" required></label>
-              <label class="cform__l">你想了解什麼?(選填)<textarea name="message" rows="3"></textarea></label>
-              <label class="cform__c"><input type="checkbox" required> 我同意 Alex 根據私隱政策與我聯絡。</label>
-              <button class="btn btn--solid" style="width:100%;" type="submit" data-umami-event="contact-submit">提交</button>
-            </form>
-            <p class="microdisc">我們只會用你提供的資料回覆你的查詢,不會轉作其他用途。</p>
-          </div>
+        <div class="contact-cta reveal">
+          <a class="btn btn--solid" href="https://wa.me/85291268714?text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%2015%20%E5%88%86%E9%90%98%E8%AB%AE%E8%A9%A2" target="_blank" rel="noopener" data-umami-event="whatsapp-click">用 WhatsApp 預約 15 分鐘諮詢</a>
+          <p class="muted" style="font-size:13px;margin-top:14px;">訊息會直接傳給 Alex,通常即日回覆。</p>
         </div>
       </div>
     </section>
@@ -278,20 +259,5 @@
       els.forEach(function (e) { io.observe(e); });
     })();
   </script>
-  <script>
-    (function(){
-      var CAL_LINK = "[填 CAL_LINK]"; // 例:"alex-ifa/15min"
-      var el = document.getElementById('cal-inline');
-      if (!el) return;
-      if (CAL_LINK.indexOf("[填") !== -1) {
-        el.innerHTML = '<p class="muted" style="padding:24px;text-align:center;">預約日曆將於上線時啟用(待接 Cal.com)。<br>暫時請用下方 WhatsApp 或表單聯絡。</p>';
-        return;
-      }
-      (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var ns = ar[1]; api.q = api.q || []; if (typeof ns === "string") { cal.ns[ns] = cal.ns[ns] || api; p(cal.ns[ns], ar); p(cal, ["initNamespace", ns]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", {origin:"https://app.cal.com"});
-      Cal("inline", { elementOrSelector:"#cal-inline", calLink: CAL_LINK, layout:"month_view" });
-    })();
-  </script>
-<script>(function(){var W="https://wa.me/85291268714";document.querySelectorAll('form[action*="web3forms"]').forEach(function(f){var k=f.querySelector('[name="access_key"]');if(k&&/\[填/.test(k.value)){f.addEventListener("submit",function(e){e.preventDefault();window.open(W,"_blank","noopener");});var b=f.querySelector('button[type="submit"]');if(b)b.textContent="改用 WhatsApp 聯絡";}});})();</script>
 </body>
 </html>
