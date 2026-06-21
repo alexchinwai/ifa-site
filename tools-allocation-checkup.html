@@ -320,7 +320,7 @@
         <p class="bookform__h">預約 15 分鐘見面 · Alex 會帶住你這份初步報告與你詳談</p>
         <label class="bookform__l">稱呼<input type="text" name="稱呼" required autocomplete="name" /></label>
         <label class="bookform__l">WhatsApp 號碼<input type="tel" name="WhatsApp" required inputmode="tel" autocomplete="tel" placeholder="例如 9123 4567" /></label>
-        <label class="bookform__c"><input type="checkbox" required /> 我同意 Alex 就此查詢與我聯絡，並把上方初步報告一併傳送給 Alex（只用於是次諮詢，不作其他用途）。</label>
+        <label class="bookform__c"><input type="checkbox" required /> 我同意 Alex 就此查詢與我聯絡，並把我填寫的資料與初步報告一併傳送給 Alex（只用於是次諮詢，不作其他用途）。</label>
         <button type="submit" class="btn btn--solid" data-umami-event="book-submit">提交並預約</button>
         <p class="bookform__alt">或 <a href="https://wa.me/85291268714?text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%2015%20%E5%88%86%E9%90%98%E8%AB%AE%E8%A9%A2" target="_blank" rel="noopener" data-umami-event="whatsapp-click">直接用 WhatsApp 聯絡</a>（不會傳送報告內容）。</p>
         <p class="bookform__err" id="book-err" style="display:none;"></p>
@@ -372,6 +372,10 @@
     ];
 
     function fmtPct(x){ return Math.round(x) + '%'; }
+
+    // labels for the full report e-mailed to Alex
+    var QLABEL = { emergency:'應急現金(3–6個月)', ci:'危疾/醫療保障', life:'人壽保障(如有受養人)', retire:'強積金以外退休部署', diversify:'投資分散', mpf:'近一年檢視強積金' };
+    function ansText(v){ return v === '2' ? '是/足' : (v === '1' ? '部分/不足' : (v === '0' ? '否' : (v === 'na' ? '不適用' : '未答'))); }
 
     // ---- numeric inputs -> metrics (all client-side; null when missing/invalid; never NaN) ----
     function num(id){
@@ -452,7 +456,8 @@
       var r = score(answers);
 
       // ----- numeric metrics (complementary panel; does NOT change the qualitative band) -----
-      var m = computeMetrics({ income:num('in-income'), expense:num('in-expense'), debt:num('in-debt'), cash:num('in-cash') });
+      var inc = num('in-income'), exp = num('in-expense'), deb = num('in-debt'), csh = num('in-cash');
+      var m = computeMetrics({ income:inc, expense:exp, debt:deb, cash:csh });
       var tiles = [];
       if (m.surplus != null) tiles.push(tile(fmtHKD(m.surplus) + '（說明性）', '每月盈餘' + (m.surplus < 0 ? ' · 入不敷支' : '')));
       if (m.savings != null) tiles.push(tile(fmtPct(m.savings * 100) + '（說明性）', '儲蓄率 · ' + bandSavings(m.savings) + '（常見參考）'));
@@ -500,19 +505,33 @@
         }
       }
 
-      // keep the hidden booking-form field in sync with the live result (this is what Alex receives on submit)
+      // keep the hidden booking-form field in sync with the live result — FULL content e-mailed to Alex on submit
       if (reportEl){
         if (r.band === null && !tiles.length){
           reportEl.value = '（訪客未完成自測）';
         } else {
-          var rp = [];
-          if (r.band !== null) rp.push('整體評估 ' + r.band + '（' + fmtPct(r.pct) + '，說明性）');
-          if (m.surplus != null) rp.push('每月盈餘 ' + fmtHKD(m.surplus));
-          if (m.savings != null) rp.push('儲蓄率 ' + fmtPct(m.savings * 100));
-          if (m.months != null)  rp.push('應急 ' + (Math.round(m.months * 10) / 10) + ' 個月');
-          if (m.dsr != null)     rp.push('債務佔收入 ' + fmtPct(m.dsr * 100));
-          if (allGaps.length) rp.push('缺口：' + allGaps.map(function(g){ return g.split('：')[0].replace('（說明性）', ''); }).join('、'));
-          reportEl.value = rp.join('；') + '（全部說明性）';
+          var L = [];
+          L.push('【整體評估】' + (r.band === null ? '未完成自評' : (r.band + ' · ' + fmtPct(r.pct) + '（說明性）')));
+          var rawn = [];
+          if (inc != null) rawn.push('月收入 ' + fmtHKD(inc));
+          if (exp != null) rawn.push('月支出 ' + fmtHKD(exp));
+          if (csh != null) rawn.push('流動現金 ' + fmtHKD(csh));
+          if (deb != null) rawn.push('月債務還款 ' + fmtHKD(deb));
+          if (rawn.length) L.push('【填寫的數字】' + rawn.join('；'));
+          var met = [];
+          if (m.surplus != null) met.push('每月盈餘 ' + fmtHKD(m.surplus));
+          if (m.savings != null) met.push('儲蓄率 ' + fmtPct(m.savings * 100) + '（' + bandSavings(m.savings) + '）');
+          if (m.months != null)  met.push('應急基金 ' + (Math.round(m.months * 10) / 10) + ' 個月（' + bandMonths(m.months) + '）');
+          if (m.dsr != null)     met.push('債務佔收入 ' + fmtPct(m.dsr * 100) + '（' + bandDsr(m.dsr) + '）');
+          if (met.length) L.push('【衍生指標 · 說明性】' + met.join('；'));
+          L.push('【自評答案】' + QS.map(function(q){ return QLABEL[q.name] + '：' + ansText(answers[q.name]); }).join('；'));
+          if (allGaps.length){
+            L.push('【缺口清單】');
+            allGaps.forEach(function(g){ L.push('· ' + g); });
+          } else {
+            L.push('【缺口清單】就自評而言暫無明顯缺口');
+          }
+          reportEl.value = L.join('\n');
         }
       }
     }
