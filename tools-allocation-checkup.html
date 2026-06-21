@@ -46,6 +46,18 @@
     .q p{font-family:var(--serif);color:var(--navy);font-size:17px;margin-bottom:10px;}
     .q label{display:inline-flex;gap:7px;align-items:center;margin-right:20px;font-size:15px;color:var(--body);}
     .result-cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+    .bridge{margin-top:18px;font-family:var(--serif);font-size:15px;color:var(--body);line-height:1.75;}
+    .bridge strong{color:var(--navy);font-weight:600;}
+    .ladder{display:grid;grid-template-columns:1fr 1fr;margin-top:24px;border:1px solid var(--line);border-radius:2px;overflow:hidden;}
+    .ladder__col{padding:22px 24px;}
+    .ladder__col+.ladder__col{border-left:1px solid var(--line);}
+    .ladder__col--lead{background:var(--cream);border-left:2px solid var(--navy);}
+    .ladder__h{font-family:var(--sans);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-ink);margin:0 0 12px;}
+    .ladder__col--lead .ladder__h{color:var(--navy);}
+    .ladder__list{margin:0;padding-left:1.1em;font-family:var(--serif);font-size:14.5px;color:var(--prose-ink);line-height:1.75;}
+    .ladder__list li{margin-bottom:7px;}
+    .ladder__list strong{color:var(--navy);font-weight:600;}
+    @media(max-width:620px){.ladder{grid-template-columns:1fr;}.ladder__col+.ladder__col{border-left:0;border-top:1px solid var(--line);}}
   </style>
 
   <!-- ===== Structured data: single @graph ===== -->
@@ -247,7 +259,7 @@
 
       <!-- ===== Output ===== -->
       <div class="calc__out" aria-live="polite">
-        <p class="lbl">整體評估（說明性）</p>
+        <p class="lbl">初步報告 · 整體評估（說明性）</p>
         <p class="big" id="out-band">請回答上方問題</p>
 
         <div class="calc__grid" id="out-metrics" style="display:none;"></div>
@@ -260,13 +272,38 @@
         <p id="out-clean" style="margin-top:14px;font-family:var(--serif);color:var(--body);font-size:15px;display:none;">就你的自評而言，六個範疇暫未顯示明顯缺口。維持定期檢視即可。</p>
       </div>
 
+      <!-- ===== Honesty bridge (preliminary -> meeting) ===== -->
+      <p class="bridge">這份體檢是<strong>初步</strong>、教育性的參考。你的完整情況——目標、家庭、風險承受、現有保單與強積金、稅務——要見面才看到全貌。</p>
+
+      <!-- ===== 初步 vs 詳細 報告（value ladder）===== -->
+      <section class="ladder" aria-label="初步報告與詳細報告比較">
+        <div class="ladder__col">
+          <p class="ladder__h">你現在看到的 · 初步報告（免費）</p>
+          <ul class="ladder__list">
+            <li>整體評估，與你填的比率（儲蓄率、應急月數、債務佔收入）</li>
+            <li>有哪些範疇值得留意（方向性）</li>
+            <li>說明性、教育性質，根據你填的幾項數字</li>
+          </ul>
+        </div>
+        <div class="ladder__col ladder__col--lead">
+          <p class="ladder__h">見面才有的 · 詳細報告</p>
+          <ul class="ladder__list">
+            <li>對住你<strong>完整情況</strong>的個人化檢視（目標、家庭、風險承受、現有保單與強積金、稅務）</li>
+            <li>不同情景與最壞情況的考量</li>
+            <li>一份<strong>排好優先次序</strong>的下一步行動計劃</li>
+            <li>帳戶與保障如何配合，以及一份可帶走的書面總結</li>
+          </ul>
+        </div>
+      </section>
+
       <!-- ===== Disclaimer ===== -->
-      <p class="microdisc" style="margin-top:18px;">本自測僅為教育性參考，結果取決於你的自評，不構成個別理財或保險建議；實際規劃須考慮完整個人情況。</p>
+      <p class="microdisc" style="margin-top:18px;">本自測僅為教育性參考，結果取決於你的自評，不構成個別理財或保險建議；個別建議須在見面了解你的完整情況後提供。</p>
 
       <!-- ===== Result CTA ===== -->
       <div class="result-cta">
-        <a class="btn btn--solid" href="https://wa.me/85291268714?text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%2015%20%E5%88%86%E9%90%98%E8%AB%AE%E8%A9%A2" target="_blank" rel="noopener" data-umami-event="whatsapp-click">用 WhatsApp 預約,一起看你的數字</a>
+        <a class="btn btn--solid" href="https://wa.me/85291268714?text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%2015%20%E5%88%86%E9%90%98%E8%AB%AE%E8%A9%A2" target="_blank" rel="noopener" data-umami-event="whatsapp-click">想要一份對住你情況的完整檢視?約 15 分鐘,我同你逐項拆</a>
       </div>
+      <p id="cta-note" class="microdisc" style="margin-top:10px;display:none;"></p>
 
 
       <!-- ===== Cross-links ===== -->
@@ -381,6 +418,7 @@
     var summaryEl= document.getElementById('result-summary') || {};
     var metricsEl = document.getElementById('out-metrics');
     var warnEl    = document.getElementById('out-cashwarn');
+    var ctaNoteEl = document.getElementById('cta-note');
 
     function tile(value, key){
       return '<div><div class="v">' + value + '</div><div class="k">' + key + '</div></div>';
@@ -427,6 +465,17 @@
 
       summaryEl.value = (r.band === null) ? '尚未完成自測'
         : ('資產配置自我體檢結果：' + r.band + '（' + fmtPct(r.pct) + '，說明性），共 ' + allGaps.length + ' 項缺口（已回答 ' + r.applicable + ' 題）。');
+
+      // on-page nudge tying the meeting to the visitor's own gaps (NOT sent anywhere — stays in the browser)
+      if (ctaNoteEl){
+        if (allGaps.length){
+          ctaNoteEl.textContent = '你這份初步報告顯示了 ' + allGaps.length + ' 項值得留意的地方，見面可以逐項拆解，並整理一份排好優先次序的書面總結。';
+          ctaNoteEl.style.display = 'block';
+        } else {
+          ctaNoteEl.textContent = '';
+          ctaNoteEl.style.display = 'none';
+        }
+      }
     }
 
     // Recompute live on every input change.
