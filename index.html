@@ -29,43 +29,85 @@
   </style>
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://alexchinwai.github.io/ifa-site/#website",
-        "url": "https://alexchinwai.github.io/ifa-site/",
-        "name": "Alex — 獨立理財顧問",
-        "inLanguage": "zh-Hant-HK",
-        "publisher": { "@id": "https://alexchinwai.github.io/ifa-site/#org" }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://alexchinwai.github.io/ifa-site/#website",
+      "url": "https://alexchinwai.github.io/ifa-site/",
+      "name": "Alex — 獨立理財顧問",
+      "inLanguage": "zh-Hant-HK",
+      "publisher": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#org"
+      }
+    },
+    {
+      "@type": [
+        "Organization",
+        "FinancialService"
+      ],
+      "@id": "https://alexchinwai.github.io/ifa-site/#org",
+      "name": "Alex — 獨立理財顧問 (IFA)",
+      "url": "https://alexchinwai.github.io/ifa-site/",
+      "areaServed": {
+        "@type": "Place",
+        "name": "Hong Kong"
       },
-      {
-        "@type": ["Organization", "FinancialService"],
-        "@id": "https://alexchinwai.github.io/ifa-site/#org",
-        "name": "Alex — 獨立理財顧問 (IFA)",
-        "url": "https://alexchinwai.github.io/ifa-site/",
-        "areaServed": { "@type": "Place", "name": "Hong Kong" },
-        "serviceType": ["基金投資", "保障規劃", "退休部署", "強積金整合", "保費融資諮詢", "投資組合檢視"],
-        "founder": { "@id": "https://alexchinwai.github.io/ifa-site/#alex" }
+      "serviceType": [
+        "基金投資",
+        "保障規劃",
+        "退休部署",
+        "強積金整合",
+        "保費融資諮詢",
+        "投資組合檢視"
+      ],
+      "founder": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#alex"
       },
-      {
-        "@type": "Person",
-        "@id": "https://alexchinwai.github.io/ifa-site/#alex",
-        "name": "Alex",
-        "jobTitle": "獨立理財顧問 (IFA)",
-        "worksFor": { "@id": "https://alexchinwai.github.io/ifa-site/#org" },
-        "knowsAbout": ["基金投資", "保障規劃", "退休規劃", "強積金", "保費融資", "投資組合檢視"]
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://alexchinwai.github.io/ifa-site/#breadcrumb",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://alexchinwai.github.io/ifa-site/" }
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "telephone": "+852 9126 8714",
+        "url": "https://wa.me/85291268714",
+        "availableLanguage": [
+          "zh-HK",
+          "zh-Hant",
+          "en"
         ]
       }
-    ]
-  }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://alexchinwai.github.io/ifa-site/#alex",
+      "name": "Alex",
+      "jobTitle": "獨立理財顧問 (IFA)",
+      "worksFor": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#org"
+      },
+      "knowsAbout": [
+        "基金投資",
+        "保障規劃",
+        "退休規劃",
+        "強積金",
+        "保費融資",
+        "投資組合檢視"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://alexchinwai.github.io/ifa-site/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首頁",
+          "item": "https://alexchinwai.github.io/ifa-site/"
+        }
+      ]
+    }
+  ]
+}
   </script>
 </head>
 <body>

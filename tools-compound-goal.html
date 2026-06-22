@@ -55,79 +55,136 @@
 
   <!-- ===== Structured data: single @graph ===== -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://alexchinwai.github.io/ifa-site/#website",
-        "url": "https://alexchinwai.github.io/ifa-site/",
-        "name": "Alex — 獨立理財顧問 (IFA)",
-        "inLanguage": "zh-Hant-HK",
-        "publisher": { "@id": "https://alexchinwai.github.io/ifa-site/#org" }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://alexchinwai.github.io/ifa-site/#website",
+      "url": "https://alexchinwai.github.io/ifa-site/",
+      "name": "Alex — 獨立理財顧問 (IFA)",
+      "inLanguage": "zh-Hant-HK",
+      "publisher": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#org"
+      }
+    },
+    {
+      "@type": [
+        "Organization",
+        "FinancialService"
+      ],
+      "@id": "https://alexchinwai.github.io/ifa-site/#org",
+      "name": "Alex — 獨立理財顧問 (IFA)",
+      "url": "https://alexchinwai.github.io/ifa-site/",
+      "areaServed": {
+        "@type": "Place",
+        "name": "Hong Kong"
       },
-      {
-        "@type": ["Organization", "FinancialService"],
-        "@id": "https://alexchinwai.github.io/ifa-site/#org",
-        "name": "Alex — 獨立理財顧問 (IFA)",
-        "url": "https://alexchinwai.github.io/ifa-site/",
-        "areaServed": { "@type": "Place", "name": "Hong Kong" },
-        "serviceType": ["基金投資", "保障規劃", "退休部署", "強積金整合", "保費融資諮詢", "投資組合檢視"],
-        "founder": { "@id": "https://alexchinwai.github.io/ifa-site/#alex" }
+      "serviceType": [
+        "基金投資",
+        "保障規劃",
+        "退休部署",
+        "強積金整合",
+        "保費融資諮詢",
+        "投資組合檢視"
+      ],
+      "founder": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#alex"
       },
-      {
-        "@type": "Person",
-        "@id": "https://alexchinwai.github.io/ifa-site/#alex",
-        "name": "Alex",
-        "jobTitle": "獨立理財顧問 (IFA)",
-        "worksFor": { "@id": "https://alexchinwai.github.io/ifa-site/#org" },
-        "knowsAbout": ["基金投資", "保障規劃", "退休規劃", "強積金", "保費融資", "投資組合檢視"],
-        "url": "https://alexchinwai.github.io/ifa-site/about/"
-      },
-      {
-        "@type": "WebApplication",
-        "@id": "https://alexchinwai.github.io/ifa-site/tools/compound-goal/#app",
-        "name": "複利 / 儲蓄目標計算機",
-        "applicationCategory": "FinanceApplication",
-        "operatingSystem": "Web",
-        "url": "https://alexchinwai.github.io/ifa-site/tools/compound-goal/",
-        "inLanguage": "zh-Hant-HK",
-        "isPartOf": { "@id": "https://alexchinwai.github.io/ifa-site/#website" },
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "HKD" }
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://alexchinwai.github.io/ifa-site/tools/compound-goal/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "這個終值是保證的回報嗎?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "不是。計算機假設回報固定且每月複利,實際投資回報會浮動、可升可跌,並不保證;所有數字僅供說明用途。"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "增值部分是怎麼算出來的?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "增值部分等於估算終值減去本金投入。本金投入是起始本金加上每月供款的累積總額,增值部分則是按假設回報複利所滾出的差額,僅供說明。"
-            }
-          }
-        ]
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://alexchinwai.github.io/ifa-site/tools/compound-goal/#breadcrumb",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://alexchinwai.github.io/ifa-site/" },
-          { "@type": "ListItem", "position": 2, "name": "工具", "item": "https://alexchinwai.github.io/ifa-site/tools/" },
-          { "@type": "ListItem", "position": 3, "name": "複利計算機" }
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "telephone": "+852 9126 8714",
+        "url": "https://wa.me/85291268714",
+        "availableLanguage": [
+          "zh-HK",
+          "zh-Hant",
+          "en"
         ]
       }
-    ]
-  }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://alexchinwai.github.io/ifa-site/#alex",
+      "name": "Alex",
+      "jobTitle": "獨立理財顧問 (IFA)",
+      "worksFor": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#org"
+      },
+      "knowsAbout": [
+        "基金投資",
+        "保障規劃",
+        "退休規劃",
+        "強積金",
+        "保費融資",
+        "投資組合檢視"
+      ],
+      "url": "https://alexchinwai.github.io/ifa-site/about/"
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://alexchinwai.github.io/ifa-site/tools/compound-goal/#app",
+      "name": "複利 / 儲蓄目標計算機",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "url": "https://alexchinwai.github.io/ifa-site/tools/compound-goal/",
+      "inLanguage": "zh-Hant-HK",
+      "isPartOf": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#website"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "HKD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://alexchinwai.github.io/ifa-site/tools/compound-goal/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "這個終值是保證的回報嗎?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "不是。計算機假設回報固定且每月複利,實際投資回報會浮動、可升可跌,並不保證;所有數字僅供說明用途。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "增值部分是怎麼算出來的?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "增值部分等於估算終值減去本金投入。本金投入是起始本金加上每月供款的累積總額,增值部分則是按假設回報複利所滾出的差額,僅供說明。"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://alexchinwai.github.io/ifa-site/tools/compound-goal/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首頁",
+          "item": "https://alexchinwai.github.io/ifa-site/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "工具",
+          "item": "https://alexchinwai.github.io/ifa-site/tools/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "複利計算機"
+        }
+      ]
+    }
+  ]
+}
   </script>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 </head>

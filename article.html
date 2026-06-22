@@ -32,95 +32,162 @@
   <script defer data-website-id="44c99229-67f0-49a1-ad58-b3fba34ebf05" src="https://cloud.umami.is/script.js"></script>
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://alexchinwai.github.io/ifa-site/#website",
-        "url": "https://alexchinwai.github.io/ifa-site/",
-        "name": "Alex — 獨立理財顧問",
-        "inLanguage": "zh-Hant-HK",
-        "publisher": { "@id": "https://alexchinwai.github.io/ifa-site/#org" }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://alexchinwai.github.io/ifa-site/#website",
+      "url": "https://alexchinwai.github.io/ifa-site/",
+      "name": "Alex — 獨立理財顧問",
+      "inLanguage": "zh-Hant-HK",
+      "publisher": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#org"
+      }
+    },
+    {
+      "@type": [
+        "Organization",
+        "FinancialService"
+      ],
+      "@id": "https://alexchinwai.github.io/ifa-site/#org",
+      "name": "Alex — 獨立理財顧問 (IFA)",
+      "url": "https://alexchinwai.github.io/ifa-site/",
+      "areaServed": {
+        "@type": "Place",
+        "name": "Hong Kong"
       },
-      {
-        "@type": ["Organization", "FinancialService"],
-        "@id": "https://alexchinwai.github.io/ifa-site/#org",
-        "name": "Alex — 獨立理財顧問 (IFA)",
-        "url": "https://alexchinwai.github.io/ifa-site/",
-        "areaServed": { "@type": "Place", "name": "Hong Kong" },
-        "serviceType": ["基金投資", "保障規劃", "退休部署", "強積金整合", "保費融資諮詢", "投資組合檢視"],
-        "founder": { "@id": "https://alexchinwai.github.io/ifa-site/#alex" }
+      "serviceType": [
+        "基金投資",
+        "保障規劃",
+        "退休部署",
+        "強積金整合",
+        "保費融資諮詢",
+        "投資組合檢視"
+      ],
+      "founder": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#alex"
       },
-      {
-        "@type": "Person",
-        "@id": "https://alexchinwai.github.io/ifa-site/#alex",
-        "name": "Alex",
-        "jobTitle": "獨立理財顧問 (IFA)",
-        "worksFor": { "@id": "https://alexchinwai.github.io/ifa-site/#org" },
-        "knowsAbout": ["基金投資", "保障規劃", "退休規劃", "強積金", "保費融資", "投資組合檢視"],
-        "url": "https://alexchinwai.github.io/ifa-site/about.html"
-      },
-      {
-        "@type": "Article",
-        "@id": "https://alexchinwai.github.io/ifa-site/article.html#article",
-        "isPartOf": { "@id": "https://alexchinwai.github.io/ifa-site/#website" },
-        "mainEntityOfPage": "https://alexchinwai.github.io/ifa-site/article.html",
-        "headline": "月入 3 萬,退休需要儲蓄多少?",
-        "description": "以月入 3 萬、退休後維持約七成生活水平計算,香港一個人大致需要 600 萬至 900 萬港元退休儲備(說明性)。",
-        "inLanguage": "zh-Hant-HK",
-        "author": { "@id": "https://alexchinwai.github.io/ifa-site/#alex" },
-        "publisher": { "@id": "https://alexchinwai.github.io/ifa-site/#org" },
-        "datePublished": "2026-05-02",
-        "dateModified": "2026-06-19",
-        "about": { "@type": "Thing", "name": "退休規劃" },
-        "speakable": {
-          "@type": "SpeakableSpecification",
-          "cssSelector": [".def-box__answer"]
-        }
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://alexchinwai.github.io/ifa-site/article.html#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "只靠強積金是否足夠退休?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "一般並不足夠。強積金強制供款長期大約只能替代退休前收入的三至四成(說明性),通常只是退休儲備的一部分,餘下的缺口須以自願性供款、基金投資或其他資產部署填補。"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "4% 提取法則在香港是否適用?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "4% 法則,即每年提取儲備約 4%,是一個方便的起點,而非保證。香港人預期壽命較長,利率與通脹亦會變動,實際安全提取率可能須更為保守,宜以基本情境與最差情境一併推算。"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "40 歲才開始,是否太遲?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "並非太遲,但成本較高。同一退休目標下,開始得愈遲,每月須供款愈多,可依靠複利的部分愈少。重點是現在就釐清缺口與可行供款,而非追求一個保證數字。"
-            }
-          }
-        ]
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://alexchinwai.github.io/ifa-site/article.html#breadcrumb",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://alexchinwai.github.io/ifa-site/" },
-          { "@type": "ListItem", "position": 2, "name": "洞見", "item": "https://alexchinwai.github.io/ifa-site/insights-index.html" },
-          { "@type": "ListItem", "position": 3, "name": "退休規劃", "item": "https://alexchinwai.github.io/ifa-site/insights-index.html" },
-          { "@type": "ListItem", "position": 4, "name": "月入 3 萬,退休需要儲蓄多少?" }
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "telephone": "+852 9126 8714",
+        "url": "https://wa.me/85291268714",
+        "availableLanguage": [
+          "zh-HK",
+          "zh-Hant",
+          "en"
         ]
       }
-    ]
-  }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://alexchinwai.github.io/ifa-site/#alex",
+      "name": "Alex",
+      "jobTitle": "獨立理財顧問 (IFA)",
+      "worksFor": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#org"
+      },
+      "knowsAbout": [
+        "基金投資",
+        "保障規劃",
+        "退休規劃",
+        "強積金",
+        "保費融資",
+        "投資組合檢視"
+      ],
+      "url": "https://alexchinwai.github.io/ifa-site/about.html"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://alexchinwai.github.io/ifa-site/article.html#article",
+      "isPartOf": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#website"
+      },
+      "mainEntityOfPage": "https://alexchinwai.github.io/ifa-site/article.html",
+      "headline": "月入 3 萬,退休需要儲蓄多少?",
+      "description": "以月入 3 萬、退休後維持約七成生活水平計算,香港一個人大致需要 600 萬至 900 萬港元退休儲備(說明性)。",
+      "inLanguage": "zh-Hant-HK",
+      "author": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#alex"
+      },
+      "publisher": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#org"
+      },
+      "datePublished": "2026-05-02",
+      "dateModified": "2026-06-19",
+      "about": {
+        "@type": "Thing",
+        "name": "退休規劃"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".def-box__answer"
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://alexchinwai.github.io/ifa-site/article.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "只靠強積金是否足夠退休?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "一般並不足夠。強積金強制供款長期大約只能替代退休前收入的三至四成(說明性),通常只是退休儲備的一部分,餘下的缺口須以自願性供款、基金投資或其他資產部署填補。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "4% 提取法則在香港是否適用?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "4% 法則,即每年提取儲備約 4%,是一個方便的起點,而非保證。香港人預期壽命較長,利率與通脹亦會變動,實際安全提取率可能須更為保守,宜以基本情境與最差情境一併推算。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "40 歲才開始,是否太遲?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "並非太遲,但成本較高。同一退休目標下,開始得愈遲,每月須供款愈多,可依靠複利的部分愈少。重點是現在就釐清缺口與可行供款,而非追求一個保證數字。"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://alexchinwai.github.io/ifa-site/article.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首頁",
+          "item": "https://alexchinwai.github.io/ifa-site/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "洞見",
+          "item": "https://alexchinwai.github.io/ifa-site/insights-index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "退休規劃",
+          "item": "https://alexchinwai.github.io/ifa-site/insights-index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "月入 3 萬,退休需要儲蓄多少?"
+        }
+      ]
+    }
+  ]
+}
   </script>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 </head>

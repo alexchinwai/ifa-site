@@ -32,103 +32,173 @@
   <script defer data-website-id="44c99229-67f0-49a1-ad58-b3fba34ebf05" src="https://cloud.umami.is/script.js"></script>
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://alexchinwai.github.io/ifa-site/#website",
-        "url": "https://alexchinwai.github.io/ifa-site/",
-        "name": "Alex — 獨立理財顧問",
-        "inLanguage": "zh-Hant-HK",
-        "publisher": { "@id": "https://alexchinwai.github.io/ifa-site/#org" }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://alexchinwai.github.io/ifa-site/#website",
+      "url": "https://alexchinwai.github.io/ifa-site/",
+      "name": "Alex — 獨立理財顧問",
+      "inLanguage": "zh-Hant-HK",
+      "publisher": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#org"
+      }
+    },
+    {
+      "@type": [
+        "Organization",
+        "FinancialService"
+      ],
+      "@id": "https://alexchinwai.github.io/ifa-site/#org",
+      "name": "Alex — 獨立理財顧問 (IFA)",
+      "url": "https://alexchinwai.github.io/ifa-site/",
+      "areaServed": {
+        "@type": "Place",
+        "name": "Hong Kong"
       },
-      {
-        "@type": ["Organization", "FinancialService"],
-        "@id": "https://alexchinwai.github.io/ifa-site/#org",
-        "name": "Alex — 獨立理財顧問 (IFA)",
-        "url": "https://alexchinwai.github.io/ifa-site/",
-        "areaServed": { "@type": "Place", "name": "Hong Kong" },
-        "serviceType": ["基金投資", "保障規劃", "退休部署", "強積金整合", "保費融資諮詢", "投資組合檢視"],
-        "founder": { "@id": "https://alexchinwai.github.io/ifa-site/#alex" }
+      "serviceType": [
+        "基金投資",
+        "保障規劃",
+        "退休部署",
+        "強積金整合",
+        "保費融資諮詢",
+        "投資組合檢視"
+      ],
+      "founder": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#alex"
       },
-      {
-        "@type": "Person",
-        "@id": "https://alexchinwai.github.io/ifa-site/#alex",
-        "name": "Alex",
-        "jobTitle": "獨立理財顧問 (IFA)",
-        "worksFor": { "@id": "https://alexchinwai.github.io/ifa-site/#org" },
-        "knowsAbout": ["基金投資", "保障規劃", "退休規劃", "強積金", "保費融資", "投資組合檢視"],
-        "url": "https://alexchinwai.github.io/ifa-site/about/"
-      },
-      {
-        "@type": "Article",
-        "@id": "https://alexchinwai.github.io/ifa-site/compare/premium-financing-vs-lumpsum/#article",
-        "isPartOf": { "@id": "https://alexchinwai.github.io/ifa-site/#website" },
-        "mainEntityOfPage": "https://alexchinwai.github.io/ifa-site/compare/premium-financing-vs-lumpsum/",
-        "headline": "保費融資與一筆過付保費,如何選擇?",
-        "description": "槓桿會同時放大回報與風險。以一張表攤開兩者的前期成本、流動性、利率風險與最差情況(說明性)。",
-        "inLanguage": "zh-Hant-HK",
-        "author": { "@id": "https://alexchinwai.github.io/ifa-site/#alex" },
-        "publisher": { "@id": "https://alexchinwai.github.io/ifa-site/#org" },
-        "datePublished": "2026-05-30",
-        "dateModified": "2026-06-19",
-        "about": { "@type": "Thing", "name": "保費融資" },
-        "speakable": {
-          "@type": "SpeakableSpecification",
-          "cssSelector": [".def-box__answer"]
-        }
-      },
-      {
-        "@type": "ItemList",
-        "@id": "https://alexchinwai.github.io/ifa-site/compare/premium-financing-vs-lumpsum/#options",
-        "name": "保費融資與一筆過付保費",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "保費融資" },
-          { "@type": "ListItem", "position": 2, "name": "一筆過付保費" }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://alexchinwai.github.io/ifa-site/compare/premium-financing-vs-lumpsum/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "保費融資是否一定賺取息差?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "並非如此。保費融資的構想,是借入較低成本的資金,期望保單的長期回報高於借貸成本,從而賺取當中的息差。然而借貸成本與保單回報兩邊都不保證。借貸利率會浮動上升,保單派息或回報亦可能不似預期,息差有機會收窄,甚至轉為負數。所謂賺取息差只是其中一種情境,並非保證結果(說明性)。"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "利率上升會有甚麼影響?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "利率上升會直接推高借貸成本,蠶食甚至蓋過保單回報,令淨回報下降。在部分安排下,貸款機構亦可能因抵押價值變化而要求追加抵押或提早還款。若同時遇上保單回報疲弱,最差情況可能須要虧損離場。利率風險是保費融資的核心風險(說明性)。"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "如何判斷自己能否承受?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "可以這樣自問:即使利率上升、即使被要求追加抵押,你是否仍有足夠的流動現金緩衝撐得過去,而不影響日常生活與其他理財目標?若你需要依靠這筆資金應急,或一旦升息便寢食難安,代表槓桿已超出你的承受範圍。承受能力應以最差情況而非基準情況來衡量(說明性)。"
-            }
-          }
-        ]
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://alexchinwai.github.io/ifa-site/compare/premium-financing-vs-lumpsum/#breadcrumb",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://alexchinwai.github.io/ifa-site/" },
-          { "@type": "ListItem", "position": 2, "name": "比較", "item": "https://alexchinwai.github.io/ifa-site/compare/" },
-          { "@type": "ListItem", "position": 3, "name": "保費融資 vs 一筆過" }
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "telephone": "+852 9126 8714",
+        "url": "https://wa.me/85291268714",
+        "availableLanguage": [
+          "zh-HK",
+          "zh-Hant",
+          "en"
         ]
       }
-    ]
-  }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://alexchinwai.github.io/ifa-site/#alex",
+      "name": "Alex",
+      "jobTitle": "獨立理財顧問 (IFA)",
+      "worksFor": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#org"
+      },
+      "knowsAbout": [
+        "基金投資",
+        "保障規劃",
+        "退休規劃",
+        "強積金",
+        "保費融資",
+        "投資組合檢視"
+      ],
+      "url": "https://alexchinwai.github.io/ifa-site/about/"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://alexchinwai.github.io/ifa-site/compare/premium-financing-vs-lumpsum/#article",
+      "isPartOf": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#website"
+      },
+      "mainEntityOfPage": "https://alexchinwai.github.io/ifa-site/compare/premium-financing-vs-lumpsum/",
+      "headline": "保費融資與一筆過付保費,如何選擇?",
+      "description": "槓桿會同時放大回報與風險。以一張表攤開兩者的前期成本、流動性、利率風險與最差情況(說明性)。",
+      "inLanguage": "zh-Hant-HK",
+      "author": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#alex"
+      },
+      "publisher": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#org"
+      },
+      "datePublished": "2026-05-30",
+      "dateModified": "2026-06-19",
+      "about": {
+        "@type": "Thing",
+        "name": "保費融資"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".def-box__answer"
+        ]
+      }
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://alexchinwai.github.io/ifa-site/compare/premium-financing-vs-lumpsum/#options",
+      "name": "保費融資與一筆過付保費",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "保費融資"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "一筆過付保費"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://alexchinwai.github.io/ifa-site/compare/premium-financing-vs-lumpsum/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "保費融資是否一定賺取息差?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "並非如此。保費融資的構想,是借入較低成本的資金,期望保單的長期回報高於借貸成本,從而賺取當中的息差。然而借貸成本與保單回報兩邊都不保證。借貸利率會浮動上升,保單派息或回報亦可能不似預期,息差有機會收窄,甚至轉為負數。所謂賺取息差只是其中一種情境,並非保證結果(說明性)。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "利率上升會有甚麼影響?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "利率上升會直接推高借貸成本,蠶食甚至蓋過保單回報,令淨回報下降。在部分安排下,貸款機構亦可能因抵押價值變化而要求追加抵押或提早還款。若同時遇上保單回報疲弱,最差情況可能須要虧損離場。利率風險是保費融資的核心風險(說明性)。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "如何判斷自己能否承受?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "可以這樣自問:即使利率上升、即使被要求追加抵押,你是否仍有足夠的流動現金緩衝撐得過去,而不影響日常生活與其他理財目標?若你需要依靠這筆資金應急,或一旦升息便寢食難安,代表槓桿已超出你的承受範圍。承受能力應以最差情況而非基準情況來衡量(說明性)。"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://alexchinwai.github.io/ifa-site/compare/premium-financing-vs-lumpsum/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首頁",
+          "item": "https://alexchinwai.github.io/ifa-site/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "比較",
+          "item": "https://alexchinwai.github.io/ifa-site/compare/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "保費融資 vs 一筆過"
+        }
+      ]
+    }
+  ]
+}
   </script>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 </head>

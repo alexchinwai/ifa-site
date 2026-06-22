@@ -55,79 +55,136 @@
 
   <!-- ===== Structured data: single @graph ===== -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://alexchinwai.github.io/ifa-site/#website",
-        "url": "https://alexchinwai.github.io/ifa-site/",
-        "name": "Alex — 獨立理財顧問 (IFA)",
-        "inLanguage": "zh-Hant-HK",
-        "publisher": { "@id": "https://alexchinwai.github.io/ifa-site/#org" }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://alexchinwai.github.io/ifa-site/#website",
+      "url": "https://alexchinwai.github.io/ifa-site/",
+      "name": "Alex — 獨立理財顧問 (IFA)",
+      "inLanguage": "zh-Hant-HK",
+      "publisher": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#org"
+      }
+    },
+    {
+      "@type": [
+        "Organization",
+        "FinancialService"
+      ],
+      "@id": "https://alexchinwai.github.io/ifa-site/#org",
+      "name": "Alex — 獨立理財顧問 (IFA)",
+      "url": "https://alexchinwai.github.io/ifa-site/",
+      "areaServed": {
+        "@type": "Place",
+        "name": "Hong Kong"
       },
-      {
-        "@type": ["Organization", "FinancialService"],
-        "@id": "https://alexchinwai.github.io/ifa-site/#org",
-        "name": "Alex — 獨立理財顧問 (IFA)",
-        "url": "https://alexchinwai.github.io/ifa-site/",
-        "areaServed": { "@type": "Place", "name": "Hong Kong" },
-        "serviceType": ["基金投資", "保障規劃", "退休部署", "強積金整合", "保費融資諮詢", "投資組合檢視"],
-        "founder": { "@id": "https://alexchinwai.github.io/ifa-site/#alex" }
+      "serviceType": [
+        "基金投資",
+        "保障規劃",
+        "退休部署",
+        "強積金整合",
+        "保費融資諮詢",
+        "投資組合檢視"
+      ],
+      "founder": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#alex"
       },
-      {
-        "@type": "Person",
-        "@id": "https://alexchinwai.github.io/ifa-site/#alex",
-        "name": "Alex",
-        "jobTitle": "獨立理財顧問 (IFA)",
-        "worksFor": { "@id": "https://alexchinwai.github.io/ifa-site/#org" },
-        "knowsAbout": ["基金投資", "保障規劃", "退休規劃", "強積金", "保費融資", "投資組合檢視"],
-        "url": "https://alexchinwai.github.io/ifa-site/about/"
-      },
-      {
-        "@type": "WebApplication",
-        "@id": "https://alexchinwai.github.io/ifa-site/tools/premium-financing/#app",
-        "name": "保費融資計算機",
-        "url": "https://alexchinwai.github.io/ifa-site/tools/premium-financing/",
-        "applicationCategory": "FinanceApplication",
-        "operatingSystem": "Web",
-        "inLanguage": "zh-Hant-HK",
-        "isPartOf": { "@id": "https://alexchinwai.github.io/ifa-site/#website" },
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "HKD" }
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://alexchinwai.github.io/ifa-site/tools/premium-financing/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "這個計算機的數字準確嗎?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "不準確,也不應視為準確。本計算機是高度簡化的說明模型,假設利息逐年支付、貸款本金到期一次償還、保單以固定年回報增長。真實保單的現金價值並非線性,實際結果差異可能很大。所有數字僅供說明用途。"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "息差為正,是否代表一定賺錢?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "不是。息差(保單假設回報減貸款利率)為正,只是在固定假設下的說明結果;假設回報並非保證,利率亦會浮動。一旦貸款成本上升或保單回報不如假設,槓桿會同時放大虧損,最壞情況可能需要追加抵押或虧損離場。"
-            }
-          }
-        ]
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://alexchinwai.github.io/ifa-site/tools/premium-financing/#breadcrumb",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://alexchinwai.github.io/ifa-site/" },
-          { "@type": "ListItem", "position": 2, "name": "工具", "item": "https://alexchinwai.github.io/ifa-site/tools/" },
-          { "@type": "ListItem", "position": 3, "name": "保費融資計算機" }
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "telephone": "+852 9126 8714",
+        "url": "https://wa.me/85291268714",
+        "availableLanguage": [
+          "zh-HK",
+          "zh-Hant",
+          "en"
         ]
       }
-    ]
-  }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://alexchinwai.github.io/ifa-site/#alex",
+      "name": "Alex",
+      "jobTitle": "獨立理財顧問 (IFA)",
+      "worksFor": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#org"
+      },
+      "knowsAbout": [
+        "基金投資",
+        "保障規劃",
+        "退休規劃",
+        "強積金",
+        "保費融資",
+        "投資組合檢視"
+      ],
+      "url": "https://alexchinwai.github.io/ifa-site/about/"
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://alexchinwai.github.io/ifa-site/tools/premium-financing/#app",
+      "name": "保費融資計算機",
+      "url": "https://alexchinwai.github.io/ifa-site/tools/premium-financing/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "inLanguage": "zh-Hant-HK",
+      "isPartOf": {
+        "@id": "https://alexchinwai.github.io/ifa-site/#website"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "HKD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://alexchinwai.github.io/ifa-site/tools/premium-financing/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "這個計算機的數字準確嗎?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "不準確,也不應視為準確。本計算機是高度簡化的說明模型,假設利息逐年支付、貸款本金到期一次償還、保單以固定年回報增長。真實保單的現金價值並非線性,實際結果差異可能很大。所有數字僅供說明用途。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "息差為正,是否代表一定賺錢?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "不是。息差(保單假設回報減貸款利率)為正,只是在固定假設下的說明結果;假設回報並非保證,利率亦會浮動。一旦貸款成本上升或保單回報不如假設,槓桿會同時放大虧損,最壞情況可能需要追加抵押或虧損離場。"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://alexchinwai.github.io/ifa-site/tools/premium-financing/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首頁",
+          "item": "https://alexchinwai.github.io/ifa-site/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "工具",
+          "item": "https://alexchinwai.github.io/ifa-site/tools/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "保費融資計算機"
+        }
+      ]
+    }
+  ]
+}
   </script>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 </head>
