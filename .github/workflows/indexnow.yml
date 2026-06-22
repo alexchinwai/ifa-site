@@ -1,0 +1,14 @@
+name: IndexNow ping
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**.html"
+      - "sitemap.xml"
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ping IndexNow with sitemap URLs
+        run: python3 .github/scripts/indexnow.py
