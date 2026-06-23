@@ -226,7 +226,7 @@
     <header class="page-head reveal">
       <p class="eyebrow">Tools · 自我體檢</p>
       <h1>資產配置自我體檢</h1>
-      <p class="standfirst">回答六個問題，並可另填收入、支出等數字，初步看清自己在現金流、應急、保障、投資與退休上的缺口（僅供教育參考，非個別建議）。</p>
+      <p class="standfirst">回答六個簡單問題（不懂的可填「未開始」或「不適用」），並可另填收入、支出等數字，初步看清自己在現金流、應急、保障、投資與退休上的缺口（僅供教育參考，非個別建議）。</p>
     </header>
 
     <hr class="rule-ink" />
@@ -251,31 +251,31 @@
         </div>
 
         <div class="q" data-q="life">
-          <p>3. 若有受養人，是否有足夠人壽保障？</p>
+          <p>3. 如果有家人靠你的收入生活，萬一你不能工作，他們有保障嗎？</p>
           <label><input type="radio" name="life" value="2" /> 有</label>
           <label><input type="radio" name="life" value="1" /> 不足</label>
-          <label><input type="radio" name="life" value="na" /> 不適用</label>
+          <label><input type="radio" name="life" value="na" /> 不適用（沒有人靠我）</label>
         </div>
 
         <div class="q" data-q="retire">
-          <p>4. 你是否已在強積金以外為退休部署？</p>
-          <label><input type="radio" name="retire" value="2" /> 是</label>
-          <label><input type="radio" name="retire" value="1" /> 部分</label>
-          <label><input type="radio" name="retire" value="0" /> 否</label>
+          <p>4. 除了強積金，你有沒有開始為退休另外儲一點？</p>
+          <label><input type="radio" name="retire" value="2" /> 有</label>
+          <label><input type="radio" name="retire" value="1" /> 一點</label>
+          <label><input type="radio" name="retire" value="0" /> 否（未開始）</label>
         </div>
 
         <div class="q" data-q="diversify">
-          <p>5. 你的投資是否分散於多於一類資產？</p>
+          <p>5. 如果你有投資，是不是分散在多過一種地方（不是全部押在一處）？</p>
           <label><input type="radio" name="diversify" value="2" /> 是</label>
           <label><input type="radio" name="diversify" value="1" /> 部分</label>
-          <label><input type="radio" name="diversify" value="0" /> 否</label>
+          <label><input type="radio" name="diversify" value="na" /> 還未開始投資</label>
         </div>
 
         <div class="q" data-q="mpf">
-          <p>6. 你是否在過去一年整合並檢視過強積金帳戶？</p>
-          <label><input type="radio" name="mpf" value="2" /> 是</label>
-          <label><input type="radio" name="mpf" value="1" /> 部分</label>
-          <label><input type="radio" name="mpf" value="0" /> 否</label>
+          <p>6. 過去一年，你有沒有打開看過自己的強積金？</p>
+          <label><input type="radio" name="mpf" value="2" /> 有</label>
+          <label><input type="radio" name="mpf" value="1" /> 一點</label>
+          <label><input type="radio" name="mpf" value="0" /> 否（未看過）</label>
         </div>
 
         <fieldset style="border:0;padding:0;margin:10px 0 0;min-inline-size:auto;">
@@ -287,11 +287,11 @@
             <input type="number" id="in-income" inputmode="numeric" min="0" step="100" autocomplete="off" placeholder="HKD / 月" />
           </div>
           <div class="calc__row">
-            <label for="in-expense">每月必要支出<span class="hint">不含債務還款；衣食住行、保費、供養等</span></label>
+            <label for="in-expense">每月必要支出<span class="hint">租金、食、交通、電話費等基本開支（先不計借貸還款）</span></label>
             <input type="number" id="in-expense" inputmode="numeric" min="0" step="100" autocomplete="off" placeholder="HKD / 月" />
           </div>
           <div class="calc__row">
-            <label for="in-cash">流動現金（活期＋儲蓄）<span class="hint">可即時動用的現金，屬存量非每月</span></label>
+            <label for="in-cash">流動現金（活期＋儲蓄）<span class="hint">銀行戶口可即時動用的錢（是總數，不是每月）</span></label>
             <input type="number" id="in-cash" inputmode="numeric" min="0" step="1000" autocomplete="off" placeholder="HKD" />
           </div>
           <div class="calc__row">
@@ -304,10 +304,13 @@
 
       <!-- ===== Output ===== -->
       <div class="calc__out" aria-live="polite">
-        <p class="lbl">初步報告 · 整體評估（說明性）</p>
-        <p class="big" id="out-band">請回答上方問題</p>
+        <p class="lbl">初步報告 · 整體評估</p>
+        <p class="big" id="out-band">填好上方問題，這裡就會即時顯示你的初步結果</p>
+        <p class="microdisc" id="out-progress" style="margin:2px 0 0;"></p>
 
         <div class="calc__grid" id="out-metrics" style="display:none;"></div>
+        <p class="microdisc" id="out-note" style="margin:10px 0 0;display:none;">數字與評分僅作說明，根據你自己填的資料計算，並非個別建議。</p>
+        <p class="microdisc" id="out-partial" style="margin:8px 0 0;display:none;"></p>
         <div class="calc__warn" id="out-cashwarn"></div>
 
         <div id="out-gaps-wrap" style="margin-top:18px;display:none;">
@@ -318,7 +321,7 @@
       </div>
 
       <!-- ===== Honesty bridge (preliminary -> meeting) ===== -->
-      <p class="bridge">這份體檢是<strong>初步</strong>、教育性的參考。你的完整情況——目標、家庭、風險承受、現有保單與強積金、稅務——要見面才看到全貌。</p>
+      <p class="bridge">這份體檢是<strong>初步</strong>、教育性的參考。你的完整情況——目標、收入、家庭、可承受的風險——要傾談過才看到全貌。</p>
 
       <!-- ===== 初步 vs 詳細 報告（value ladder）===== -->
       <section class="ladder" aria-label="初步報告與詳細報告比較">
@@ -333,10 +336,10 @@
         <div class="ladder__col ladder__col--lead">
           <p class="ladder__h">見面才有的 · 詳細報告</p>
           <ul class="ladder__list">
-            <li>對住你<strong>完整情況</strong>的個人化檢視（目標、家庭、風險承受、現有保單與強積金、稅務）</li>
-            <li>不同情景與最壞情況的考量</li>
-            <li>一份<strong>排好優先次序</strong>的下一步行動計劃</li>
-            <li>帳戶與保障如何配合，以及一份可帶走的書面總結</li>
+            <li>一個照你目前情況、<strong>排好優先次序</strong>的起步次序（先做什麼、後做什麼）</li>
+            <li>用你自己的數字試算，看不同選擇的分別</li>
+            <li>一份可以帶走、下次自己也看得明白的書面總結</li>
+            <li>有問題可以即場問清楚，不用怕問得淺</li>
           </ul>
         </div>
       </section>
@@ -355,11 +358,11 @@
         <p class="bookform__h">預約 15 分鐘見面 · 財商進化學院 會帶住你這份初步報告與你詳談</p>
         <label class="bookform__l">稱呼<input type="text" name="稱呼" required autocomplete="name" /></label>
         <label class="bookform__l">WhatsApp 號碼<input type="tel" name="WhatsApp" required inputmode="tel" autocomplete="tel" placeholder="例如 9123 4567" /></label>
-        <label class="bookform__c"><input type="checkbox" required /> 我同意就此查詢與我聯絡，並把我填寫的資料與初步報告一併傳送給我們（只用於是次諮詢，不作其他用途；詳見<a href="/legal" target="_blank" rel="noopener">私隱政策</a>）。</label>
+        <label class="bookform__c"><input type="checkbox" required /> 我同意你們用 WhatsApp 與我聯絡，並把我填的資料與初步報告一併傳送（只用於是次諮詢；詳見<a href="/legal" target="_blank" rel="noopener">私隱政策</a>）。</label>
         <button type="submit" class="btn btn--solid" data-umami-event="book-submit">提交並預約</button>
         <p class="bookform__alt">或 <a href="https://wa.me/85291268714?text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%2015%20%E5%88%86%E9%90%98%E8%AB%AE%E8%A9%A2" target="_blank" rel="noopener" data-umami-event="whatsapp-click">直接用 WhatsApp 聯絡</a>（不會傳送報告內容）。</p>
         <p class="bookform__err" id="book-err" style="display:none;"></p>
-        <p class="bookform__ok" id="book-ok" style="display:none;">多謝你！你的初步報告已送交我們，我們會盡快用 WhatsApp 與你聯絡，安排 15 分鐘談談。</p>
+        <p class="bookform__ok" id="book-ok" style="display:none;">多謝你！我們已收到你的初步報告，通常一兩個工作天內會用 WhatsApp 與你聯絡，約 15 分鐘談談。等候期間，可以先看<a href="/glossary-index">理財詞典</a>或<a href="/article">相關文章</a>，下次傾談會更有用。</p>
       </form>
 
 
@@ -399,11 +402,11 @@
     // Question metadata: name -> gap note shown when score < 2 (neutral, educational, no product advice)
     var QS = [
       { name:'emergency', gap:'應急現金不足：一般建議備有約 3–6 個月開支的流動資金，以應對突發狀況。' },
-      { name:'ci',        gap:'危疾或醫療保障有缺口：醫療開支與收入中斷的風險目前可能未獲轉移。' },
-      { name:'life',      gap:'人壽保障不足：若有受養人，保障額未必足以填補家庭的收入缺口。' },
-      { name:'retire',    gap:'退休部署偏單一：強積金以外的退休準備仍有加強空間。' },
-      { name:'diversify', gap:'投資集中度偏高：資產分散於多於一類，可分攤單一市場的波動。' },
-      { name:'mpf',       gap:'強積金未近期檢視：散落的舊帳戶與基金選擇值得每年整合一次。' }
+      { name:'ci',        gap:'醫療或危疾保障有缺口：生病時的醫療開支，現在可能要自己全數承擔。' },
+      { name:'life',      gap:'人壽保障不足：如果有家人靠你的收入，萬一你不能工作，他們的生活費可能未有著落。' },
+      { name:'retire',    gap:'退休準備較單一：除了強積金，可以開始考慮其他長線儲蓄。還未開始也很正常，這是起點。' },
+      { name:'diversify', gap:'投資較集中：分散在多過一種地方，可以分散風險；還未開始投資的話，這項日後再看也可以。' },
+      { name:'mpf',       gap:'一年未看過強積金：打開看看自己有哪些帳戶、揀了什麼基金，每年看一次就夠。' }
     ];
 
     function fmtPct(x){ return Math.round(x) + '%'; }
@@ -459,7 +462,7 @@
       if (maxApplicable === 0) band = null;
       else if (pct >= 80) band = '穩健';
       else if (pct >= 50) band = '可加強';
-      else band = '有明顯缺口';
+      else band = '起步階段';
       return { sum:sum, applicable:applicable, maxApplicable:maxApplicable, pct:pct, band:band, gaps:gaps };
     }
 
@@ -494,25 +497,38 @@
       var inc = num('in-income'), exp = num('in-expense'), deb = num('in-debt'), csh = num('in-cash');
       var m = computeMetrics({ income:inc, expense:exp, debt:deb, cash:csh });
       var tiles = [];
-      if (m.surplus != null) tiles.push(tile(fmtHKD(m.surplus) + '（說明性）', '每月盈餘' + (m.surplus < 0 ? ' · 入不敷支' : '')));
-      if (m.savings != null) tiles.push(tile(fmtPct(m.savings * 100) + '（說明性）', '儲蓄率 · ' + bandSavings(m.savings) + '（常見參考）'));
-      if (m.months != null)  tiles.push(tile((Math.round(m.months * 10) / 10) + ' 個月（說明性）', '應急基金月數 · ' + bandMonths(m.months)));
-      if (m.dsr != null)     tiles.push(tile(fmtPct(m.dsr * 100) + '（說明性）', '債務佔收入比 · ' + bandDsr(m.dsr) + '（按揭常見上限參考）'));
+      if (m.surplus != null) tiles.push(tile(fmtHKD(m.surplus), '每月盈餘' + (m.surplus < 0 ? ' · 入不敷支' : '')));
+      if (m.savings != null) tiles.push(tile(fmtPct(m.savings * 100), '儲蓄率 · ' + bandSavings(m.savings) + '（常見參考）'));
+      if (m.months != null)  tiles.push(tile((Math.round(m.months * 10) / 10) + ' 個月', '應急基金月數 · ' + bandMonths(m.months)));
+      if (m.dsr != null)     tiles.push(tile(fmtPct(m.dsr * 100), '債務佔收入比 · ' + bandDsr(m.dsr) + '（按揭常見上限參考）'));
       if (tiles.length){ metricsEl.innerHTML = tiles.join(''); metricsEl.style.display = 'grid'; }
       else { metricsEl.innerHTML = ''; metricsEl.style.display = 'none'; }
 
       var risky = (m.surplus != null && m.surplus < 0) || (m.dsr != null && m.dsr > 0.50);
-      if (risky){ warnEl.textContent = '提醒（說明性）：上述數字顯示每月可能入不敷支或債務負擔較重，僅供你自己參考。'; warnEl.classList.add('show'); }
+      if (risky){ warnEl.textContent = '提醒：上述數字顯示每月可能入不敷支或債務負擔較重，僅供你自己參考。'; warnEl.classList.add('show'); }
       else { warnEl.textContent = ''; warnEl.classList.remove('show'); }
 
       // numeric gap notes (de-dup: 應急 only if Q1 unanswered — Q1 owns that gap line otherwise)
       var numGaps = [];
-      if (m.savings != null && m.savings < 0.10) numGaps.push('儲蓄率偏低（說明性）：每月盈餘佔收入不足一成，長期累積資產的空間可能較窄。');
-      if (m.dsr != null && m.dsr > 0.50) numGaps.push('債務佔收入比偏高（說明性）：每月債務還款佔收入逾五成，流動性可能較緊。');
-      if (answers.emergency == null && m.months != null && m.months < 3) numGaps.push('應急現金不足（說明性）：流動現金約可支撐少於三個月的開支。');
+      if (m.savings != null && m.savings < 0.10) numGaps.push('儲蓄率偏低：每月盈餘佔收入不足一成，長期累積資產的空間可能較窄。');
+      if (m.dsr != null && m.dsr > 0.50) numGaps.push('債務佔收入比偏高：每月債務還款佔收入逾五成，流動性可能較緊。');
+      if (answers.emergency == null && m.months != null && m.months < 3) numGaps.push('應急現金不足：流動現金約可支撐少於三個月的開支。');
 
       // ----- qualitative band (unchanged formula) -----
-      bandEl.textContent = (r.band === null) ? '請回答上方問題' : (r.band + ' · ' + fmtPct(r.pct) + '（說明性）');
+      bandEl.textContent = (r.band === null) ? '填好上方問題，這裡就會即時顯示你的初步結果' : (r.band + ' · ' + fmtPct(r.pct));
+      var progEl = document.getElementById('out-progress');
+      if (progEl) progEl.textContent = r.applicable ? ('已回答 ' + r.applicable + ' / 6 題') : '';
+      var noteEl = document.getElementById('out-note');
+      if (noteEl) noteEl.style.display = (tiles.length || r.band !== null) ? 'block' : 'none';
+      var partialEl = document.getElementById('out-partial');
+      if (partialEl){
+        var anyNum = (inc != null || exp != null || csh != null || deb != null);
+        var miss = [];
+        if (m.surplus == null && (inc == null || exp == null)) miss.push('填上「收入」和「支出」就能看到每月盈餘與儲蓄率');
+        if (m.months == null && (csh == null || exp == null)) miss.push('填上「流動現金」和「支出」可看應急基金月數');
+        if (anyNum && miss.length){ partialEl.textContent = '已收到部分數字。' + miss.join('；') + '。'; partialEl.style.display = 'block'; }
+        else { partialEl.textContent = ''; partialEl.style.display = 'none'; }
+      }
 
       // ----- merged gap list -----
       var allGaps = (r.band === null ? [] : r.gaps).concat(numGaps);
