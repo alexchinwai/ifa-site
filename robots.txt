@@ -30,4 +30,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://alexchinwai.github.io/ifa-site/sitemap.xml
+Sitemap: https://fqadulting.com/sitemap.xml
