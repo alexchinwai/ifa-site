@@ -399,6 +399,7 @@
   <!-- ===== Calculator logic ===== -->
   <script>
   (function(){
+    var started = false, completed = false;   // umami funnel guards (once-only)
     // Question metadata: name -> gap note shown when score < 2 (neutral, educational, no product advice)
     var QS = [
       { name:'emergency', gap:'應急現金不足：一般建議備有約 3–6 個月開支的流動資金，以應對突發狀況。' },
@@ -496,6 +497,10 @@
       // ----- numeric metrics (complementary panel; does NOT change the qualitative band) -----
       var inc = num('in-income'), exp = num('in-expense'), deb = num('in-debt'), csh = num('in-cash');
       var m = computeMetrics({ income:inc, expense:exp, debt:deb, cash:csh });
+
+      // funnel events (once-only): start = first interaction; complete = band first computed
+      if (!started && (r.applicable > 0 || inc != null || exp != null || deb != null || csh != null)) { started = true; if (window.umami) umami.track('checkup-start'); }
+      if (!completed && r.band !== null) { completed = true; if (window.umami) umami.track('checkup-complete'); }
       var tiles = [];
       if (m.surplus != null) tiles.push(tile(fmtHKD(m.surplus), '每月盈餘' + (m.surplus < 0 ? ' · 入不敷支' : '')));
       if (m.savings != null) tiles.push(tile(fmtPct(m.savings * 100), '儲蓄率 · ' + bandSavings(m.savings) + '（常見參考）'));

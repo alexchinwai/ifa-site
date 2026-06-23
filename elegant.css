@@ -273,6 +273,13 @@ h1, h2, h3, h4 { font-family: var(--serif); color: var(--navy); font-weight: 600
 .callout__label { font-family: var(--sans); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 12px; font-weight: 500; }
 .callout ul { margin: 0; padding-left: 1.2em; line-height: 1.8; }
 
+/* responsive video embeds (IG/YouTube Reels) */
+.embed-16-9, .embed-9-16 { position: relative; margin-block: 28px; border: 1px solid var(--line-2); border-radius: 2px; overflow: hidden; background: var(--cream); }
+.embed-16-9 { aspect-ratio: 16 / 9; }
+.embed-9-16 { aspect-ratio: 9 / 16; max-width: 340px; margin-inline: auto; }
+.embed-16-9 iframe, .embed-9-16 iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.embed__cap { font-family: var(--sans); font-size: 13px; color: var(--body-soft); text-align: center; margin-top: 8px; }
+
 /* ============ PULL QUOTE ============ */
 .pull-quote { font-family: var(--serif); font-size: clamp(24px,3.2vw,34px); font-weight: 500; line-height: 1.45; letter-spacing: -0.01em; color: var(--navy); max-width: 24ch; margin: 48px auto; text-align: center; border-block: 2px solid var(--gold); padding-block: 32px; }
 .pull-quote__by { font-family: var(--sans); font-size: 13px; letter-spacing: .06em; color: var(--body-soft); text-align: center; margin-top: 20px; }
