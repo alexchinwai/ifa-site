@@ -19,6 +19,7 @@ def wrap(text, n):
     return [text[i:i+n] for i in range(0, len(text), n)]
 
 CARDS = {
+    "og-home":      "成為懂理財的大人",
     "og-emergency": "應急錢應該存多少?",
     "og-mpf":       "強積金是什麼?初級大人要看什麼",
     "og-start-here":"初級大人的六步財務地基",
