@@ -25,6 +25,7 @@ CARDS = {
     "og-start-here":"初級大人的六步財務地基",
     "og-guide":     "初級大人理財起步指南",
     "og-checkup":   "資產配置自我體檢",
+    "og-topic-compounding": "複利:愈早開始愈好",
 }
 
 for key, title in CARDS.items():
