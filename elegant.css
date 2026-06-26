@@ -71,7 +71,8 @@ h1, h2, h3, h4 { font-family: var(--serif); color: var(--navy); font-weight: 600
 /* ============ NAV ============ */
 .nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
 .nav__row { display: flex; align-items: center; justify-content: space-between; padding-block: 24px; gap: 24px; }
-.brand { font-family: var(--serif); font-size: 19px; font-weight: 600; letter-spacing: 0.02em; color: var(--navy); }
+.brand { font-family: var(--serif); font-size: 19px; font-weight: 600; letter-spacing: 0.02em; color: var(--navy); display: inline-flex; align-items: center; gap: 11px; }
+.brand__mark { width: 33px; height: 33px; border-radius: 7px; flex: none; display: block; }
 .brand .sep { color: #b9b6ad; font-weight: 400; }
 .nav__links { display: flex; align-items: center; gap: 36px; }
 .nav__links a { font-size: 14px; letter-spacing: 0.02em; color: #4a4a4a; }
