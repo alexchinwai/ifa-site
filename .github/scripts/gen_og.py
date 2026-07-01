@@ -26,6 +26,7 @@ CARDS = {
     "og-guide":     "初級大人理財起步指南",
     "og-checkup":   "資產配置自我體檢",
     "og-topic-compounding": "複利:愈早開始愈好",
+    "og-topic-inflation": "通脹如何蠶食你的現金",
 }
 
 for key, title in CARDS.items():
