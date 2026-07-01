@@ -27,6 +27,7 @@ CARDS = {
     "og-checkup":   "資產配置自我體檢",
     "og-topic-compounding": "複利:愈早開始愈好",
     "og-topic-inflation": "通脹如何蠶食你的現金",
+    "og-topic-paycheck-to-paycheck": "月光族怎樣開始儲錢?",
 }
 
 for key, title in CARDS.items():
