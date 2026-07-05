@@ -30,6 +30,7 @@ CARDS = {
     "og-topic-paycheck-to-paycheck": "月光族怎樣開始儲錢?",
     "og-compare-advice": "理財建議的三條路怎樣選",
     "og-compare-savings": "儲蓄保險與定存+自行投資怎樣選",
+    "og-topic-mpf": "強積金其實是你的錢",
 }
 
 for key, title in CARDS.items():
