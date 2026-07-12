@@ -47,9 +47,23 @@
     .calc__bars{display:flex;gap:6px;align-items:flex-end;height:120px;margin-top:22px;}
     .calc__bars .b{flex:1;background:var(--navy);border-radius:2px 2px 0 0;min-height:4px;}
     .calc__bars .b.alt{background:var(--gold);}
-    .q{padding:18px 0;border-bottom:1px solid var(--line);}
-    .q p{font-family:var(--serif);color:var(--navy);font-size:17px;margin-bottom:10px;}
-    .q label{display:inline-flex;gap:7px;align-items:center;margin-right:20px;font-size:15px;color:var(--body);}
+    .checkup{counter-reset:q;}
+    .q{padding:20px 0;border-bottom:1px solid var(--line);}
+    .q__head{display:flex;gap:14px;align-items:baseline;margin-bottom:12px;}
+    .q__n{counter-increment:q;flex:none;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:14px;font-weight:600;color:var(--gold-ink);border:1px solid var(--line-2);border-radius:2px;background:var(--cream);}
+    .q__n::before{content:counter(q);}
+    .q__q{font-family:var(--serif);color:var(--navy);font-size:17px;line-height:1.55;}
+    .seg-group{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line-2);border-radius:2px;overflow:hidden;margin-left:42px;}
+    .seg{position:relative;display:inline-flex;margin:0;}
+    .seg input{position:absolute;width:1px;height:1px;opacity:0;margin:0;pointer-events:none;}
+    .seg span{display:inline-flex;align-items:center;justify-content:center;min-width:78px;padding:11px 20px;font-family:var(--sans);font-size:14px;color:var(--body);cursor:pointer;background:var(--paper);transition:background .2s var(--ease),color .2s var(--ease);}
+    .seg + .seg span{border-left:1px solid var(--line-2);}
+    .seg span:hover{background:var(--cream);color:var(--navy);}
+    .seg input:checked + span{background:var(--navy);color:#fff;}
+    .seg input:checked + span:hover{background:var(--navy-deep);}
+    .seg input:active + span{transform:translateY(1px);}
+    .seg input:focus-visible + span{outline:2px solid var(--navy);outline-offset:-2px;}
+    @media(max-width:520px){.seg-group{margin-left:0;width:100%;}.seg{flex:1;}.seg span{min-width:0;width:100%;padding:12px 8px;}}
     .result-cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
     .bridge{margin-top:18px;font-family:var(--serif);font-size:15px;color:var(--body);line-height:1.75;}
     .bridge strong{color:var(--navy);font-weight:600;}
@@ -69,10 +83,13 @@
     .bookform__l input{display:block;width:100%;margin-top:6px;padding:11px 13px;border:1px solid var(--line-2);border-radius:2px;font:inherit;color:var(--navy);background:#fff;box-sizing:border-box;}
     .bookform__c{display:flex;gap:9px;align-items:flex-start;font-family:var(--sans);font-size:13px;color:var(--body);line-height:1.6;margin:4px 0 18px;}
     .bookform__c input{margin-top:3px;flex:none;}
-    .bookform__alt{font-family:var(--sans);font-size:13px;color:var(--body-soft);margin:14px 0 0;}
-    .bookform__alt a{color:var(--navy);border-bottom:1px solid var(--underline);}
     .bookform__err{font-family:var(--sans);font-size:13px;color:var(--risk);margin:10px 0 0;}
     .bookform__ok{font-family:var(--serif);font-size:15px;color:var(--navy);line-height:1.75;margin:0;}
+    .edu-tag{font-family:var(--sans);font-size:12.5px;color:var(--body-soft);margin-top:8px;}
+    .ladder-sec{margin-top:28px;}
+    .ladder-cap{font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:10px;}
+    html.no-js .calc .faq-a{display:block;}
+    @media (prefers-reduced-motion: reduce){ .seg span{transition:none;} }
   </style>
 
   <!-- ===== Structured data: single @graph ===== -->
@@ -228,7 +245,8 @@
     <header class="page-head reveal">
       <p class="eyebrow">Tools · 自我體檢</p>
       <h1>資產配置自我體檢</h1>
-      <p class="standfirst">回答六個簡單問題（不懂的可填「未開始」或「不適用」），並可另填收入、支出等數字，初步看清自己在現金流、應急、保障、投資與退休上的缺口（僅供教育參考，非個別建議）。</p>
+      <p class="standfirst">六條問題，即時看清應急、保障、投資與退休的缺口。</p>
+      <p class="edu-tag">不確定就選「未開始」或「不適用」。</p>
     </header>
 
     <hr class="rule-ink" />
@@ -236,71 +254,84 @@
     <!-- ===== Calculator ===== -->
     <div class="calc reveal">
 
-      <form id="checkup">
+      <form id="checkup" class="checkup">
 
         <div class="q" data-q="emergency">
-          <p>1. 你是否有 3–6 個月開支的應急現金？</p>
-          <label><input type="radio" name="emergency" value="2" /> 是</label>
-          <label><input type="radio" name="emergency" value="1" /> 部分</label>
-          <label><input type="radio" name="emergency" value="0" /> 否</label>
+          <div class="q__head"><span class="q__n"></span><span class="q__q" id="q-emergency">你有 3–6 個月開支的應急現金嗎？</span></div>
+          <div class="seg-group" role="radiogroup" aria-labelledby="q-emergency">
+            <label class="seg"><input type="radio" name="emergency" value="2" /><span>是</span></label>
+            <label class="seg"><input type="radio" name="emergency" value="1" /><span>部分</span></label>
+            <label class="seg"><input type="radio" name="emergency" value="0" /><span>否</span></label>
+          </div>
         </div>
 
         <div class="q" data-q="ci">
-          <p>2. 你是否有危疾或醫療保障？</p>
-          <label><input type="radio" name="ci" value="2" /> 是</label>
-          <label><input type="radio" name="ci" value="1" /> 部分</label>
-          <label><input type="radio" name="ci" value="0" /> 否</label>
+          <div class="q__head"><span class="q__n"></span><span class="q__q" id="q-ci">你有危疾或醫療保障嗎？</span></div>
+          <div class="seg-group" role="radiogroup" aria-labelledby="q-ci">
+            <label class="seg"><input type="radio" name="ci" value="2" /><span>是</span></label>
+            <label class="seg"><input type="radio" name="ci" value="1" /><span>部分</span></label>
+            <label class="seg"><input type="radio" name="ci" value="0" /><span>否</span></label>
+          </div>
         </div>
 
         <div class="q" data-q="life">
-          <p>3. 如果有家人靠你的收入生活，萬一你不能工作，他們有保障嗎？</p>
-          <label><input type="radio" name="life" value="2" /> 有</label>
-          <label><input type="radio" name="life" value="1" /> 不足</label>
-          <label><input type="radio" name="life" value="na" /> 不適用（沒有人靠我）</label>
+          <div class="q__head"><span class="q__n"></span><span class="q__q" id="q-life">若有家人靠你的收入，你不能工作時他們有保障嗎？</span></div>
+          <div class="seg-group" role="radiogroup" aria-labelledby="q-life">
+            <label class="seg"><input type="radio" name="life" value="2" /><span>有</span></label>
+            <label class="seg"><input type="radio" name="life" value="1" /><span>不足</span></label>
+            <label class="seg"><input type="radio" name="life" value="na" /><span>不適用</span></label>
+          </div>
         </div>
 
         <div class="q" data-q="retire">
-          <p>4. 除了強積金，你有沒有開始為退休另外儲一點？</p>
-          <label><input type="radio" name="retire" value="2" /> 有</label>
-          <label><input type="radio" name="retire" value="1" /> 一點</label>
-          <label><input type="radio" name="retire" value="0" /> 否（未開始）</label>
+          <div class="q__head"><span class="q__n"></span><span class="q__q" id="q-retire">除強積金外，你有為退休另外儲蓄嗎？</span></div>
+          <div class="seg-group" role="radiogroup" aria-labelledby="q-retire">
+            <label class="seg"><input type="radio" name="retire" value="2" /><span>有</span></label>
+            <label class="seg"><input type="radio" name="retire" value="1" /><span>一點</span></label>
+            <label class="seg"><input type="radio" name="retire" value="0" /><span>未開始</span></label>
+          </div>
         </div>
 
         <div class="q" data-q="diversify">
-          <p>5. 如果你有投資，是不是分散在多過一種地方（不是全部押在一處）？</p>
-          <label><input type="radio" name="diversify" value="2" /> 是</label>
-          <label><input type="radio" name="diversify" value="1" /> 部分</label>
-          <label><input type="radio" name="diversify" value="na" /> 還未開始投資</label>
+          <div class="q__head"><span class="q__n"></span><span class="q__q" id="q-diversify">你的投資有分散嗎（不是全部押在一處）？</span></div>
+          <div class="seg-group" role="radiogroup" aria-labelledby="q-diversify">
+            <label class="seg"><input type="radio" name="diversify" value="2" /><span>是</span></label>
+            <label class="seg"><input type="radio" name="diversify" value="1" /><span>部分</span></label>
+            <label class="seg"><input type="radio" name="diversify" value="na" /><span>未投資</span></label>
+          </div>
         </div>
 
         <div class="q" data-q="mpf">
-          <p>6. 過去一年，你有沒有打開看過自己的強積金？</p>
-          <label><input type="radio" name="mpf" value="2" /> 有</label>
-          <label><input type="radio" name="mpf" value="1" /> 一點</label>
-          <label><input type="radio" name="mpf" value="0" /> 否（未看過）</label>
+          <div class="q__head"><span class="q__n"></span><span class="q__q" id="q-mpf">過去一年，你有打開看過強積金嗎？</span></div>
+          <div class="seg-group" role="radiogroup" aria-labelledby="q-mpf">
+            <label class="seg"><input type="radio" name="mpf" value="2" /><span>有</span></label>
+            <label class="seg"><input type="radio" name="mpf" value="1" /><span>一點</span></label>
+            <label class="seg"><input type="radio" name="mpf" value="0" /><span>未看過</span></label>
+          </div>
         </div>
 
-        <fieldset style="border:0;padding:0;margin:10px 0 0;min-inline-size:auto;">
-          <legend style="font-family:var(--serif);color:var(--navy);font-size:17px;padding:18px 0 4px;border-top:1px solid var(--line);width:100%;box-sizing:border-box;">補充數字（選填，更完整地分析）</legend>
-          <p class="microdisc" style="margin:0 0 4px;">以下數字只在你的瀏覽器計算，不會傳送或儲存；所有結果僅為說明性教育參考，非個別理財建議。</p>
-
-          <div class="calc__row">
-            <label for="in-income">每月收入（到手）<span class="hint">每月實際到手收入</span></label>
-            <input type="number" id="in-income" inputmode="numeric" min="0" step="100" autocomplete="off" placeholder="HKD / 月" />
+        <div class="faq-item" style="margin-top:6px;">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="calc-extra">補充數字，讓分析更準確（選填）</button>
+          <div class="faq-a" id="calc-extra">
+            <div class="calc__row">
+              <label for="in-income">每月收入（到手）<span class="hint">實際到手金額</span></label>
+              <input type="number" id="in-income" inputmode="numeric" min="0" step="100" autocomplete="off" placeholder="HKD / 月" />
+            </div>
+            <div class="calc__row">
+              <label for="in-expense">每月必要支出<span class="hint">租金、食、交通等，先不計還款</span></label>
+              <input type="number" id="in-expense" inputmode="numeric" min="0" step="100" autocomplete="off" placeholder="HKD / 月" />
+            </div>
+            <div class="calc__row">
+              <label for="in-cash">流動現金（活期＋儲蓄）<span class="hint">可即時動用的總額，非每月</span></label>
+              <input type="number" id="in-cash" inputmode="numeric" min="0" step="1000" autocomplete="off" placeholder="HKD" />
+            </div>
+            <div class="calc__row">
+              <label for="in-debt">每月債務還款（選填）<span class="hint">樓按、卡數等月供</span></label>
+              <input type="number" id="in-debt" inputmode="numeric" min="0" step="100" autocomplete="off" placeholder="HKD / 月" />
+            </div>
+            <p class="microdisc" style="margin:12px 0 0;">只在你的瀏覽器計算，不會傳送或儲存。</p>
           </div>
-          <div class="calc__row">
-            <label for="in-expense">每月必要支出<span class="hint">租金、食、交通、電話費等基本開支（先不計借貸還款）</span></label>
-            <input type="number" id="in-expense" inputmode="numeric" min="0" step="100" autocomplete="off" placeholder="HKD / 月" />
-          </div>
-          <div class="calc__row">
-            <label for="in-cash">流動現金（活期＋儲蓄）<span class="hint">銀行戶口可即時動用的錢（是總數，不是每月）</span></label>
-            <input type="number" id="in-cash" inputmode="numeric" min="0" step="1000" autocomplete="off" placeholder="HKD" />
-          </div>
-          <div class="calc__row">
-            <label for="in-debt">每月債務還款〔選填〕<span class="hint">樓按、私貸、卡數等每月供款</span></label>
-            <input type="number" id="in-debt" inputmode="numeric" min="0" step="100" autocomplete="off" placeholder="HKD / 月" />
-          </div>
-        </fieldset>
+        </div>
 
       </form>
 
@@ -311,7 +342,6 @@
         <p class="microdisc" id="out-progress" style="margin:2px 0 0;"></p>
 
         <div class="calc__grid" id="out-metrics" style="display:none;"></div>
-        <p class="microdisc" id="out-note" style="margin:10px 0 0;display:none;">數字與評分僅作說明，根據你自己填的資料計算，並非個別建議。</p>
         <p class="microdisc" id="out-partial" style="margin:8px 0 0;display:none;"></p>
         <div class="calc__warn" id="out-cashwarn"></div>
 
@@ -322,50 +352,52 @@
         <p id="out-clean" style="margin-top:14px;font-family:var(--serif);color:var(--body);font-size:15px;display:none;">就你的自評而言，六個範疇暫未顯示明顯缺口。維持定期檢視即可。</p>
       </div>
 
-      <!-- ===== Honesty bridge (preliminary -> meeting) ===== -->
-      <p class="bridge">這份體檢是<strong>初步</strong>、教育性的參考。你的完整情況——目標、收入、家庭、可承受的風險——要傾談過才看到全貌。</p>
+      <!-- ===== Deferred block: revealed once a band is computed (JS hides at init; JS-off shows all) ===== -->
+      <div id="post-result">
 
-      <!-- ===== 初步 vs 詳細 報告（value ladder）===== -->
-      <section class="ladder" aria-label="初步報告與詳細報告比較">
-        <div class="ladder__col">
-          <p class="ladder__h">你現在看到的 · 初步報告（免費）</p>
-          <ul class="ladder__list">
-            <li>整體評估，與你填的比率（儲蓄率、應急月數、債務佔收入）</li>
-            <li>有哪些範疇值得留意（方向性）</li>
-            <li>說明性、教育性質，根據你填的幾項數字</li>
-          </ul>
+        <!-- ===== Honesty bridge (preliminary -> meeting) ===== -->
+        <p class="bridge">這份體檢只是<strong>初步</strong>參考。你的完整情況——目標、家庭、可承受的風險——見面詳談才看得清。</p>
+
+        <!-- ===== Booking form: e-mails the preliminary report to us; the visitor never sees it sent ===== -->
+        <form id="book-form" class="bookform" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="c9868a8f-6b79-494b-a801-eb84d48c5187" />
+          <input type="hidden" name="subject" value="新體檢預約 — 資產配置自我體檢" />
+          <input type="hidden" name="from_name" value="IFA 網站 · 資產配置自我體檢" />
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none !important;" />
+          <input type="hidden" name="初步報告" id="form-report" value="（訪客未完成自測）" />
+          <p class="bookform__h">預約 15 分鐘見面：我們會帶著你這份初步報告詳談。</p>
+          <label class="bookform__l">稱呼<input type="text" name="稱呼" required autocomplete="name" /></label>
+          <label class="bookform__l">WhatsApp 號碼<input type="tel" name="WhatsApp" required inputmode="tel" autocomplete="tel" placeholder="例如 9123 4567" /></label>
+          <label class="bookform__c"><input type="checkbox" required /> 我同意以 WhatsApp 聯絡，並傳送我的資料與初步報告，只用於是次諮詢（詳見<a href="/legal" target="_blank" rel="noopener">私隱政策</a>）。</label>
+          <button type="submit" class="btn btn--solid" data-umami-event="book-submit">預約 15 分鐘，傾我的初步報告</button>
+          <p class="bookform__err" id="book-err" style="display:none;"></p>
+          <p class="bookform__ok" id="book-ok" style="display:none;">多謝你！我們已收到你的初步報告，通常一兩個工作天內會用 WhatsApp 與你聯絡，約 15 分鐘談談。等候期間，可以先看<a href="/glossary-index">理財詞典</a>或<a href="/article">相關文章</a>，下次傾談會更有用。</p>
+        </form>
+
+        <!-- ===== 初步 vs 詳細 報告（value ladder，放在預約下面）===== -->
+        <div class="ladder-sec">
+          <p class="ladder-cap">初步與詳細報告的分別</p>
+          <section class="ladder" aria-label="初步報告與詳細報告比較">
+            <div class="ladder__col">
+              <p class="ladder__h">你現在看到的 · 初步報告（免費）</p>
+              <ul class="ladder__list">
+                <li>整體評估，與你填的比率（儲蓄率、應急月數、債務佔收入）</li>
+                <li>有哪些範疇值得留意（方向性）</li>
+              </ul>
+            </div>
+            <div class="ladder__col ladder__col--lead">
+              <p class="ladder__h">見面才有的 · 詳細報告</p>
+              <ul class="ladder__list">
+                <li>一個照你目前情況、<strong>排好優先次序</strong>的起步次序（先做什麼、後做什麼）</li>
+                <li>用你自己的數字試算，看不同選擇的分別</li>
+                <li>一份可以帶走、下次自己也看得明白的書面總結</li>
+                <li>有問題可以即場問清楚，不用怕問得淺</li>
+              </ul>
+            </div>
+          </section>
         </div>
-        <div class="ladder__col ladder__col--lead">
-          <p class="ladder__h">見面才有的 · 詳細報告</p>
-          <ul class="ladder__list">
-            <li>一個照你目前情況、<strong>排好優先次序</strong>的起步次序（先做什麼、後做什麼）</li>
-            <li>用你自己的數字試算，看不同選擇的分別</li>
-            <li>一份可以帶走、下次自己也看得明白的書面總結</li>
-            <li>有問題可以即場問清楚，不用怕問得淺</li>
-          </ul>
-        </div>
-      </section>
 
-      <!-- ===== Disclaimer ===== -->
-      <p class="microdisc" style="margin-top:18px;">本自測僅為教育性參考，結果取決於你的自評，不構成個別理財或保險建議；個別建議須在見面了解你的完整情況後提供。</p>
-
-      <!-- ===== Booking form: e-mails the preliminary report to us; the visitor never sees it sent ===== -->
-      <p id="cta-note" class="microdisc" style="margin-top:18px;display:none;"></p>
-      <form id="book-form" class="bookform" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="c9868a8f-6b79-494b-a801-eb84d48c5187" />
-        <input type="hidden" name="subject" value="新體檢預約 — 資產配置自我體檢" />
-        <input type="hidden" name="from_name" value="IFA 網站 · 資產配置自我體檢" />
-        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none !important;" />
-        <input type="hidden" name="初步報告" id="form-report" value="（訪客未完成自測）" />
-        <p class="bookform__h">預約 15 分鐘見面 · 財商進化學院 會帶住你這份初步報告與你詳談</p>
-        <label class="bookform__l">稱呼<input type="text" name="稱呼" required autocomplete="name" /></label>
-        <label class="bookform__l">WhatsApp 號碼<input type="tel" name="WhatsApp" required inputmode="tel" autocomplete="tel" placeholder="例如 9123 4567" /></label>
-        <label class="bookform__c"><input type="checkbox" required /> 我同意你們用 WhatsApp 與我聯絡，並把我填的資料與初步報告一併傳送（只用於是次諮詢；詳見<a href="/legal" target="_blank" rel="noopener">私隱政策</a>）。</label>
-        <button type="submit" class="btn btn--solid" data-umami-event="book-submit">提交並預約</button>
-        <p class="bookform__alt">或 <a href="https://wa.me/85291268714?text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%2015%20%E5%88%86%E9%90%98%E8%AB%AE%E8%A9%A2" target="_blank" rel="noopener" data-umami-event="whatsapp-click">直接用 WhatsApp 聯絡</a>（不會傳送報告內容）。</p>
-        <p class="bookform__err" id="book-err" style="display:none;"></p>
-        <p class="bookform__ok" id="book-ok" style="display:none;">多謝你！我們已收到你的初步報告，通常一兩個工作天內會用 WhatsApp 與你聯絡，約 15 分鐘談談。等候期間，可以先看<a href="/glossary-index">理財詞典</a>或<a href="/article">相關文章</a>，下次傾談會更有用。</p>
-      </form>
+      </div>
 
 
       <!-- ===== Cross-links ===== -->
@@ -408,7 +440,7 @@
       { name:'ci',        gap:'醫療或危疾保障有缺口：生病時的醫療開支，現在可能要自己全數承擔。' },
       { name:'life',      gap:'人壽保障不足：如果有家人靠你的收入，萬一你不能工作，他們的生活費可能未有著落。' },
       { name:'retire',    gap:'退休準備較單一：除了強積金，可以開始考慮其他長線儲蓄。還未開始也很正常，這是起點。' },
-      { name:'diversify', gap:'投資較集中：分散在多過一種地方，可以分散風險；還未開始投資的話，這項日後再看也可以。' },
+      { name:'diversify', gap:'投資較集中：分散在多於一處可分散風險；還未開始投資的話，這項日後再看也可以。' },
       { name:'mpf',       gap:'一年未看過強積金：打開看看自己有哪些帳戶、揀了什麼基金，每年看一次就夠。' }
     ];
 
@@ -487,6 +519,8 @@
     var warnEl    = document.getElementById('out-cashwarn');
     var ctaNoteEl = document.getElementById('cta-note');
     var reportEl  = document.getElementById('form-report');
+    var postEl    = document.getElementById('post-result');
+    var prRevealed = false;
 
     function tile(value, key){
       return '<div><div class="v">' + value + '</div><div class="k">' + key + '</div></div>';
@@ -525,6 +559,7 @@
       bandEl.textContent = (r.band === null) ? '填好上方問題，這裡就會即時顯示你的初步結果' : (r.band + ' · ' + fmtPct(r.pct));
       var progEl = document.getElementById('out-progress');
       if (progEl) progEl.textContent = r.applicable ? ('已回答 ' + r.applicable + ' / 6 題') : '';
+      if (postEl && r.band !== null && !prRevealed){ prRevealed = true; postEl.hidden = false; postEl.classList.add('reveal'); requestAnimationFrame(function(){ postEl.classList.add('is-in'); }); }
       var noteEl = document.getElementById('out-note');
       if (noteEl) noteEl.style.display = (tiles.length || r.band !== null) ? 'block' : 'none';
       var partialEl = document.getElementById('out-partial');
@@ -597,6 +632,7 @@
     // Recompute live on every input change.
     document.getElementById('checkup').addEventListener('change', render);
     document.getElementById('checkup').addEventListener('input', render);
+    if (postEl) postEl.hidden = true;
     render();
 
     // self-check: run the core formula on a known input and warn if it deviates.
@@ -644,7 +680,7 @@
         .then(function(r){ return r.json(); })
         .then(function(j){
           if (j && j.success){
-            Array.prototype.forEach.call(f.querySelectorAll('.bookform__h, label, button, .bookform__alt'), function(el){ el.style.display = 'none'; });
+            Array.prototype.forEach.call(f.querySelectorAll('.bookform__h, label, button'), function(el){ el.style.display = 'none'; });
             if (ok) ok.style.display = 'block';
           } else { throw new Error((j && j.message) ? j.message : 'submit failed'); }
         })
