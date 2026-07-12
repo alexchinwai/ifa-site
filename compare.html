@@ -313,28 +313,30 @@
     <section class="reveal" style="margin-top: clamp(56px,8vw,88px);">
       <p class="eyebrow">對號入座</p>
       <h2 style="font-size:clamp(22px,2.6vw,28px); margin:14px 0 24px;">何時考慮哪一種?</h2>
-      <div class="services">
-        <div class="service">
-          <div class="service__num">01</div>
-          <h3>何時考慮保費融資</h3>
-          <ul style="padding-left:1.2em; line-height:1.9; font-size:15px; color:var(--body); margin:0 0 18px;">
-            <li>你擁有充足而無須動用的流動性緩衝,即使被要求追加抵押亦撐得過。</li>
-            <li>你完全理解並接受借貸利率會浮動上升。</li>
-            <li>你明白保單回報不保證,願意承受息差收窄甚至轉負。</li>
-            <li>你的整體財務不依賴這筆資金應急,在最差情況下生活仍然穩定。</li>
-          </ul>
-          <p class="muted" style="font-size:14px; line-height:1.85;">明確的最差情況:利率上升且保單回報不似預期時,可能須追加抵押或虧損離場(說明性)。若這個情境會令你的財務崩潰,代表槓桿已超出你的承受範圍。</p>
+      <div class="faq">
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fit-financing">我適合保費融資嗎?</button>
+          <div class="faq-a" id="fit-financing">
+            <ul style="padding-left:1.2em; line-height:1.9; font-size:15px; color:var(--body); margin:0 0 12px;">
+              <li>你擁有充足而無須動用的流動性緩衝,即使被要求追加抵押亦撐得過。</li>
+              <li>你完全理解並接受借貸利率會浮動上升。</li>
+              <li>你明白保單回報不保證,願意承受息差收窄甚至轉負。</li>
+              <li>你的整體財務不依賴這筆資金應急,在最差情況下生活仍然穩定。</li>
+            </ul>
+            <p class="muted" style="font-size:14px; line-height:1.85; margin:0;">(最差情況見上表)</p>
+          </div>
         </div>
-        <div class="service">
-          <div class="service__num">02</div>
-          <h3>何時一筆過更穩妥</h3>
-          <ul style="padding-left:1.2em; line-height:1.9; font-size:15px; color:var(--body); margin:0 0 18px;">
-            <li>你最重視確定性,不願在借貸與利率上操心。</li>
-            <li>你有足夠現金一次過付清,而不影響應急儲備與其他目標。</li>
-            <li>你寧願回報直接、不作放大,也不願多承擔一層槓桿風險。</li>
-            <li>你接受資金將鎖定於保單一段時間,提早退保可能有損失。</li>
-          </ul>
-          <p class="muted" style="font-size:14px; line-height:1.85;">最差情況其實有限:主要是保單回報不似預期,或提早退保的損失(說明性),不會因借貸利率而額外放大,亦不會被追加抵押。</p>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="fit-lumpsum">我適合一筆過嗎?</button>
+          <div class="faq-a" id="fit-lumpsum">
+            <ul style="padding-left:1.2em; line-height:1.9; font-size:15px; color:var(--body); margin:0 0 12px;">
+              <li>你最重視確定性,不願在借貸與利率上操心。</li>
+              <li>你有足夠現金一次過付清,而不影響應急儲備與其他目標。</li>
+              <li>你寧願回報直接、不作放大,也不願多承擔一層槓桿風險。</li>
+              <li>你接受資金將鎖定於保單一段時間,提早退保可能有損失。</li>
+            </ul>
+            <p class="muted" style="font-size:14px; line-height:1.85; margin:0;">(最差情況見上表)</p>
+          </div>
         </div>
       </div>
     </section>
@@ -344,7 +346,6 @@
       <p class="kicker">我會怎樣與你拆解</p>
       <h2>不是替你選擇,而是協助你看清楚再選擇</h2>
       <p>這類比較最危險的用法,是拿一個「槓桿後很好看」的內部回報率去推動你借貸。我們的做法相反:先了解你真正想解決的問題,再逐個工具攤開真實的取捨,包括成本、流動性、利率風險與回本期,然後一同計算基準情況與最差情況。當你看得明白、連最差情況也能接受,那才算是你自己的決定;否則,選擇穩妥的一條路完全沒有問題。</p>
-      <p class="muted">本頁屬一般教育內容,並非推薦使用保費融資,亦非個別理財建議。保費融資涉及槓桿,具利率波動、流動性及追加抵押風險,並不保證回報。</p>
     </section>
 
     <!-- ===== FAQ ===== -->
@@ -374,7 +375,7 @@
         <li>香港保險業監管局 (IA),有關保費融資的消費者提示及風險披露(說明性引用示例)。<a href="https://www.ia.org.hk/" rel="nofollow noopener" target="_blank">ia.org.hk</a></li>
         <li>香港金融管理局 (HKMA),利率走勢及最優惠利率公開資料(說明性引用示例)。<a href="https://www.hkma.gov.hk/" rel="nofollow noopener" target="_blank">hkma.gov.hk</a></li>
       </ol>
-      <p class="microdisc">本文所有數字均為說明用途,基於假設參數推算,並不代表任何保證回報、息差或個別建議。本頁並非推薦使用保費融資。保費融資涉及借貸槓桿,具利率波動、流動性及追加抵押風險,有可能虧損本金。任何決定均應在了解個人情況及產品條款後,諮詢持牌顧問。</p>
+      <p class="microdisc">本文所有數字均為說明用途,基於假設參數推算,並不代表任何保證回報或個別建議。理財決定應在了解個人情況後,諮詢持牌顧問。</p>
     </section>
 
     <!-- ===== Related glossary ===== -->
