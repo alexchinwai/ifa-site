@@ -31,6 +31,9 @@ CARDS = {
     "og-compare-advice": "理財建議的三條路怎樣選",
     "og-compare-savings": "儲蓄保險與定存+自行投資怎樣選",
     "og-topic-mpf": "強積金其實是你的錢",
+    "og-topic-start-20s": "二十幾歲理財,應該從哪裡開始?",
+    "og-topic-debt-vs-saving": "先還債還是先儲錢?一個判斷準則",
+    "og-topic-savings-insurance-questions": "買儲蓄保險前要問的七個問題",
 }
 
 for key, title in CARDS.items():
