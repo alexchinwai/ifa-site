@@ -34,6 +34,7 @@ CARDS = {
     "og-topic-start-20s": "二十幾歲理財,應該從哪裡開始?",
     "og-topic-debt-vs-saving": "先還債還是先儲錢?一個判斷準則",
     "og-topic-savings-insurance-questions": "買儲蓄保險前要問的七個問題",
+    "og-topic-dca": "平均成本法是什麼?計算示例與限制",
 }
 
 for key, title in CARDS.items():
