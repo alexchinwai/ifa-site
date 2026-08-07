@@ -35,6 +35,9 @@ CARDS = {
     "og-topic-debt-vs-saving": "先還債還是先儲錢?一個判斷準則",
     "og-topic-savings-insurance-questions": "買儲蓄保險前要問的七個問題",
     "og-topic-dca": "平均成本法是什麼?計算示例與限制",
+    "og-topic-pfin": "保費融資是什麼?原理與現金流拆解",
+    "og-topic-pfin-risks": "保費融資八大風險逐一拆解",
+    "og-topic-pfin-breakeven": "保費融資要多久回本?計法與例子",
 }
 
 for key, title in CARDS.items():
