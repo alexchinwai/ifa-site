@@ -38,6 +38,10 @@ CARDS = {
     "og-topic-pfin": "保費融資是什麼?原理與現金流拆解",
     "og-topic-pfin-risks": "保費融資八大風險逐一拆解",
     "og-topic-pfin-breakeven": "保費融資要多久回本?計法與例子",
+    "og-topic-wealth-ladder": "財富階梯:儲到幾多才算正常?",
+    "og-topic-further-study": "進修值不值得?先看財務位置",
+    "og-topic-spending-line": "0.01% 法則:買不買得起,是看淨資產",
+    "og-topic-conflicting-advice": "為什麼理財建議總是互相矛盾?",
 }
 
 for key, title in CARDS.items():
