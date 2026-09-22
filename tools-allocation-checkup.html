@@ -29,6 +29,10 @@
   <!-- Umami analytics (cookieless) -->
   <script defer data-website-id="44c99229-67f0-49a1-ad58-b3fba34ebf05" src="https://cloud.umami.is/script.js"></script>
 
+  <!-- Lead router（Cloudflare Worker `/lead`，engine/lead-router/）。空字串 = 未 deploy，
+       表單行為同以前一樣直接 POST Web3Forms。deploy 咗之後填呢度（見 engine/lead-router/README.md）。 -->
+  <script>const LEAD_ENDPOINT = "https://fq-lead-router.alexchinwai.workers.dev";</script>
+
   <style>
     .calc{max-width:760px;margin-inline:auto;}
     .calc__row{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);}
@@ -376,6 +380,7 @@
           <p class="bookform__h">或者留下號碼，由我們聯絡你：預約 15 分鐘見面，帶著你這份初步報告詳談。</p>
           <label class="bookform__l">稱呼<input type="text" name="稱呼" required autocomplete="name" /></label>
           <label class="bookform__l">WhatsApp 號碼<input type="tel" name="WhatsApp" required inputmode="tel" autocomplete="tel" placeholder="例如 9123 4567" /></label>
+          <label class="bookform__l">電郵（可選）— 即時收到你這份初步報告的摘要<input type="email" name="電郵" autocomplete="email" /></label>
           <label class="bookform__c"><input type="checkbox" required /> 我同意以 WhatsApp 聯絡，並傳送我的資料與初步報告，只用於是次諮詢（詳見<a href="/legal" target="_blank" rel="noopener">私隱政策</a>）。</label>
           <button type="submit" class="btn btn--solid" data-umami-event="book-submit">預約 15 分鐘，傾我的初步報告</button>
           <p class="bookform__err" id="book-err" style="display:none;"></p>
@@ -687,30 +692,54 @@
   })();
   </script>
 
-  <!-- ===== Booking form submit (AJAX → Web3Forms → e-mails us; visitor stays on page) ===== -->
+  <!-- ===== Booking form submit (AJAX → lead-router（有設 LEAD_ENDPOINT）或直接 Web3Forms；visitor 留喺頁面) ===== -->
   <script>
   (function(){
     var f = document.getElementById('book-form');
     if (!f) return;
     var ok  = document.getElementById('book-ok');
     var err = document.getElementById('book-err');
+
+    function showOk(){
+      Array.prototype.forEach.call(f.querySelectorAll('.bookform__h, label, button'), function(el){ el.style.display = 'none'; });
+      if (ok) ok.style.display = 'block';
+    }
+
+    function submitToWeb3Forms(){
+      return fetch('https://api.web3forms.com/submit', { method:'POST', body: new FormData(f) })
+        .then(function(r){ return r.json(); })
+        .then(function(j){
+          if (j && j.success){ showOk(); return; }
+          throw new Error((j && j.message) ? j.message : 'submit failed');
+        });
+    }
+
     f.addEventListener('submit', function(e){
       e.preventDefault();
       if (err){ err.style.display = 'none'; err.textContent = ''; }
       var btn = f.querySelector('button[type="submit"]');
       if (btn){ btn.disabled = true; btn.textContent = '提交中…'; }
-      fetch('https://api.web3forms.com/submit', { method:'POST', body: new FormData(f) })
-        .then(function(r){ return r.json(); })
-        .then(function(j){
-          if (j && j.success){
-            Array.prototype.forEach.call(f.querySelectorAll('.bookform__h, label, button'), function(el){ el.style.display = 'none'; });
-            if (ok) ok.style.display = 'block';
-          } else { throw new Error((j && j.message) ? j.message : 'submit failed'); }
-        })
-        .catch(function(){
-          if (btn){ btn.disabled = false; btn.textContent = '提交並預約'; }
-          if (err){ err.textContent = '提交未成功，請稍後再試，或用上方 WhatsApp 直接聯絡。'; err.style.display = 'block'; }
-        });
+
+      var attempt;
+      if (LEAD_ENDPOINT){
+        attempt = fetch(LEAD_ENDPOINT, { method:'POST', body: new FormData(f) })
+          .then(function(r){
+            if (!r.ok) throw new Error('lead endpoint non-2xx: ' + r.status);
+            return r.json().catch(function(){ return { ok: true }; });
+          })
+          .then(function(j){
+            if (!j || j.ok === false) throw new Error('lead endpoint rejected');
+            showOk();
+          })
+          .catch(function(){ return submitToWeb3Forms(); }); // 非 2xx／網絡錯 → fallback 返舊路
+      } else {
+        attempt = submitToWeb3Forms();
+      }
+
+      attempt.catch(function(){
+        if (btn){ btn.disabled = false; btn.textContent = '提交並預約'; }
+        if (err){ err.textContent = '提交未成功，請稍後再試，或用上方 WhatsApp 直接聯絡。'; err.style.display = 'block'; }
+      });
     });
   })();
   </script>
