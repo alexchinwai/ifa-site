@@ -29,10 +29,6 @@
   <!-- Umami analytics (cookieless) -->
   <script defer data-website-id="44c99229-67f0-49a1-ad58-b3fba34ebf05" src="https://cloud.umami.is/script.js"></script>
 
-  <!-- Lead router（Cloudflare Worker `/lead`，engine/lead-router/）。空字串 = 未 deploy，
-       表單行為同以前一樣直接 POST Web3Forms。deploy 咗之後填呢度（見 engine/lead-router/README.md）。 -->
-  <script>const LEAD_ENDPOINT = "https://fq-lead-router.alexchinwai.workers.dev/lead";</script>
-
   <style>
     .calc{max-width:760px;margin-inline:auto;}
     .calc__row{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);}
@@ -70,6 +66,9 @@
     @media(max-width:520px){.seg-group{margin-left:0;width:100%;}.seg{flex:1;}.seg span{min-width:0;width:100%;padding:12px 8px;}}
     .result-cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
     .result-cta .ctanote{font-family:var(--serif);font-size:14px;color:var(--body);line-height:1.6;}
+    .result-cta label,.result-cta textarea{width:100%;}
+    .result-cta textarea{box-sizing:border-box;padding:12px;border:1px solid var(--line-2);font:inherit;resize:vertical;}
+    .no-js #copy-result{display:none;}
     .bridge{margin-top:18px;font-family:var(--serif);font-size:15px;color:var(--body);line-height:1.75;}
     .bridge strong{color:var(--navy);font-weight:600;}
     .ladder{display:grid;grid-template-columns:1fr 1fr;margin-top:24px;border:1px solid var(--line);border-radius:2px;overflow:hidden;}
@@ -128,8 +127,7 @@
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer support",
-        "telephone": "+852 9126 8714",
-        "url": "https://wa.me/85291268714",
+        "url": "https://www.threads.com/@fq_adulting",
         "availableLanguage": [
           "zh-HK",
           "zh-Hant",
@@ -364,10 +362,12 @@
         <!-- ===== Honesty bridge (preliminary -> meeting) ===== -->
         <p class="bridge">這份體檢只是<strong>初步</strong>參考。你的完整情況——目標、家庭、可承受的風險——見面詳談才看得清。</p>
 
-        <!-- ===== Primary ask (2026-09-07): one tap, result pre-filled, visitor sees and can edit the message ===== -->
         <div class="result-cta">
-          <a id="wa-result" class="btn btn--solid" href="https://wa.me/85291268714?text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E5%89%9B%E5%81%9A%E5%AE%8C%E8%B3%87%E7%94%A2%E9%85%8D%E7%BD%AE%E9%AB%94%E6%AA%A2%EF%BC%8C%E6%83%B3%E5%95%8F%E4%B8%80%E5%95%8F%E4%B8%8B%E4%B8%80%E6%AD%A5%E3%80%82" target="_blank" rel="noopener" data-umami-event="whatsapp-click">用 WhatsApp 傳送我的結果，問一問下一步</a>
-          <span class="ctanote">訊息會先顯示給你看，可以修改後才傳送。</span>
+          <label for="result-message">想問下一步？可複製這段摘要，貼到初級大人的 Threads 私訊，確認內容後再傳送。</label>
+          <textarea id="result-message" rows="5" readonly>你好，我想查詢資產配置體檢的下一步。</textarea>
+          <button type="button" id="copy-result" class="btn btn--ghost">複製摘要</button>
+          <a class="btn btn--solid" href="https://www.threads.com/@fq_adulting" target="_blank" rel="noopener noreferrer" data-umami-event="threads-click">開啟初級大人的 Threads</a>
+          <span class="ctanote" id="copy-status" role="status"></span>
         </div>
 
         <!-- ===== Secondary: booking form e-mails the preliminary report to us ===== -->
@@ -380,7 +380,7 @@
           <p class="bookform__h">或者留下號碼，由我們聯絡你：預約 15 分鐘見面，帶著你這份初步報告詳談。</p>
           <label class="bookform__l">稱呼<input type="text" name="稱呼" required autocomplete="name" /></label>
           <label class="bookform__l">WhatsApp 號碼<input type="tel" name="WhatsApp" required inputmode="tel" autocomplete="tel" placeholder="例如 9123 4567" /></label>
-          <label class="bookform__l">電郵（可選）— 即時收到你這份初步報告的摘要<input type="email" name="電郵" autocomplete="email" /></label>
+          <label class="bookform__l">電郵（可選）<input type="email" name="電郵" autocomplete="email" /></label>
           <label class="bookform__c"><input type="checkbox" required /> 我同意以 WhatsApp 聯絡，並傳送我的資料與初步報告，只用於是次諮詢（詳見<a href="/legal" target="_blank" rel="noopener">私隱政策</a>）。</label>
           <button type="submit" class="btn btn--solid" data-umami-event="book-submit">預約 15 分鐘，傾我的初步報告</button>
           <p class="bookform__err" id="book-err" style="display:none;"></p>
@@ -430,7 +430,7 @@
         <div class="footer__name">初級大人的財商進化學院</div>
         <div class="footer__meta">FQ Adulting · 香港財商教育</div>
       </div>
-      <div class="footer__contact"><a href="/#contact" data-umami-event="book-click">預約諮詢</a><br /><a href="https://wa.me/85291268714" target="_blank" rel="noopener" data-umami-event="whatsapp-click">WhatsApp</a><br /><a href="https://www.instagram.com/fqadulting" target="_blank" rel="noopener" data-umami-event="ig-click">Instagram</a> · <a href="https://www.youtube.com/@fqadulting" target="_blank" rel="noopener" data-umami-event="yt-click">YouTube</a></div>
+      <div class="footer__contact"><a href="/#contact" data-umami-event="book-click">預約諮詢</a><br /><a href="https://www.threads.com/@fq_adulting" target="_blank" rel="noopener noreferrer" data-umami-event="threads-click">Threads 私訊</a><br /><a href="https://www.instagram.com/fq_adulting" target="_blank" rel="noopener" data-umami-event="ig-click">Instagram</a> · <a href="https://www.youtube.com/@fqadulting" target="_blank" rel="noopener" data-umami-event="yt-click">YouTube</a></div>
     </div>
     <p class="footer__legal">以上內容僅供一般參考，並不構成任何保險、投資或財務建議，亦不應視為產品要約或招攬。所有理財決定應在了解個人情況及產品條款後，諮詢持牌顧問。保費融資涉及槓桿，具利率波動及流動性風險，並不保證回報。本頻道內容由香港持牌獨立理財顧問把關，受香港保險業監管局(IA)、積金局(MPFA)及證券及期貨事務監察委員會(SFC)相關規例規管。&copy; 2026 初級大人的財商進化學院。 · <a href="/legal" style="color:var(--on-navy-soft);border-bottom:1px solid rgba(255,255,255,.3);">私隱政策</a></p>
   </div></footer>
@@ -641,21 +641,31 @@
         }
       }
 
-      // WhatsApp primary CTA: pre-fill the result summary (no raw income figures; the visitor can edit before sending)
-      var waEl = document.getElementById('wa-result');
-      if (waEl){
-        var W = ['你好，我剛做完資產配置體檢。'];
-        if (r.band !== null) W.push('整體評估：' + r.band + '（' + fmtPct(r.pct) + '）');
-        var wm = [];
-        if (m.savings != null) wm.push('儲蓄率 ' + fmtPct(m.savings * 100));
-        if (m.months != null)  wm.push('應急基金 ' + (Math.round(m.months * 10) / 10) + ' 個月');
-        if (m.dsr != null)     wm.push('債務佔收入 ' + fmtPct(m.dsr * 100));
-        if (wm.length) W.push(wm.join('、'));
-        if (allGaps.length) W.push('值得留意：' + allGaps.slice(0, 3).join('；'));
-        W.push('想問一問下一步可以先做什麼。');
-        waEl.href = 'https://wa.me/85291268714?text=' + encodeURIComponent(W.join('\n'));
-      }
+      var message = ['你好，我剛做完資產配置體檢。'];
+      if (r.band !== null) message.push('整體評估：' + r.band + '（' + fmtPct(r.pct) + '）');
+      var ratios = [];
+      if (m.savings != null) ratios.push('儲蓄率 ' + fmtPct(m.savings * 100));
+      if (m.months != null) ratios.push('應急基金 ' + (Math.round(m.months * 10) / 10) + ' 個月');
+      if (m.dsr != null) ratios.push('債務佔收入 ' + fmtPct(m.dsr * 100));
+      if (ratios.length) message.push(ratios.join('、'));
+      if (allGaps.length) message.push('值得留意：' + allGaps.slice(0, 3).join('；'));
+      message.push('想問一問下一步可以先做什麼。');
+      document.getElementById('result-message').value = message.join('\n');
+      document.getElementById('copy-status').textContent = '';
     }
+
+    document.getElementById('copy-result').addEventListener('click', async function(){
+      var preview = document.getElementById('result-message');
+      var status = document.getElementById('copy-status');
+      try {
+        await navigator.clipboard.writeText(preview.value);
+        status.textContent = '已複製摘要。';
+      } catch {
+        preview.focus();
+        preview.select();
+        status.textContent = '已選取摘要，請使用裝置的複製功能。';
+      }
+    });
 
     // Recompute live on every input change.
     document.getElementById('checkup').addEventListener('change', render);
@@ -692,7 +702,6 @@
   })();
   </script>
 
-  <!-- ===== Booking form submit (AJAX：Web3Forms + lead-router 並行；visitor 留喺頁面) ===== -->
   <script>
   (function(){
     var f = document.getElementById('book-form');
@@ -705,43 +714,24 @@
       if (ok) ok.style.display = 'block';
     }
 
-    function submitToWeb3Forms(){
-      return fetch('https://api.web3forms.com/submit', { method:'POST', body: new FormData(f) })
-        .then(function(r){ return r.json(); })
-        .then(function(j){
-          if (j && j.success) return;
-          throw new Error((j && j.message) ? j.message : 'submit failed');
-        });
+    async function submitToWeb3Forms(){
+      var response = await fetch(f.action, { method:'POST', body: new FormData(f) });
+      if (!response.ok || !(await response.json()).success) throw new Error('Booking submission failed');
     }
 
-    f.addEventListener('submit', function(e){
+    f.addEventListener('submit', async function(e){
       e.preventDefault();
       if (err){ err.style.display = 'none'; err.textContent = ''; }
       var btn = f.querySelector('button[type="submit"]');
       if (btn){ btn.disabled = true; btn.textContent = '提交中…'; }
 
-      // 兩路並行：Web3Forms（瀏覽器直送 → email 通知 Alex；免費版唔准 server 端 call）
-      // + lead-router（入 D1 + 首回覆）。任何一路成功就當交咗；兩路都衰先顯示錯誤。
-      var jobs = [submitToWeb3Forms()];
-      if (LEAD_ENDPOINT){
-        jobs.push(fetch(LEAD_ENDPOINT, { method:'POST', body: new FormData(f) })
-          .then(function(r){
-            if (!r.ok) throw new Error('lead endpoint non-2xx: ' + r.status);
-            return r.json().catch(function(){ return { ok: true }; });
-          })
-          .then(function(j){ if (!j || j.ok === false) throw new Error('lead endpoint rejected'); }));
+      try {
+        await submitToWeb3Forms();
+        showOk();
+      } catch {
+        if (btn){ btn.disabled = false; btn.textContent = '重新提交預約'; }
+        if (err){ err.textContent = '提交未成功，請稍後再試，或透過上方的 Threads 連結與我們聯絡。'; err.style.display = 'block'; }
       }
-      var attempt = new Promise(function(resolve, reject){
-        var left = jobs.length;
-        jobs.forEach(function(p){
-          p.then(resolve, function(){ if (--left === 0) reject(new Error('all submit paths failed')); });
-        });
-      }).then(showOk);
-
-      attempt.catch(function(){
-        if (btn){ btn.disabled = false; btn.textContent = '提交並預約'; }
-        if (err){ err.textContent = '提交未成功，請稍後再試，或用上方 WhatsApp 直接聯絡。'; err.style.display = 'block'; }
-      });
     });
   })();
   </script>
