@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src https://gateway.umami.is; object-src 'none'; base-uri 'self'; form-action 'none'" />
+  <title>儲蓄保單整理表｜初級大人的財商進化學院</title>
+  <meta name="description" content="按需要用錢的年份，分開整理保證與非保證金額、往後供款及待核實問題。可在自己的裝置填寫、保存或下載空白 PDF。" />
+  <meta name="author" content="初級大人的財商進化學院" />
+  <link rel="canonical" href="https://fqadulting.com/money-card/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="儲蓄保單整理表｜初級大人" />
+  <meta property="og:description" content="圈出用錢年份，分開兩個金額，留下需要查清的問題。先自己整理，再決定是否需要協助。" />
+  <meta property="og:url" content="https://fqadulting.com/money-card/" />
+  <meta property="og:locale" content="zh_HK" />
+  <meta property="og:site_name" content="初級大人的財商進化學院" />
+  <meta property="og:image" content="https://fqadulting.com/assets/og-default.png" />
+  <link rel="icon" href="../favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+  <link rel="stylesheet" href="../elegant.css" />
+  <script defer src="./metrics.js"></script>
+  <style>
+    :root{--serif:'Noto Serif HK','Songti TC','Noto Serif TC',Georgia,serif;--sans:'Inter','Noto Sans HK',-apple-system,BlinkMacSystemFont,'PingFang HK','PingFang TC',sans-serif;}
+    [hidden]{display:none!important;}
+    body{color:#565550;}
+    .card-nav .nav__row{padding-block:18px;gap:16px;}
+    .card-nav .brand{font-size:clamp(14px,3.8vw,19px);}
+    .card-nav .brand__mark{width:30px;height:30px;}
+    .card-nav__back{font-size:13px;color:var(--navy);white-space:nowrap;border-bottom:1px solid var(--underline);}
+    .worksheet-page{max-width:960px;padding-bottom:72px;}
+    .page-head{padding-top:44px;}
+    .page-head h1{font-size:clamp(32px,6.8vw,48px);margin-top:14px;}
+    .page-head .standfirst{max-width:39em;}
+    .hero-actions,.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;align-items:center;}
+    .hero-actions .btn,.actions .btn{padding:13px 20px;min-height:48px;text-align:center;}
+    .page-note{font-size:13px;line-height:1.8;color:#6f6b61;margin-top:16px;}
+    .step-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;border-block:1px solid var(--line-2);padding-block:22px;margin-top:32px;}
+    .step-strip span{display:block;color:var(--gold-ink);font-size:12px;letter-spacing:.1em;margin-bottom:5px;}
+    .step-strip p{font-family:var(--serif);font-size:17px;color:var(--navy);line-height:1.6;}
+    .section{padding-top:36px;scroll-margin-top:95px;}
+    .section h2{font-size:clamp(23px,4.5vw,29px);margin-bottom:12px;}
+    .section h3{font-size:19px;margin-bottom:10px;}
+    .section-intro{font-size:15px;line-height:1.9;max-width:45em;}
+    .example{background:var(--cream);border:1px solid var(--line-2);padding:22px 24px;margin-top:18px;}
+    .example__label{font-size:12px;letter-spacing:.12em;color:var(--gold-ink);margin-bottom:10px;}
+    .example p{line-height:1.9;font-size:15px;}
+    .example strong{color:var(--navy);font-weight:600;}
+    .example p+p{margin-top:10px;}
+    .worksheet{margin-top:24px;}
+    .group{border:1px solid var(--line-2);padding:24px;margin:0 0 20px;min-width:0;}
+    .group legend{padding:0 9px;color:var(--navy);font-family:var(--serif);font-size:21px;font-weight:600;}
+    .group legend span{font-family:var(--sans);font-size:12px;color:var(--gold-ink);letter-spacing:.14em;margin-right:8px;}
+    .field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 20px;}
+    .field{min-width:0;}
+    .field--wide{grid-column:1/-1;}
+    .field label{display:block;color:var(--navy);font-size:15px;font-weight:500;line-height:1.65;margin-bottom:8px;}
+    .field .hint{display:block;font-size:13px;font-weight:400;color:#6f6b61;margin-top:3px;line-height:1.75;}
+    .field input,.field select,.help-select{width:100%;min-width:0;min-height:48px;padding:12px;border:1px solid #bdb8aa;border-radius:2px;font:inherit;font-size:16px;color:var(--navy);background:white;}
+    .field input::placeholder{color:#777368;opacity:1;}
+    .field input[aria-invalid="true"]{border-color:var(--risk);box-shadow:0 0 0 1px var(--risk);}
+    .field-error{display:block;color:#914a36;font-size:13px;line-height:1.6;margin-top:6px;}
+    .check-list{display:grid;gap:12px;margin-top:4px;}
+    .check{display:flex;align-items:flex-start;gap:11px;line-height:1.8;font-size:15px;color:var(--navy);cursor:pointer;}
+    .check input{width:19px;height:19px;flex:none;margin-top:4px;accent-color:var(--navy);}
+    .group-note{font-size:13px;line-height:1.9;color:#6f6b61;margin-top:18px;}
+    .complete-row{padding:4px 0 12px;}
+    .complete-row .btn--solid{min-width:190px;}
+    .quiet-button{background:transparent;border:0;font:inherit;font-size:14px;color:var(--navy);text-decoration:underline;text-underline-offset:4px;cursor:pointer;padding:14px 8px;min-height:48px;}
+    .status{font-size:14px;line-height:1.8;min-height:1.8em;margin-top:12px;color:var(--navy);}
+    .status--error{color:#914a36;}
+    .results{border-top:2px solid var(--navy);margin-top:24px;padding-top:28px;scroll-margin-top:95px;}
+    .result-header{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:20px;}
+    .result-header h2{font-size:27px;}
+    .result-badge{display:inline-block;flex:none;border:1px solid var(--line-2);font-size:12px;color:var(--gold-ink);padding:5px 9px;margin-top:3px;}
+    .summary-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border:1px solid var(--line-2);}
+    .summary-item{padding:15px 17px;border-bottom:1px solid var(--line);min-width:0;}
+    .summary-item:nth-child(odd){border-right:1px solid var(--line);}
+    .summary-item dt{font-size:13px;line-height:1.7;color:#6f6b61;}
+    .summary-item dd{margin:5px 0 0;font-family:var(--serif);font-size:18px;color:var(--navy);line-height:1.65;overflow-wrap:anywhere;}
+    .summary-item dd.is-unknown{font-family:var(--sans);font-size:15px;color:#777368;}
+    .result-box{border:1px solid var(--line-2);padding:20px;margin-top:20px;background:var(--cream);}
+    .result-box h3{font-size:18px;margin-bottom:10px;}
+    .result-box ul{padding-left:1.25em;line-height:1.95;font-size:15px;}
+    .result-box li+li{margin-top:9px;}
+    .result-box p{font-size:14px;line-height:1.9;margin-top:12px;}
+    .saved-text{margin-top:18px;}
+    details>summary{font-size:15px;font-weight:500;color:var(--navy);cursor:pointer;line-height:1.8;padding-block:12px;}
+    .saved-text textarea,.message-preview{display:block;width:100%;min-height:170px;resize:vertical;border:1px solid #bdb8aa;border-radius:2px;padding:14px;font-family:var(--sans);font-size:15px;line-height:1.85;color:var(--navy);background:white;}
+    .next-actions{display:grid;gap:18px;margin-top:28px;}
+    .next-card{border:1px solid var(--line-2);padding:24px;}
+    .next-card h3{font-size:21px;}
+    .next-card p{font-size:15px;line-height:1.85;}
+    .next-card .actions{margin-top:16px;}
+    .small-link{font-size:14px;color:var(--navy);text-decoration:underline;text-underline-offset:3px;}
+    .learn-panel{padding-top:24px;scroll-margin-top:95px;}
+    .learn-panel details{border-bottom:1px solid var(--line-2);}
+    .learn-panel details p{font-size:15px;line-height:1.9;margin:4px 0 18px;}
+    .learn-panel .ask{padding:14px 16px;background:var(--cream);color:var(--navy);margin-bottom:18px;}
+    .help-panel{background:var(--cream);border:1px solid var(--line-2);padding:24px;margin-top:18px;scroll-margin-top:95px;}
+    .help-panel p{font-size:15px;line-height:1.9;}
+    .help-panel label{display:block;color:var(--navy);font-size:15px;margin:18px 0 8px;}
+    .message-preview{margin-top:10px;background:white;}
+    .helper-copy{font-size:13px!important;color:#6f6b61;line-height:1.85!important;margin-top:12px;}
+    .sources{font-size:13px;line-height:1.85;margin-top:34px;padding-top:20px;border-top:1px solid var(--line-2);}
+    .sources a,.card-footer a{color:var(--navy);border-bottom:1px solid var(--underline);}
+    .sources p+p{margin-top:9px;}
+    .card-footer{border-top:1px solid var(--line-2);padding:25px 0;font-size:12px;line-height:1.9;}
+    .card-footer__row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;}
+    .print-heading{display:none;}
+    @media(max-width:600px){
+      .worksheet-page{padding-inline:20px;}
+      .card-nav .container{padding-inline:20px;}
+      .card-nav__back{font-size:12px;}
+      .card-nav .brand{gap:7px;}
+      .page-head{padding-top:30px;}
+      .step-strip{gap:12px;}
+      .step-strip p{font-size:15px;}
+      .field-grid{grid-template-columns:1fr;gap:21px;}
+      .group{padding:20px 16px;}
+      .group legend{font-size:19px;}
+      .example,.next-card,.help-panel{padding:19px 17px;}
+      .hero-actions{align-items:stretch;}
+      .hero-actions .btn{width:100%;}
+      .actions .btn{flex:1 1 180px;}
+      .summary-grid{grid-template-columns:1fr;}
+      .summary-item:nth-child(odd){border-right:0;}
+      .summary-item{padding:13px 15px;}
+      .summary-item dd{font-size:17px;}
+      .result-header{display:block;}
+      .result-badge{margin-top:10px;}
+    }
+    @media print{
+      @page{size:A4;margin:18mm;}
+      body{background:white;font-size:11pt;color:#222;}
+      .card-nav,.intro,.worksheet,.section--setup,.next-actions,.learn-panel,.help-panel,.sources,.card-footer,.actions,.saved-text,.status,.result-badge{display:none!important;}
+      .worksheet-page{max-width:none;padding:0;}
+      .print-heading{display:block;font-size:11pt;margin-bottom:14px;color:#555;}
+      .results{margin:0;padding:0;border:0;}
+      .results[hidden]::before{content:'請先完成整理，或下載空白表格。';}
+      .result-header{margin-bottom:18px;}
+      .summary-grid{display:block;border:0;}
+      .summary-item{border:0!important;border-bottom:1px solid #ddd!important;padding:8px 0;break-inside:avoid;}
+      .summary-item dt{font-size:10pt;}
+      .summary-item dd,.summary-item dd.is-unknown{font-size:11pt;}
+      .result-box{padding:14px;margin-top:16px;break-inside:avoid;background:white;}
+      .result-box li,.result-box p{font-size:10pt;}
+      a[href]::after{content:none;}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳至內容</a>
+  <header class="nav card-nav"><div class="container nav__row">
+    <a class="brand" href="../"><img class="brand__mark" src="../favicon.png" alt="" width="30" height="30" />初級大人的財商進化學院</a>
+    <a class="card-nav__back" href="../tools-index.html">理財工具</a>
+  </div></header>
+
+  <main id="main" class="container worksheet-page">
+    <div class="intro">
+      <header class="page-head">
+        <p class="kicker">FQ ADULTING · 自助整理工具</p>
+        <h1>儲蓄保單整理表</h1>
+        <p class="standfirst">幾年後需要用錢，先對清楚保單的哪一行？把用錢年份、保證與非保證金額、往後供款放在一起，留下需要查清的問題。</p>
+        <div class="hero-actions">
+          <a class="btn btn--solid" href="#worksheet-start">在本頁填寫</a>
+          <a class="btn btn--ghost" href="savings-policy-worksheet.pdf" download="儲蓄保單整理表.pdf">下載空白填寫版 PDF</a>
+        </div>
+        <p class="page-note">不用登入或留聯絡資料。填寫內容只在本頁處理，不會上傳；請不要填姓名、保單號碼或其他身分資料。你可以完成後自行保存。</p>
+      </header>
+
+      <div class="step-strip" aria-label="整理次序">
+        <div><span>01</span><p>圈出用錢年份</p></div>
+        <div><span>02</span><p>分開兩個金額</p></div>
+        <div><span>03</span><p>列清往後供款</p></div>
+      </div>
+
+      <section class="section" aria-labelledby="example-heading">
+        <h2 id="example-heading">先看一個假設例子</h2>
+        <div class="example">
+          <p class="example__label">假設 · 港元 · 按原定繼續供款</p>
+          <p>某家庭五年後需要 <strong>20 萬</strong>。該年列明的保證退保發還金額是 <strong>15 萬</strong>，另列非保證部分 <strong>8 萬</strong>。</p>
+          <p>15 萬與需要金額相差 5 萬；兩項相加的 23 萬包括非保證部分。這兩個對照都<strong>不能直接回答保留保障時可提取多少</strong>。還要查看其他資金、未繳保費、提取條件及對保障的影響。</p>
+        </div>
+      </section>
+    </div>
+
+    <section class="section section--setup" id="worksheet-start" aria-labelledby="worksheet-heading">
+      <h2 id="worksheet-heading">填上你查到的資料</h2>
+      <p class="section-intro">拿出最新的保單資料，先對同一個用錢年份及幣種。每欄都可留白，摘要會保留「未查明」；已確認為零才填 0。填完後按「完成整理」，才產生摘要。</p>
+      <noscript><p class="example">本頁互動需要 JavaScript。你仍可<a class="small-link" href="savings-policy-worksheet.pdf" download="儲蓄保單整理表.pdf">下載空白 PDF</a>，在裝置上填寫或列印。</p></noscript>
+    </section>
+
+    <div class="worksheet" id="worksheet" autocomplete="off">
+      <fieldset class="group">
+        <legend><span>01</span>這筆錢準備何時使用？</legend>
+        <div class="field-grid">
+          <div class="field"><label for="purpose">準備用途</label><select id="purpose" autocomplete="off"><option value="">未查明／未決定</option><option value="住屋">住屋</option><option value="教育">教育</option><option value="退休">退休</option><option value="其他家庭開支">其他家庭開支</option></select></div>
+          <div class="field"><label for="money-year">用錢年份（西曆）</label><input id="money-year" type="text" inputmode="numeric" maxlength="4" placeholder="未查明，例如 2031" autocomplete="off" aria-describedby="money-year-error" /><span class="field-error" id="money-year-error" hidden></span></div>
+          <div class="field"><label for="currency">所有金額的幣種<span class="hint">本頁不換算匯率。幣種未對齊時，先留白。</span></label><select id="currency" autocomplete="off"><option value="">未查明／尚未對齊</option><option value="HKD">HKD 港元</option><option value="USD">USD 美元</option><option value="CNY">CNY 人民幣</option><option value="OTHER">其他幣種（只整理，不計算）</option></select></div>
+          <div class="field"><label for="need">預計需要的金額</label><input id="need" data-amount type="text" inputmode="decimal" maxlength="24" placeholder="未查明" autocomplete="off" aria-describedby="need-error" /><span class="field-error" id="need-error" hidden></span></div>
+          <div class="field"><label for="other-cash">到該年，保單以外可動用的資金<span class="hint">不包括本表列出的保單退保金額。</span></label><input id="other-cash" data-amount type="text" inputmode="decimal" maxlength="24" placeholder="未查明" autocomplete="off" aria-describedby="other-cash-error" /><span class="field-error" id="other-cash-error" hidden></span></div>
+          <div class="field"><label for="policy-year">所對照的保單年度<span class="hint">西曆年份與保單年度不同，請按文件核對。</span></label><input id="policy-year" type="text" inputmode="numeric" maxlength="3" placeholder="未查明，例如 5" autocomplete="off" aria-describedby="policy-year-error" /><span class="field-error" id="policy-year-error" hidden></span></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend><span>02</span>該保單年度列明甚麼金額？</legend>
+        <div class="field-grid">
+          <div class="field"><label for="guaranteed">保證退保發還金額</label><input id="guaranteed" data-amount type="text" inputmode="decimal" maxlength="24" placeholder="未查明" autocomplete="off" aria-describedby="guaranteed-error" /><span class="field-error" id="guaranteed-error" hidden></span></div>
+          <div class="field"><label for="non-guaranteed">退保發還金額中的非保證部分<span class="hint">只填非保證部分，避免把已包含保證部分的總額再加一次。</span></label><input id="non-guaranteed" data-amount type="text" inputmode="decimal" maxlength="24" placeholder="未查明" autocomplete="off" aria-describedby="non-guaranteed-error" /><span class="field-error" id="non-guaranteed-error" hidden></span></div>
+        </div>
+        <div class="check-list" style="margin-top:20px;">
+          <label class="check"><input id="same-line" type="checkbox" /><span>我已核對：這兩欄來自同一個保單年度；本表金額均為同一幣種，用錢年份亦與該年度對應。</span></label>
+        </div>
+        <p class="group-note">未能核對就不要勾選。退保發還金額與保留保障時可部分提取的金額不同；本頁不推算部分提取後的結果。</p>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend><span>03</span>用錢前後，還有多少保費要繳？</legend>
+        <div class="field-grid">
+          <div class="field field--wide"><label for="premium-before">由現在至用錢當日，仍須繳付的總額<span class="hint">請按實際供款安排加總，不是已繳保費。</span></label><input id="premium-before" data-amount type="text" inputmode="decimal" maxlength="24" placeholder="未查明" autocomplete="off" aria-describedby="premium-before-error" /><span class="field-error" id="premium-before-error" hidden></span></div>
+          <div class="field"><label for="premium-after">用錢後每年仍須繳付的金額</label><input id="premium-after" data-amount type="text" inputmode="decimal" maxlength="24" placeholder="未查明" autocomplete="off" aria-describedby="premium-after-error" /><span class="field-error" id="premium-after-error" hidden></span></div>
+          <div class="field"><label for="years-after">用錢後尚餘供款年數</label><input id="years-after" type="text" inputmode="numeric" maxlength="3" placeholder="未查明，例如 3" autocomplete="off" aria-describedby="years-after-error" /><span class="field-error" id="years-after-error" hidden></span></div>
+        </div>
+        <p class="group-note">供款額如會變動，可另按年份列出。這裡不會把每年金額乘以年數，或把未來保費從退保金額扣減後稱為「可用現金」。</p>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend><span>04</span>哪些項目尚待查清？</legend>
+        <div class="check-list">
+          <label class="check"><input type="checkbox" id="pending-figures" value="最新保單數字" /><span>最新保單數字</span></label>
+          <label class="check"><input type="checkbox" id="pending-withdrawal" value="部分提取條件" /><span>部分提取條件</span></label>
+          <label class="check"><input type="checkbox" id="pending-protection" value="提取後保障變化" /><span>提取後保障變化</span></label>
+        </div>
+        <p class="group-note">未勾選不代表已經核實；摘要亦會列出留白的欄位。</p>
+      </fieldset>
+      <div class="complete-row">
+        <div class="actions"><button class="btn btn--solid" id="complete" type="button" disabled>完成整理，查看摘要</button><button class="quiet-button" id="clear" type="button" disabled>清空本頁</button></div>
+        <p class="page-note">本頁不會替你提交資料、預約或作產品決定。本站不保存填寫內容；離開前請自行保存需要的版本。</p>
+        <p id="form-status" class="status" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <section class="results" id="results" hidden aria-labelledby="result-heading">
+      <p class="print-heading">初級大人的財商進化學院 · fqadulting.com/money-card/</p>
+      <div class="result-header"><div><p class="kicker">你的整理摘要</p><h2 id="result-heading" tabindex="-1">已整理，未知的先保留</h2></div><span class="result-badge">只存於本頁 · 自行核對</span></div>
+      <dl class="summary-grid" id="summary-grid"></dl>
+      <div class="result-box"><h3>金額欄位對照</h3><ul id="math-results"></ul><p>以上只是所填欄位的算術對照。非保證金額會變動；退保與部分提取的條件及對保障的影響須分別核實，不能將合計或差額當成可自由提取的現金。</p></div>
+      <div class="result-box"><h3>仍要核實的項目</h3><ul id="pending-results"></ul><p>可向原有顧問查問：「如要保留保障，在該年可提取多少？往後供款會怎樣改變？」</p></div>
+      <details class="saved-text"><summary>查看可保存的文字版本</summary><textarea id="summary-text" readonly aria-label="整理摘要文字" spellcheck="false"></textarea></details>
+
+      <div class="next-actions">
+        <section class="next-card"><h3>先帶走自己的整理</h3><p>可以只保存結果，之後對照文件再補資料。你不需要先聯絡任何人。</p><div class="actions"><button class="btn btn--solid" id="download-summary" type="button">下載我的文字摘要</button><button class="btn btn--ghost" id="copy-summary" type="button">複製摘要</button><button class="quiet-button" id="print-summary" type="button">列印／另存 PDF</button></div><p id="save-status" class="status" role="status" aria-live="polite"></p></section>
+        <section class="next-card"><h3>有一個詞還未明白</h3><p>先看保證與非保證、退保與部分提取的分別，再帶著一條問題查文件。</p><div class="actions"><a class="btn btn--ghost" href="#learn">查看三項解說</a></div></section>
+        <section class="next-card"><h3>想找人對照一欄</h3><p>你可以先了解協助內容及安排。求助文字不會帶上這張表的金額或個人資料，由你預覽後決定是否傳送。</p><div class="actions"><button class="btn btn--ghost" id="show-help" type="button" aria-expanded="false" aria-controls="help-panel">先看協助說明</button></div></section>
+      </div>
+    </section>
+
+    <section class="section learn-panel" id="learn" aria-labelledby="learn-heading">
+      <h2 id="learn-heading">三項容易混淆的地方</h2>
+      <details><summary>保證與非保證，為甚麼分開填？</summary><p>兩欄的確定性不同。把保證部分與非保證部分相加，只能得到包括非保證部分的列示總額；不能把整個總額當作保證可得。先看文件標題及該保單年度，避免重複加總。</p><p class="ask">可問：「這一行哪些是保證，哪些會變動？這個總額是否已包括兩者？」</p></details>
+      <details><summary>退保金額，是否等於保留保障時可提取的金額？</summary><p>不同安排的條件和結果可能不同。退保是終止保單；部分提取、保單借款或保留保障要另看條款、費用及對往後價值與保障的影響，不能直接用退保數字代替。</p><p class="ask">可問：「如果保留保障，這一年可提取多少？提取後的保障和往後供款會怎樣改變？」</p></details>
+      <details><summary>供款期完結，是否代表該年取回全部已繳保費？</summary><p>供款期描述要繳保費的時間；該年的退保發還金額是另一項資料。請分開看實際供款安排及該年度列明的數字，不以供款完結日代替可用金額的核對。</p><p class="ask">可問：「由現在至用錢年份，還須繳多少？該年的保證退保金額是多少？」</p></details>
+    </section>
+
+    <section class="help-panel" id="help-panel" hidden aria-labelledby="help-heading">
+      <h2 id="help-heading" tabindex="-1">由你決定是否聯絡</h2>
+      <p>你可向獨立理財顧問提出一個想核實的問題，先了解服務範圍、安排及費用。涉及保留、提取或退保等個別決定，需要按完整情況及文件另行了解。</p>
+      <label for="help-topic">先選一個想了解的方向</label>
+      <select class="help-select" id="help-topic"><option value="figures">怎樣看該年的保證與非保證金額</option><option value="withdrawal">部分提取與退保的條件有何不同</option><option value="protection">提取後對保障有甚麼影響</option><option value="premium">用錢前後的供款如何核對</option><option value="scope">先了解協助的範圍及安排</option></select>
+      <label for="help-message">將會開啟的文字預覽</label>
+      <textarea class="message-preview" id="help-message" readonly spellcheck="false"></textarea>
+      <p class="helper-copy">預覽只使用你選的問題方向，不包括年份、金額或表內答案。按下按鈕只會開啟 WhatsApp，仍需由你親自傳送。這不是提交表單或確認預約。</p>
+      <div class="actions"><a class="btn btn--solid" id="whatsapp-help" href="https://wa.me/85291268714" target="_blank" rel="noopener noreferrer">開啟 WhatsApp，自行確認傳送</a><button class="btn btn--ghost" id="copy-help" type="button">複製求助文字</button></div>
+      <p class="helper-copy">亦可先保存文字，之後自行聯絡 WhatsApp +852 9126 8714。首次聯絡不需傳完整保單；若之後需要文件，先核實接手身分並遮去不必要的個人資料。</p>
+      <p id="help-status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <div class="sources">
+      <p>核對數字時，請以最新保單資料及條款為準。本表協助整理已知與未知，不會判斷應否保留、提取、退保或購買產品。</p>
+      <p>概念參考：<a href="https://education.ia.org.hk/tc/tool/glossary.html" target="_blank" rel="noopener noreferrer">保監局常見詞彙</a> · <a href="https://www.ifec.org.hk/web/tc/other-resources/hot-topics/5-questions-getting-right-life-insurance.page" target="_blank" rel="noopener noreferrer">投委會人壽保險五問</a></p>
+      <p>填寫的金額只留在這部裝置。正式網站只統計開啟、開始、完成及前往 WhatsApp 求助的次數，不包含表內答案；使用本機檔案時不傳送這些統計。下載、複製及列印由你的裝置處理；若選擇外部聯絡，才會離開本頁。</p>
+    </div>
+  </main>
+
+  <footer class="card-footer"><div class="container card-footer__row"><span>初級大人的財商進化學院 · FQ Adulting</span><span><a href="../legal.html">私隱與使用說明</a> · <a href="../">回到首頁</a></span></div></footer>
+
+  <script>
+  (function(){
+    'use strict';
+    var byId=function(id){return document.getElementById(id);};
+    var worksheet=byId('worksheet'), results=byId('results'), formStatus=byId('form-status');
+    var summaryText='', hasResult=false;
+    var amountIds=['need','other-cash','guaranteed','non-guaranteed','premium-before','premium-after'];
+    var labels={purpose:'準備用途','money-year':'用錢年份（西曆）',currency:'金額幣種',need:'預計需要的金額','other-cash':'保單以外可動用的資金','policy-year':'所對照的保單年度',guaranteed:'保證退保發還金額','non-guaranteed':'非保證部分','premium-before':'至用錢當日仍須繳付的總額','premium-after':'用錢後每年仍須繳付的金額','years-after':'用錢後尚餘供款年數'};
+    var orderedIds=['purpose','money-year','currency','need','other-cash','policy-year','guaranteed','non-guaranteed','premium-before','premium-after','years-after'];
+    var currencyNames={HKD:'HKD 港元',USD:'USD 美元',CNY:'CNY 人民幣',OTHER:'其他幣種（未指定）'};
+    var helpTopics={figures:'怎樣看該年的保證與非保證金額',withdrawal:'部分提取與退保的條件有何不同',protection:'提取後對保障有甚麼影響',premium:'用錢前後的供款如何核對',scope:'先了解協助的範圍及安排'};
+    var pendingIds=['pending-figures','pending-withdrawal','pending-protection'];
+    function setStatus(el,text,isError){el.textContent=text;el.classList.toggle('status--error',!!isError);}
+    function parseAmount(raw){
+      var text=raw.trim();
+      if(!text)return {value:null};
+      if(!/^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d{1,2})?$/.test(text))return {error:'請填零或正數，最多兩位小數；例如 200000 或 200,000。未知可留白。'};
+      var value=Number(text.replace(/,/g,''));
+      if(!Number.isFinite(value)||value>1000000000000)return {error:'請填不多於 1,000,000,000,000 的金額。未知可留白。'};
+      return {value:Math.round(value*100)};
+    }
+    function parseInteger(raw,min,max){
+      var text=raw.trim();
+      if(!text)return {value:null};
+      if(!/^\d+$/.test(text)||Number(text)<min||Number(text)>max)return {error:'請填 '+min+' 至 '+max+' 的整數；未知可留白。'};
+      return {value:Number(text)};
+    }
+    function validate(){
+      var data={},invalid=[];
+      amountIds.forEach(function(id){data[id]=parseAmount(byId(id).value);});
+      data['money-year']=parseInteger(byId('money-year').value,1900,2200);
+      data['policy-year']=parseInteger(byId('policy-year').value,1,200);
+      data['years-after']=parseInteger(byId('years-after').value,0,150);
+      Object.keys(data).forEach(function(id){
+        var el=byId(id),error=byId(id+'-error');
+        if(data[id].error){invalid.push(id);el.setAttribute('aria-invalid','true');error.textContent=data[id].error;error.hidden=false;}
+        else{el.removeAttribute('aria-invalid');error.textContent='';error.hidden=true;}
+      });
+      if(invalid.length){setStatus(formStatus,'有 '+invalid.length+' 欄格式需要調整；亦可清空該欄，保留為未查明。',true);byId(invalid[0]).focus();return null;}
+      var values={};Object.keys(data).forEach(function(id){values[id]=data[id].value;});
+      values.purpose=byId('purpose').value;values.currency=byId('currency').value;
+      values.sameLine=byId('same-line').checked;
+      return values;
+    }
+    function formatMoney(cents,currency){
+      if(cents===null)return '未查明';
+      var number=new Intl.NumberFormat('zh-HK',{maximumFractionDigits:2}).format(cents/100);
+      return (currency&&currency!=='OTHER'?currency+' ':'')+number+(currency==='OTHER'?'（其他幣種）':(!currency?'（幣種未查明）':''));
+    }
+    function appendList(list,text){var li=document.createElement('li');li.textContent=text;list.appendChild(li);}
+    function showValue(id,values){
+      var value=values[id];
+      if(id==='purpose')return value||'未查明／未決定';
+      if(id==='currency')return currencyNames[value]||'未查明／尚未對齊';
+      if(amountIds.indexOf(id)!==-1)return formatMoney(value,values.currency);
+      if(value===null)return '未查明';
+      return id==='policy-year'?'第 '+value+' 個保單年度':(id==='years-after'?value+' 年':String(value));
+    }
+    function complete(){
+      var values=validate();if(!values)return;
+      var grid=byId('summary-grid'),mathList=byId('math-results'),pendingList=byId('pending-results');
+      grid.replaceChildren();mathList.replaceChildren();pendingList.replaceChildren();
+      var lines=['儲蓄保單整理表','初級大人的財商進化學院',''];
+      var unknown=[];
+      orderedIds.forEach(function(id){
+        var display=showValue(id,values),item=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');
+        item.className='summary-item';dt.textContent=labels[id];dd.textContent=display;
+        if(values[id]===null||values[id]===''){dd.classList.add('is-unknown');unknown.push(labels[id]);}
+        item.append(dt,dd);grid.appendChild(item);lines.push(labels[id]+'：'+display);
+      });
+      var math=[];
+      var canCompare=values.sameLine&&values.currency!==''&&values.currency!=='OTHER'&&values['money-year']!==null&&values['policy-year']!==null;
+      if(!canCompare){math.push('尚未作金額計算：請先確認幣種、用錢年份、保單年度及同一行核對。你仍可保存目前的整理。');}
+      else{
+        if(values.guaranteed!==null&&values['non-guaranteed']!==null){math.push('文件兩項列示金額相加：'+formatMoney(values.guaranteed+values['non-guaranteed'],values.currency)+'（包括非保證部分，不是保證可得或可提取金額）。');}
+        else{math.push('保證與非保證部分未齊，未計兩項合計；留白沒有當作零。');}
+        if(values.need!==null&&values.guaranteed!==null){
+          var difference=values.need-values.guaranteed;
+          if(difference>0)math.push('只看這兩欄：預計需要金額比保證退保欄多 '+formatMoney(difference,values.currency)+'。這不是整體資金缺口；未計其他資金、未來供款及提取條件。');
+          else if(difference<0)math.push('只看這兩欄：保證退保欄比預計需要金額多 '+formatMoney(-difference,values.currency)+'。這不表示可在保留保障下提取該金額，亦未計其他資金或供款。');
+          else math.push('預計需要金額與保證退保欄相同。數字相同不表示提取條件已符合，亦未計其他資金或供款。');
+        }else{math.push('需要金額或保證退保金額未查明，未作兩欄差額對照。');}
+      }
+      math.forEach(function(text){appendList(mathList,text);});
+      var pending=[];
+      if(unknown.length)pending.push('仍留白的欄位：'+unknown.join('、')+'。');
+      if(!values.sameLine)pending.push('同一幣種、用錢年份與保單年度的對應尚未確認。');
+      if(values.currency==='OTHER')pending.push('已選其他幣種，摘要未指定幣別；本頁只整理，沒有計算或換算。');
+      pendingIds.forEach(function(id){if(byId(id).checked)pending.push('你勾選待查：'+byId(id).value+'。');});
+      if(!pending.length)pending.push('目前沒有留白或勾選待查項目；這只反映填寫狀態，不代表資料及提取條件已獲核實。');
+      pending.forEach(function(text){appendList(pendingList,text);});
+      lines.push('','金額欄位對照');math.forEach(function(text){lines.push('• '+text);});
+      lines.push('','仍要核實的項目');pending.forEach(function(text){lines.push('• '+text);});
+      lines.push('','可向原有顧問查問：如要保留保障，在該年可提取多少？往後供款會怎樣改變？','',
+        '請以最新保單資料及條款核對。以上是填寫內容的整理及欄位算術，不代表應保留、提取、退保或購買產品；合計及差額並非可自由提取的現金。',
+        '來源：fqadulting.com/money-card/');
+      summaryText=lines.join('\n');byId('summary-text').value=summaryText;
+      results.hidden=false;hasResult=true;byId('help-panel').hidden=true;byId('show-help').setAttribute('aria-expanded','false');
+      if(orderedIds.some(function(id){return values[id]!==null&&values[id]!=='';})||values.sameLine||pendingIds.some(function(id){return byId(id).checked;}))window.fqWorksheetEvent?.('worksheet-complete');
+      setStatus(formStatus,'摘要已在本頁產生，沒有傳送或保存到網站。');setStatus(byId('save-status'),'');setStatus(byId('help-status'),'');
+      byId('result-heading').focus();
+    }
+    function invalidate(){
+      if(hasResult){results.hidden=true;hasResult=false;summaryText='';byId('summary-text').value='';byId('summary-grid').replaceChildren();byId('math-results').replaceChildren();byId('pending-results').replaceChildren();byId('help-panel').hidden=true;setStatus(formStatus,'內容已變更，請再次按「完成整理」更新摘要。');}
+    }
+    function clear(){
+      if(!window.confirm('確定清空本頁已填內容及摘要？請先保存需要的版本。'))return;
+      worksheet.querySelectorAll('input').forEach(function(el){if(el.type==='checkbox')el.checked=false;else el.value='';el.removeAttribute('aria-invalid');});
+      worksheet.querySelectorAll('select').forEach(function(el){el.selectedIndex=0;});
+      worksheet.querySelectorAll('.field-error').forEach(function(el){el.hidden=true;el.textContent='';});
+      summaryText='';hasResult=false;results.hidden=true;byId('summary-text').value='';byId('summary-grid').replaceChildren();byId('math-results').replaceChildren();byId('pending-results').replaceChildren();byId('help-panel').hidden=true;byId('show-help').setAttribute('aria-expanded','false');byId('help-topic').selectedIndex=0;updateHelp();
+      setStatus(formStatus,'本頁填寫內容及摘要已清空。');setStatus(byId('save-status'),'');setStatus(byId('help-status'),'');byId('purpose').focus();
+    }
+    function downloadText(){
+      if(!summaryText)return;
+      var blob=new Blob(['\uFEFF'+summaryText],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+      a.href=url;a.download='儲蓄保單整理摘要.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},30000);
+      setStatus(byId('save-status'),'已交由瀏覽器下載文字摘要；請查看裝置的下載項目。');
+    }
+    async function copyText(text,textarea,status){
+      if(!text)return;
+      try{if(!navigator.clipboard||!navigator.clipboard.writeText)throw new Error('Clipboard unavailable');await navigator.clipboard.writeText(text);setStatus(status,'已複製文字。貼出前請再檢查你想分享的內容。');}
+      catch(e){var details=textarea.closest('details');if(details)details.open=true;textarea.focus();textarea.select();setStatus(status,'瀏覽器未允許自動複製，文字已選取；請長按或使用複製指令。');}
+    }
+    function updateHelp(){
+      var topic=helpTopics[byId('help-topic').value]||helpTopics.scope;
+      var message='你好，我從初級大人的《儲蓄保單整理表》過來，想先了解對照保單資料的協助及安排。\n想了解的方向：'+topic+'。\n請先說明服務範圍、聯絡及收費安排。';
+      byId('help-message').value=message;
+      byId('whatsapp-help').href='https://wa.me/85291268714?text='+encodeURIComponent(message);
+    }
+    byId('complete').disabled=false;byId('clear').disabled=false;
+    byId('complete').addEventListener('click',complete);byId('clear').addEventListener('click',clear);
+    worksheet.addEventListener('input',function(){invalidate();window.fqWorksheetEvent?.('worksheet-start');});
+    worksheet.addEventListener('change',function(){invalidate();window.fqWorksheetEvent?.('worksheet-start');});
+    byId('download-summary').addEventListener('click',downloadText);
+    byId('copy-summary').addEventListener('click',function(){copyText(summaryText,byId('summary-text'),byId('save-status'));});
+    byId('print-summary').addEventListener('click',function(){window.print();});
+    byId('show-help').addEventListener('click',function(){byId('help-panel').hidden=false;this.setAttribute('aria-expanded','true');byId('help-heading').focus();});
+    byId('whatsapp-help').addEventListener('click',function(){window.fqWorksheetEvent?.('worksheet-help-click');});
+    byId('help-topic').addEventListener('change',function(){updateHelp();setStatus(byId('help-status'),'');});
+    byId('copy-help').addEventListener('click',function(){copyText(byId('help-message').value,byId('help-message'),byId('help-status'));});
+    updateHelp();
+  })();
+  </script>
+</body>
+</html>
