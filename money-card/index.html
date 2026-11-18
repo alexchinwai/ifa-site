@@ -14,7 +14,13 @@
   <meta property="og:url" content="https://fqadulting.com/money-card/" />
   <meta property="og:locale" content="zh_HK" />
   <meta property="og:site_name" content="初級大人的財商進化學院" />
-  <meta property="og:image" content="https://fqadulting.com/assets/og-default.png" />
+  <meta property="og:image" content="https://fqadulting.com/assets/og-savings-policy-worksheet.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="初級大人的財商進化學院｜儲蓄保單整理表" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://fqadulting.com/assets/og-savings-policy-worksheet.png" />
+  <meta name="twitter:image:alt" content="初級大人的財商進化學院｜儲蓄保單整理表" />
   <link rel="icon" href="../favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
   <link rel="stylesheet" href="../elegant.css" />
@@ -268,18 +274,18 @@
       <p>你可向獨立理財顧問提出一個想核實的問題，先了解服務範圍、安排及費用。涉及保留、提取或退保等個別決定，需要按完整情況及文件另行了解。</p>
       <label for="help-topic">先選一個想了解的方向</label>
       <select class="help-select" id="help-topic"><option value="figures">怎樣看該年的保證與非保證金額</option><option value="withdrawal">部分提取與退保的條件有何不同</option><option value="protection">提取後對保障有甚麼影響</option><option value="premium">用錢前後的供款如何核對</option><option value="scope">先了解協助的範圍及安排</option></select>
-      <label for="help-message">將會開啟的文字預覽</label>
+      <label for="help-message">求助文字預覽</label>
       <textarea class="message-preview" id="help-message" readonly spellcheck="false"></textarea>
-      <p class="helper-copy">預覽只使用你選的問題方向，不包括年份、金額或表內答案。按下按鈕只會開啟 WhatsApp，仍需由你親自傳送。這不是提交表單或確認預約。</p>
-      <div class="actions"><a class="btn btn--solid" id="whatsapp-help" href="https://wa.me/85291268714" target="_blank" rel="noopener noreferrer">開啟 WhatsApp，自行確認傳送</a><button class="btn btn--ghost" id="copy-help" type="button">複製求助文字</button></div>
-      <p class="helper-copy">亦可先保存文字，之後自行聯絡 WhatsApp +852 9126 8714。首次聯絡不需傳完整保單；若之後需要文件，先核實接手身分並遮去不必要的個人資料。</p>
+      <p class="helper-copy">預覽只使用你選的問題方向。你可以複製這段文字，貼到初級大人（@fq_adulting）的 Threads 私訊，確認內容後再傳送。</p>
+      <div class="actions"><button class="btn btn--ghost" id="copy-help" type="button">複製求助文字</button><a class="btn btn--solid" id="threads-help" href="https://www.threads.com/@fq_adulting" target="_blank" rel="noopener noreferrer">開啟初級大人的 Threads</a></div>
+      <p class="helper-copy">首次聯絡只需說明你想查問的問題。如需提供文件，請先核實對方身分並遮去不必要的個人資料。</p>
       <p id="help-status" class="status" role="status" aria-live="polite"></p>
     </section>
 
     <div class="sources">
       <p>核對數字時，請以最新保單資料及條款為準。本表協助整理已知與未知，不會判斷應否保留、提取、退保或購買產品。</p>
       <p>概念參考：<a href="https://education.ia.org.hk/tc/tool/glossary.html" target="_blank" rel="noopener noreferrer">保監局常見詞彙</a> · <a href="https://www.ifec.org.hk/web/tc/other-resources/hot-topics/5-questions-getting-right-life-insurance.page" target="_blank" rel="noopener noreferrer">投委會人壽保險五問</a></p>
-      <p>填寫的金額只留在這部裝置。正式網站只統計開啟、開始、完成及前往 WhatsApp 求助的次數，不包含表內答案；使用本機檔案時不傳送這些統計。下載、複製及列印由你的裝置處理；若選擇外部聯絡，才會離開本頁。</p>
+      <p>填寫的金額只留在這部裝置。正式網站只統計開啟、開始、完成及前往 Threads 求助的次數，不包含表內答案。使用本機檔案時不傳送這些統計。下載、複製及列印由你的裝置處理。</p>
     </div>
   </main>
 
@@ -413,7 +419,6 @@
       var topic=helpTopics[byId('help-topic').value]||helpTopics.scope;
       var message='你好，我從初級大人的《儲蓄保單整理表》過來，想先了解對照保單資料的協助及安排。\n想了解的方向：'+topic+'。\n請先說明服務範圍、聯絡及收費安排。';
       byId('help-message').value=message;
-      byId('whatsapp-help').href='https://wa.me/85291268714?text='+encodeURIComponent(message);
     }
     byId('complete').disabled=false;byId('clear').disabled=false;
     byId('complete').addEventListener('click',complete);byId('clear').addEventListener('click',clear);
@@ -423,7 +428,7 @@
     byId('copy-summary').addEventListener('click',function(){copyText(summaryText,byId('summary-text'),byId('save-status'));});
     byId('print-summary').addEventListener('click',function(){window.print();});
     byId('show-help').addEventListener('click',function(){byId('help-panel').hidden=false;this.setAttribute('aria-expanded','true');byId('help-heading').focus();});
-    byId('whatsapp-help').addEventListener('click',function(){window.fqWorksheetEvent?.('worksheet-help-click');});
+    byId('threads-help').addEventListener('click',function(){window.fqWorksheetEvent?.('worksheet-help-click');});
     byId('help-topic').addEventListener('change',function(){updateHelp();setStatus(byId('help-status'),'');});
     byId('copy-help').addEventListener('click',function(){copyText(byId('help-message').value,byId('help-message'),byId('help-status'));});
     updateHelp();

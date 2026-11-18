@@ -29,4 +29,4 @@
 香港持牌中介把關內容,受保險業監管局(IA)、積金局(MPFA)及證券及期貨事務監察委員會(SFC)相關規例規管。所有內容僅供教育參考,並非個別投資、保險或財務建議;槓桿與借貸涉及風險,不保證回報。
 
 ## 聯絡
-WhatsApp:https://wa.me/85291268714
+Threads（@fq_adulting）：https://www.threads.com/@fq_adulting

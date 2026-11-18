@@ -2,6 +2,7 @@
 """Generate per-page OG cards (1200x630) for fqadulting.com — navy + gold, Songti TC."""
 from PIL import Image, ImageDraw, ImageFont
 import os
+import shutil
 
 ASSETS = os.path.join(os.path.dirname(__file__), "..", "..", "assets")
 ASSETS = os.path.abspath(ASSETS)
@@ -19,6 +20,8 @@ def wrap(text, n):
     return [text[i:i+n] for i in range(0, len(text), n)]
 
 CARDS = {
+    "og-fq-adulting": "香港財商教育",
+    "og-savings-policy-worksheet": "儲蓄保單整理表",
     "og-home":      "成為懂理財的大人",
     "og-emergency": "應急錢應該存多少?",
     "og-mpf":       "強積金是什麼?初級大人要看什麼",
@@ -68,7 +71,13 @@ for key, title in CARDS.items():
     fsub = font(26, False)
     d.text((80, H-110), "初級大人的財商進化學院", font=fsub, fill=SOFT)
     flat = font(20, False)
-    d.text((80, H-72), "FQ ADULTING · 香港財商教育", font=flat, fill=GOLD)
+    footer = "FQ ADULTING · 香港財商教育"
+    if key in ("og-fq-adulting", "og-savings-policy-worksheet"):
+        footer = "fqadulting.com"
+    d.text((80, H-72), footer, font=flat, fill=GOLD)
     out = os.path.join(ASSETS, key + ".png")
     img.save(out, "PNG")
+    if key == "og-fq-adulting":
+        # Older shares and external sites can still fetch the original image URL.
+        shutil.copyfile(out, os.path.join(ASSETS, "og-default.png"))
     print("wrote", key + ".png", img.size)
